@@ -1,34 +1,15 @@
-//
-//  FootyTipsTests.m
-//  FootyTipsTests
-//
-//  Created by Michael Koukoullis on 31/03/2014.
-//  Copyright (c) 2014 Michael Koukoullis. All rights reserved.
-//
+#import "Specta.h"
+#define EXP_SHORTHAND
+#import "Expecta.h"
 
-#import <XCTest/XCTest.h>
+SpecBegin(Thing)
 
-@interface FootyTipsTests : XCTestCase
+describe(@"Thing", ^{
 
-@end
+  it(@"should do stuff", ^{
+    expect(@"foo").to.equal(@"foo");
+  });
+  
+});
 
-@implementation FootyTipsTests
-
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-}
-
-@end
+SpecEnd
