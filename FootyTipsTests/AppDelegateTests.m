@@ -25,6 +25,18 @@ describe(@"AppDelegate", ^{
     expect(didFinishLaunchingWithOptionsReturn).to.equal(@YES);
   });
   
+  describe(@"tab bar controller", ^{
+    
+    it(@"is an instance of UITabBarController", ^{
+      expect(appDelegate.tabBarController).to.beInstanceOf([UITabBarController class]);
+    });
+    
+    it(@"is the root view controller", ^{
+      expect(appDelegate.window.rootViewController).to.beIdenticalTo(appDelegate.tabBarController);
+    });
+    
+  });
+  
 });
 
 SpecEnd
