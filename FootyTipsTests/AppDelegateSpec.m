@@ -1,6 +1,6 @@
-#import "Specta.h"
+#import <Specta/Specta.h>
 #define EXP_SHORTHAND
-#import "Expecta.h"
+#import <Expecta/Expecta.h>
 #import "AppDelegate.h"
 #import "TipsViewController.h"
 
