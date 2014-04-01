@@ -15,7 +15,7 @@
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.tabBarController = [[UITabBarController alloc] init];
-  TipsViewController *tipsViewController = [[TipsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+  TipsViewController *tipsViewController = [[TipsViewController alloc] init];
   [self.tabBarController setViewControllers:@[tipsViewController] animated:NO];
   [self.window setRootViewController:self.tabBarController];
   
