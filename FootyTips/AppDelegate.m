@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TipsViewController.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,8 @@
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.tabBarController = [[UITabBarController alloc] init];
+  TipsViewController *tipsViewController = [[TipsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+  [self.tabBarController setViewControllers:@[tipsViewController] animated:NO];
   [self.window setRootViewController:self.tabBarController];
   
   self.window.backgroundColor = [UIColor whiteColor];
