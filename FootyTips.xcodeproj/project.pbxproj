@@ -23,6 +23,9 @@
 		27AD596718EA423800D54C65 /* TipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD596618EA423800D54C65 /* TipsViewController.m */; };
 		27AD596818EA423800D54C65 /* TipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD596618EA423800D54C65 /* TipsViewController.m */; };
 		27AD596C18EA4DBE00D54C65 /* TipsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD596B18EA4DBE00D54C65 /* TipsViewControllerSpec.m */; };
+		27AD596E18EA640500D54C65 /* FixtureCommunicatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD596D18EA640500D54C65 /* FixtureCommunicatorSpec.m */; };
+		27AD597118EA642600D54C65 /* FixtureCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597018EA642600D54C65 /* FixtureCommunicator.m */; };
+		27AD597218EA642600D54C65 /* FixtureCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597018EA642600D54C65 /* FixtureCommunicator.m */; };
 		4E79025D56A64FFD8EF14350 /* libPods-FootyTipsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F92902B3FB214DD5A8267953 /* libPods-FootyTipsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		27AD596518EA423800D54C65 /* TipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsViewController.h; sourceTree = "<group>"; };
 		27AD596618EA423800D54C65 /* TipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsViewController.m; sourceTree = "<group>"; };
 		27AD596B18EA4DBE00D54C65 /* TipsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsViewControllerSpec.m; sourceTree = "<group>"; };
+		27AD596D18EA640500D54C65 /* FixtureCommunicatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FixtureCommunicatorSpec.m; sourceTree = "<group>"; };
+		27AD596F18EA642600D54C65 /* FixtureCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixtureCommunicator.h; sourceTree = "<group>"; };
+		27AD597018EA642600D54C65 /* FixtureCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FixtureCommunicator.m; sourceTree = "<group>"; };
 		DD09608F6A5A4FC2A47C8D6D /* Pods-FootyTipsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyTipsTests.xcconfig"; path = "Pods/Pods-FootyTipsTests.xcconfig"; sourceTree = "<group>"; };
 		F92902B3FB214DD5A8267953 /* libPods-FootyTipsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FootyTipsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +130,8 @@
 				27A0E57D18E9245500347BA8 /* AppDelegate.m */,
 				27AD596518EA423800D54C65 /* TipsViewController.h */,
 				27AD596618EA423800D54C65 /* TipsViewController.m */,
+				27AD596F18EA642600D54C65 /* FixtureCommunicator.h */,
+				27AD597018EA642600D54C65 /* FixtureCommunicator.m */,
 				27A0E57F18E9245500347BA8 /* Images.xcassets */,
 				27A0E57418E9245500347BA8 /* Supporting Files */,
 			);
@@ -145,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				27A0E59218E9245500347BA8 /* AppDelegateSpec.m */,
+				27AD596D18EA640500D54C65 /* FixtureCommunicatorSpec.m */,
 				27AD596B18EA4DBE00D54C65 /* TipsViewControllerSpec.m */,
 				27A0E58D18E9245500347BA8 /* Supporting Files */,
 			);
@@ -290,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27AD597118EA642600D54C65 /* FixtureCommunicator.m in Sources */,
 				27AD596718EA423800D54C65 /* TipsViewController.m in Sources */,
 				27A0E57E18E9245500347BA8 /* AppDelegate.m in Sources */,
 				27A0E57A18E9245500347BA8 /* main.m in Sources */,
@@ -302,7 +312,9 @@
 			files = (
 				27AD596818EA423800D54C65 /* TipsViewController.m in Sources */,
 				27AD596C18EA4DBE00D54C65 /* TipsViewControllerSpec.m in Sources */,
+				27AD597218EA642600D54C65 /* FixtureCommunicator.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
+				27AD596E18EA640500D54C65 /* FixtureCommunicatorSpec.m in Sources */,
 				27A0E59318E9245500347BA8 /* AppDelegateSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
