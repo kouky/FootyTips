@@ -42,6 +42,10 @@ describe(@"AppDelegate", ^{
     
   });
   
+  after(^{
+    appDelegate = nil;
+  });
+  
 });
 
 SpecEnd

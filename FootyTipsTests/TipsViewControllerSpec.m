@@ -34,6 +34,10 @@ describe(@"TipsViewController", ^{
 
   });
   
+  after(^{
+    tipsViewController = nil;
+  });
+  
 });
 
 SpecEnd
