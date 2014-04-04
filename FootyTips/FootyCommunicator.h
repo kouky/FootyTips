@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
+#import "FootyCommunicatorDelegate.h"
 
 @interface FootyCommunicator : NSObject {
 
 @protected
   AFHTTPRequestOperationManager *_manager;
+  void (^_successHandler)(NSString *);
 }
+
+@property (weak) id <FootyCommunicatorDelegate> delegate;
 
 - (void)fetchFixture;
 - (void)fetchLadder;

@@ -27,6 +27,7 @@
 		27AD597118EA642600D54C65 /* FootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597018EA642600D54C65 /* FootyCommunicator.m */; };
 		27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597018EA642600D54C65 /* FootyCommunicator.m */; };
 		27AD597518EABCD100D54C65 /* InspectableFootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */; };
+		27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */; };
 		4E79025D56A64FFD8EF14350 /* libPods-FootyTipsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F92902B3FB214DD5A8267953 /* libPods-FootyTipsTests.a */; };
 		5339430DFE154E30B41197CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 499BDFEE9262436A83C59854 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,9 @@
 		27AD597018EA642600D54C65 /* FootyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootyCommunicator.m; sourceTree = "<group>"; };
 		27AD597318EABCD100D54C65 /* InspectableFootyCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableFootyCommunicator.h; sourceTree = "<group>"; };
 		27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableFootyCommunicator.m; sourceTree = "<group>"; };
+		27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonNetworkedFootyCommunicator.h; sourceTree = "<group>"; };
+		27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonNetworkedFootyCommunicator.m; sourceTree = "<group>"; };
+		27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootyCommunicatorDelegate.h; sourceTree = "<group>"; };
 		499BDFEE9262436A83C59854 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8EA9B19F537433CBB41C1A5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DD09608F6A5A4FC2A47C8D6D /* Pods-FootyTipsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyTipsTests.xcconfig"; path = "Pods/Pods-FootyTipsTests.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				27AD596618EA423800D54C65 /* TipsViewController.m */,
 				27AD596F18EA642600D54C65 /* FootyCommunicator.h */,
 				27AD597018EA642600D54C65 /* FootyCommunicator.m */,
+				27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */,
 				27A0E57F18E9245500347BA8 /* Images.xcassets */,
 				27A0E57418E9245500347BA8 /* Supporting Files */,
 			);
@@ -174,6 +179,8 @@
 			children = (
 				27AD597318EABCD100D54C65 /* InspectableFootyCommunicator.h */,
 				27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */,
+				27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */,
+				27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */,
 				27A0E58E18E9245500347BA8 /* FootyTipsTests-Info.plist */,
 				27A0E58F18E9245500347BA8 /* InfoPlist.strings */,
 			);
@@ -355,6 +362,7 @@
 			files = (
 				27AD596818EA423800D54C65 /* TipsViewController.m in Sources */,
 				27AD596C18EA4DBE00D54C65 /* TipsViewControllerSpec.m in Sources */,
+				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
 				27AD596E18EA640500D54C65 /* FootyCommunicatorSpec.m in Sources */,

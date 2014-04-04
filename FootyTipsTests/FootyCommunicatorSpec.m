@@ -11,9 +11,13 @@
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
 #import "InspectableFootyCommunicator.h"
+#import "NonNetworkedFootyCommunicator.h"
+#import "FootyCommunicatorDelegate.h"
 
 static InspectableFootyCommunicator *inspectableCommunicator;
+static NonNetworkedFootyCommunicator *nonNetworkedCommunicator;
 static id manager;
+static id communicatorDelegate;
 
 SpecBegin(FootyCommunicator)
 
@@ -21,6 +25,9 @@ describe(@"FootyCommunicator", ^{
   
   before(^{
     inspectableCommunicator = [[InspectableFootyCommunicator alloc] init];
+    nonNetworkedCommunicator = [[NonNetworkedFootyCommunicator alloc] init];
+    communicatorDelegate = [OCMockObject mockForProtocol:@protocol(FootyCommunicatorDelegate)];
+    nonNetworkedCommunicator.delegate = communicatorDelegate;
   });
   
   it(@"uses a AFNetworking request manager", ^{
@@ -48,7 +55,31 @@ describe(@"FootyCommunicator", ^{
 
   });
   
+  describe(@"successful fetch", ^{
+    
+    before(^{
+      nonNetworkedCommunicator.fireSuccessHandler = YES;
+    });
+
+    it(@"of fixture data is passed to the delegate", ^{
+      [nonNetworkedCommunicator setReceivedData:@"JSON for fixture"];
+      [[communicatorDelegate expect] didReceiveFixture:@"JSON for fixture"];
+      [nonNetworkedCommunicator fetchFixture];
+      [communicatorDelegate verify];
+    });
+    
+    it(@"of ladder data is passed to the delegate", ^{
+      [nonNetworkedCommunicator setReceivedData:@"JSON for ladder"];
+      [[communicatorDelegate expect] didReceiveLadder:@"JSON for ladder"];
+      [nonNetworkedCommunicator fetchLadder];
+      [communicatorDelegate verify];
+    });
+    
+  });
+  
   after(^{
+    communicatorDelegate = nil;
+    nonNetworkedCommunicator = nil;
     inspectableCommunicator = nil;
   });
   
