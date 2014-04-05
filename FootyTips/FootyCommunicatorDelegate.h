@@ -10,8 +10,8 @@
 
 @protocol FootyCommunicatorDelegate <NSObject>
 
-- (void)didReceiveFixture:(NSString *)fixture;
-- (void)didReceiveLadder:(NSString *)ladder;
+- (void)didReceiveFixture:(id)fixture;
+- (void)didReceiveLadder:(id)ladder;
 - (void)fetchingFixtureDidFailWithError:(NSError *)error;
 - (void)fetchingLadderDidFailWithError:(NSError *)error;
 
