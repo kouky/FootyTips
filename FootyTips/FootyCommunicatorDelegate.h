@@ -12,5 +12,7 @@
 
 - (void)didReceiveFixture:(NSString *)fixture;
 - (void)didReceiveLadder:(NSString *)ladder;
+- (void)fetchingFixtureDidFailWithError:(NSError *)error;
+- (void)fetchingLadderDidFailWithError:(NSError *)error;
 
 @end

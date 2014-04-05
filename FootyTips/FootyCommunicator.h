@@ -15,6 +15,7 @@
 @protected
   AFHTTPRequestOperationManager *_manager;
   void (^_successHandler)(NSString *);
+  void (^_errorHandler)(NSError *);
 }
 
 @property (weak) id <FootyCommunicatorDelegate> delegate;
@@ -23,3 +24,10 @@
 - (void)fetchLadder;
 
 @end
+
+extern NSString * const FootyCommunicatorErrorDomain;
+
+enum {
+  FootyCommunicatorFixtureError,
+  FootyCommunicatorLadderError
+};

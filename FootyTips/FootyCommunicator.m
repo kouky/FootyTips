@@ -23,6 +23,11 @@
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/fixture.json" successHandler:^(NSString *objectNotation) {
     [self.delegate didReceiveFixture:objectNotation];
+  } errorHandler:^(NSError *error) {
+    NSError *localError = [NSError errorWithDomain:FootyCommunicatorErrorDomain
+                                              code:FootyCommunicatorFixtureError
+                                          userInfo:@{NSUnderlyingErrorKey: error}];
+    [self.delegate fetchingFixtureDidFailWithError:localError];
   }];
 }
 
@@ -30,14 +35,20 @@
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/ladder.json" successHandler:^(NSString *objectNotation) {
     [self.delegate didReceiveLadder:objectNotation];
+  } errorHandler:^(NSError *error) {
+    NSError *localError = [NSError errorWithDomain:FootyCommunicatorErrorDomain
+                                              code:FootyCommunicatorLadderError
+                                          userInfo:@{NSUnderlyingErrorKey: error}];
+    [self.delegate fetchingLadderDidFailWithError:localError];
   }];
 }
 
 # pragma mark Private Methods
 
-- (void)fetchContentAtURL:(NSString *)url successHandler:(void (^)(NSString *))successBlock
+- (void)fetchContentAtURL:(NSString *)url successHandler:(void (^)(NSString *))successBlock errorHandler:(void (^)(NSError *))errorBlock
 {
   _successHandler = [successBlock copy];
+  _errorHandler = [errorBlock copy];
   [self launchConnectionForURL:url];
 }
    
@@ -45,7 +56,11 @@
 {
   [_manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     _successHandler(responseObject);
-  } failure:nil];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    _errorHandler(error);
+  }];
 }
 
 @end
+
+NSString * const FootyCommunicatorErrorDomain = @"org.kouky.footytips.FootyCommunicatorErrorDomain";

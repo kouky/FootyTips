@@ -15,6 +15,9 @@
   if (self.fireSuccessHandler) {
     _successHandler(self.receivedData);
   }
+  else if (self.fireErrorHandler) {
+    _errorHandler(self.receivedError);
+  }
 }
 
 @end

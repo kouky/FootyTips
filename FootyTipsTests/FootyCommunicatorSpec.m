@@ -18,6 +18,7 @@ static InspectableFootyCommunicator *inspectableCommunicator;
 static NonNetworkedFootyCommunicator *nonNetworkedCommunicator;
 static id manager;
 static id communicatorDelegate;
+static NSError *networkingError;
 
 SpecBegin(FootyCommunicator)
 
@@ -77,7 +78,42 @@ describe(@"FootyCommunicator", ^{
     
   });
   
+  describe(@"unsuccessful fetch", ^{
+    
+    before(^{
+      nonNetworkedCommunicator.fireErrorHandler = YES;
+      networkingError = [NSError errorWithDomain:@"AF Networking Error" code:0 userInfo:nil];
+      [nonNetworkedCommunicator setReceivedError:networkingError];
+    });
+  
+    it(@"of fixture data passes an error to the delegate", ^{
+      [[communicatorDelegate expect] fetchingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        NSError *error = (NSError *)obj;
+        BOOL matchesExpectedError = [error.domain isEqual:FootyCommunicatorErrorDomain];
+        matchesExpectedError = matchesExpectedError && error.code == FootyCommunicatorFixtureError;
+        matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:networkingError];
+        return matchesExpectedError;
+      }]];
+      [nonNetworkedCommunicator fetchFixture];
+      [communicatorDelegate verify];
+    });
+    
+    it(@"of ladder data passes an error to the delegate", ^{
+      [[communicatorDelegate expect] fetchingLadderDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        NSError *error = (NSError *)obj;
+        BOOL matchesExpectedError = [error.domain isEqual:FootyCommunicatorErrorDomain];
+        matchesExpectedError = matchesExpectedError && error.code == FootyCommunicatorLadderError;
+        matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:networkingError];
+        return matchesExpectedError;
+      }]];
+      [nonNetworkedCommunicator fetchLadder];
+      [communicatorDelegate verify];
+    });
+    
+  });
+  
   after(^{
+    networkingError = nil;
     communicatorDelegate = nil;
     nonNetworkedCommunicator = nil;
     inspectableCommunicator = nil;

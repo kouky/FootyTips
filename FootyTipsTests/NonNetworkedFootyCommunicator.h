@@ -11,6 +11,8 @@
 @interface NonNetworkedFootyCommunicator : FootyCommunicator
 
 @property (strong) id receivedData;
+@property (strong) NSError *receivedError;
 @property (assign) BOOL fireSuccessHandler;
+@property (assign) BOOL fireErrorHandler;
 
 @end
