@@ -45,16 +45,16 @@
 
 # pragma mark Private Methods
 
-- (void)fetchContentAtURL:(NSString *)url successHandler:(void (^)(NSString *))successBlock errorHandler:(void (^)(NSError *))errorBlock
+- (void)fetchContentAtURL:(NSString *)URLString successHandler:(void (^)(NSString *))successBlock errorHandler:(void (^)(NSError *))errorBlock
 {
   _successHandler = [successBlock copy];
   _errorHandler = [errorBlock copy];
-  [self launchConnectionForURL:url];
+  [self launchConnectionForURL:URLString];
 }
    
-- (void)launchConnectionForURL:(NSString *)url
+- (void)launchConnectionForURL:(NSString *)URLString
 {
-  [_manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+  [_manager GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     _successHandler(responseObject);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     _errorHandler(error);

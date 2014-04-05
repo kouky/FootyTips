@@ -10,7 +10,7 @@
 
 @implementation NonNetworkedFootyCommunicator
 
-- (void)launchConnectionForURL:(NSString *)url
+- (void)launchConnectionForURL:(NSString *)URLString
 {
   if (self.fireSuccessHandler) {
     _successHandler(self.receivedData);
