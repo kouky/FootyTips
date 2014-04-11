@@ -23,13 +23,13 @@ describe(@"TipsViewController", ^{
   
   describe(@"initialisation", ^{
 
-    it(@"with init configures a grouped table view style ", ^{
-      expect(tipsListViewController.tableView.style).to.equal(UITableViewStyleGrouped);
+    it(@"with init configures a plain table view style ", ^{
+      expect(tipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
     });
     
-    it(@"with initWithStyle always configures a grouped table view style", ^{
-      tipsListViewController = [[TipsListViewController alloc] initWithStyle:UITableViewStylePlain];
-      expect(tipsListViewController.tableView.style).to.equal(UITableViewStyleGrouped);
+    it(@"with initWithStyle always configures a plain table view style", ^{
+      tipsListViewController = [[TipsListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+      expect(tipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
     });
 
   });
