@@ -2,7 +2,7 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import "AppDelegate.h"
-#import "TipsViewController.h"
+#import "TipsListViewController.h"
 
 static AppDelegate *appDelegate;
 static BOOL didFinishLaunchingWithOptionsReturn;
@@ -36,8 +36,8 @@ describe(@"AppDelegate", ^{
       expect(appDelegate.window.rootViewController).to.beIdenticalTo(appDelegate.tabBarController);
     });
     
-    it(@"contains a tips view controller as the first item", ^{
-      expect([appDelegate.tabBarController.viewControllers firstObject]).to.beKindOf([TipsViewController class]);
+    it(@"contains a tips list view controller as the first item", ^{
+      expect([appDelegate.tabBarController.viewControllers firstObject]).to.beKindOf([TipsListViewController class]);
     });
     
   });

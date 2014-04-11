@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Michael Koukoullis. All rights reserved.
 //
 
-#import "TipsViewController.h"
+#import "TipsListViewController.h"
 
-@interface TipsViewController ()
+@interface TipsListViewController ()
 
 @end
 
-@implementation TipsViewController
+@implementation TipsListViewController
 
 - (id)init
 {

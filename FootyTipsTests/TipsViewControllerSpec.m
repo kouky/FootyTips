@@ -9,33 +9,33 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
-#import "TipsViewController.h"
+#import "TipsListViewController.h"
 
-static TipsViewController *tipsViewController;
+static TipsListViewController *tipsListViewController;
 
 SpecBegin(TipsViewController)
 
 describe(@"TipsViewController", ^{
   
   before(^{
-    tipsViewController = [[TipsViewController alloc] init];
+    tipsListViewController = [[TipsListViewController alloc] init];
   });
   
   describe(@"initialisation", ^{
 
     it(@"with init configures a grouped table view style ", ^{
-      expect(tipsViewController.tableView.style).to.equal(UITableViewStyleGrouped);
+      expect(tipsListViewController.tableView.style).to.equal(UITableViewStyleGrouped);
     });
     
     it(@"with initWithStyle always configures a grouped table view style", ^{
-      tipsViewController = [[TipsViewController alloc] initWithStyle:UITableViewStylePlain];
-      expect(tipsViewController.tableView.style).to.equal(UITableViewStyleGrouped);
+      tipsListViewController = [[TipsListViewController alloc] initWithStyle:UITableViewStylePlain];
+      expect(tipsListViewController.tableView.style).to.equal(UITableViewStyleGrouped);
     });
 
   });
   
   after(^{
-    tipsViewController = nil;
+    tipsListViewController = nil;
   });
   
 });

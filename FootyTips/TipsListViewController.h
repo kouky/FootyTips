@@ -1,5 +1,5 @@
 //
-//  TipsViewController.h
+//  TipsListViewController.h
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 1/04/2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TipsViewController : UITableViewController
+@interface TipsListViewController : UITableViewController
 
 @end
