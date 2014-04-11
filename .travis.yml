@@ -1,0 +1,9 @@
+language: objective-c
+before_install:
+  - gem install cocoapods --no-rdoc --no-ri
+before_script:
+  - brew update
+  - brew upgrade xctool
+xcode_workspace: FootyTips.xcworkspace
+xcode_scheme: FootyTips
+xcode_sdk: iphonesimulator
