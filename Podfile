@@ -1,6 +1,7 @@
 platform :ios, '7.1'
  
 pod 'AFNetworking',  '~> 2.0'
+pod 'Mantle',        '~> 1.4'
 
 target :FootyTipsTests do
   pod 'Specta',      '~> 0.2.1'
