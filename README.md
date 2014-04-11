@@ -1,6 +1,6 @@
 # FootyTips
 
-Football tipping for the AFL.
+Football tipping iOS app for the [AFL](http://www.afl.com.au) (Australian Football League).
 
 ## Running Locally
 
