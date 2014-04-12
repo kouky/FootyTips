@@ -10,4 +10,9 @@
 
 @implementation Game
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+  return @{};
+}
+
 @end

@@ -11,6 +11,9 @@
 #import <Expecta/Expecta.h>
 #import "Game.h"
 
+static NSDictionary *JSONDictionary;
+static Game *game;
+
 SpecBegin(FootyFixture)
 
 describe(@"Game", ^{
@@ -21,6 +24,34 @@ describe(@"Game", ^{
   
   it(@"conforms to the Mantle JSON serializing protocol", ^{
     expect([Game conformsToProtocol:@protocol(MTLJSONSerializing)]).to.beTruthy();
+  });
+  
+  describe(@"serializing from JSON", ^{
+    
+    before(^{
+      JSONDictionary = @{ @"venue" : @"MCG", @"homeTeam": @"Richmond", @"awayTeam": @"Collingwood" };
+      game = [MTLJSONAdapter modelOfClass:Game.class fromJSONDictionary:JSONDictionary error:nil];
+    });
+    
+    it(@"has a home team property", ^{
+      expect(game.homeTeam).to.equal(@"Richmond");
+    });
+    
+    it(@"has a away team property", ^{
+      expect(game.awayTeam).to.equal(@"Collingwood");
+    });
+
+    it(@"has a venue property", ^{
+      expect(game.venue).to.equal(@"MCG");
+    });
+    
+    pending(@"has a time and date");
+
+    after(^{
+      JSONDictionary = nil;
+      game = nil;
+    });
+    
   });
   
 });
