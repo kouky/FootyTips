@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2703C4B918FA9F6700EB6D8E /* TeamSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703C4B818FA9F6700EB6D8E /* TeamSpec.m */; };
+		2703C4C018FA9FC300EB6D8E /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703C4BF18FA9FC300EB6D8E /* Team.m */; };
+		2703C4C118FA9FC300EB6D8E /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703C4BF18FA9FC300EB6D8E /* Team.m */; };
 		27A0E56E18E9245500347BA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E56D18E9245500347BA8 /* Foundation.framework */; };
 		27A0E57018E9245500347BA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E56F18E9245500347BA8 /* CoreGraphics.framework */; };
 		27A0E57218E9245500347BA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E57118E9245500347BA8 /* UIKit.framework */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2703C4B818FA9F6700EB6D8E /* TeamSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamSpec.m; sourceTree = "<group>"; };
+		2703C4BE18FA9FC300EB6D8E /* Team.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team.h; sourceTree = "<group>"; };
+		2703C4BF18FA9FC300EB6D8E /* Team.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team.m; sourceTree = "<group>"; };
 		27A0E56A18E9245500347BA8 /* FootyTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootyTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0E56D18E9245500347BA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27A0E56F18E9245500347BA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				27C9821D18F8C4D300E4D493 /* GameSpec.m */,
+				2703C4B818FA9F6700EB6D8E /* TeamSpec.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -208,6 +215,8 @@
 			children = (
 				27C9822018F8C51400E4D493 /* Game.h */,
 				27C9822118F8C51400E4D493 /* Game.m */,
+				2703C4BE18FA9FC300EB6D8E /* Team.h */,
+				2703C4BF18FA9FC300EB6D8E /* Team.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -378,6 +387,7 @@
 				27AD596718EA423800D54C65 /* TipsListViewController.m in Sources */,
 				27A0E57E18E9245500347BA8 /* AppDelegate.m in Sources */,
 				27C9822218F8C51400E4D493 /* Game.m in Sources */,
+				2703C4C018FA9FC300EB6D8E /* Team.m in Sources */,
 				27A0E57A18E9245500347BA8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,12 +400,14 @@
 				27AD596C18EA4DBE00D54C65 /* TipsViewControllerSpec.m in Sources */,
 				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
+				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,
 				27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
 				27AD596E18EA640500D54C65 /* FootyCommunicatorSpec.m in Sources */,
 				27AD597518EABCD100D54C65 /* InspectableFootyCommunicator.m in Sources */,
 				27A0E59318E9245500347BA8 /* AppDelegateSpec.m in Sources */,
+				2703C4B918FA9F6700EB6D8E /* TeamSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
