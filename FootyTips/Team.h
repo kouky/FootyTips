@@ -11,4 +11,9 @@
 
 @interface Team : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *mascotName;
+@property (nonatomic, copy, readonly) NSString *shortName;
+@property (nonatomic, copy, readonly) NSNumber *ladderPosition;
+
 @end

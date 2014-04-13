@@ -10,4 +10,9 @@
 
 @implementation Team
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+  return @{};
+}
+
 @end
