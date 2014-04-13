@@ -14,5 +14,7 @@
 @property (nonatomic, copy, readonly) NSString *homeTeam;
 @property (nonatomic, copy, readonly) NSString *awayTeam;
 @property (nonatomic, copy, readonly) NSString *venue;
+@property (nonatomic, copy, readonly) NSDate   *date;
+@property (nonatomic, copy, readonly) NSString *timeZone;
 
 @end

@@ -13,6 +13,7 @@
 
 static NSDictionary *JSONDictionary;
 static Game *game;
+static NSDateComponents *components;
 
 SpecBegin(FootyFixture)
 
@@ -26,10 +27,16 @@ describe(@"Game", ^{
     expect([Game conformsToProtocol:@protocol(MTLJSONSerializing)]).to.beTruthy();
   });
   
-  describe(@"serializing from JSON", ^{
+  describe(@"serialized from JSON", ^{
     
     before(^{
-      JSONDictionary = @{ @"venue" : @"MCG", @"homeTeam": @"Richmond", @"awayTeam": @"Collingwood" };
+      JSONDictionary = @{
+        @"venue"    : @"MCG",
+        @"homeTeam" : @"Richmond",
+        @"awayTeam" : @"Collingwood",
+        @"date"     : @"2014-04-11 19:50",
+        @"timeZone" : @"AEST"
+      };
       game = [MTLJSONAdapter modelOfClass:Game.class fromJSONDictionary:JSONDictionary error:nil];
     });
     
@@ -37,7 +44,7 @@ describe(@"Game", ^{
       expect(game.homeTeam).to.equal(@"Richmond");
     });
     
-    it(@"has a away team property", ^{
+    it(@"has an away team property", ^{
       expect(game.awayTeam).to.equal(@"Collingwood");
     });
 
@@ -45,8 +52,38 @@ describe(@"Game", ^{
       expect(game.venue).to.equal(@"MCG");
     });
     
-    pending(@"has a time and date");
-
+    describe(@"has a date property", ^{
+      
+      before(^{
+        components = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit)
+                                                     fromDate:game.date];
+      });
+      
+      it(@"which is an NSDate object", ^{
+        expect(game.date).to.beKindOf(NSDate.class);
+      });
+      
+      it(@"with the correct time units", ^{
+        expect(components.hour).to.equal(19);
+        expect(components.minute).to.equal(50);
+      });
+      
+      it(@"with the correct date units", ^{
+        expect(components.year).to.equal(2014);
+        expect(components.month).to.equal(4);
+        expect(components.day).to.equal(11);
+      });
+      
+      after(^{
+        components = nil;
+      });
+      
+    });
+    
+    it(@"has a time zone property", ^{
+      expect(game.timeZone).to.equal(@"AEST");
+    });
+    
     after(^{
       JSONDictionary = nil;
       game = nil;
