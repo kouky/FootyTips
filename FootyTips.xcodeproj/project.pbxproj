@@ -108,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2703C4B718FA9EDA00EB6D8E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27C9821D18F8C4D300E4D493 /* GameSpec.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		27A0E56118E9245500347BA8 = {
 			isa = PBXGroup;
 			children = (
@@ -174,8 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				27A0E59218E9245500347BA8 /* AppDelegateSpec.m */,
+				2703C4B718FA9EDA00EB6D8E /* Models */,
 				27AD596D18EA640500D54C65 /* FootyCommunicatorSpec.m */,
-				27C9821D18F8C4D300E4D493 /* GameSpec.m */,
 				27AD596B18EA4DBE00D54C65 /* TipsViewControllerSpec.m */,
 				27A0E58D18E9245500347BA8 /* Supporting Files */,
 			);
