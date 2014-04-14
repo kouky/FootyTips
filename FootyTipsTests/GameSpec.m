@@ -15,7 +15,7 @@ static NSDictionary *JSONDictionary;
 static Game *game;
 static NSDateComponents *components;
 
-SpecBegin(FootyFixture)
+SpecBegin(Game)
 
 describe(@"Game", ^{
   
