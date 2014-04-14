@@ -23,6 +23,14 @@
   return @{};
 }
 
++ (NSValueTransformer *)homeTeamJSONTransformer {
+  return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Team.class];
+}
+
++ (NSValueTransformer *)awayTeamJSONTransformer {
+  return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Team.class];
+}
+
 + (NSValueTransformer *)dateJSONTransformer
 {
   return [MTLValueTransformer transformerWithBlock:^(NSString *str) {

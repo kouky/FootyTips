@@ -24,8 +24,8 @@ describe(@"Game", ^{
       @"id"       : @140401,
       @"round"    : @4,
       @"venue"    : @"MCG",
-      @"homeTeam" : @"Richmond",
-      @"awayTeam" : @"Collingwood",
+      @"homeTeam" : @{ @"name": @"Richmond" },
+      @"awayTeam" : @{ @"name": @"Collingwood" },
       @"date"     : @"2014-04-11 19:50",
       @"timeZone" : @"AEST"
     };
@@ -49,8 +49,13 @@ describe(@"Game", ^{
     
     expect(game.id).to.equal(140401);
     expect(game.round).to.equal(4);
-    expect(game.homeTeam).to.equal(@"Richmond");
-    expect(game.awayTeam).to.equal(@"Collingwood");
+
+    expect(game.homeTeam).to.beKindOf(Team.class);
+    expect(game.homeTeam.name).to.equal(@"Richmond");
+    
+    expect(game.awayTeam).to.beKindOf(Team.class);
+    expect(game.awayTeam.name).to.equal(@"Collingwood");
+    
     expect(game.venue).to.equal(@"MCG");
     expect(game.timeZone).to.equal(@"AEST");
     expect(game.date).to.beKindOf(NSDate.class);
