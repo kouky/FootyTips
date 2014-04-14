@@ -19,76 +19,50 @@ SpecBegin(FootyFixture)
 
 describe(@"Game", ^{
   
+  before(^{
+    JSONDictionary = @{
+      @"venue"    : @"MCG",
+      @"homeTeam" : @"Richmond",
+      @"awayTeam" : @"Collingwood",
+      @"date"     : @"2014-04-11 19:50",
+      @"timeZone" : @"AEST"
+    };
+  });
+  
   it(@"is an Mantle model subclass", ^{
     expect([Game class]).to.beSubclassOf([MTLModel class]);
   });
   
   it(@"conforms to the Mantle JSON serializing protocol", ^{
-    expect([Game conformsToProtocol:@protocol(MTLJSONSerializing)]).to.beTruthy();
+    expect(Game.class).to.conformTo(@protocol(MTLJSONSerializing));
   });
   
-  describe(@"serialized from JSON", ^{
+  it(@"should initialize from JSON", ^{
     
-    before(^{
-      JSONDictionary = @{
-        @"venue"    : @"MCG",
-        @"homeTeam" : @"Richmond",
-        @"awayTeam" : @"Collingwood",
-        @"date"     : @"2014-04-11 19:50",
-        @"timeZone" : @"AEST"
-      };
-      game = [MTLJSONAdapter modelOfClass:Game.class fromJSONDictionary:JSONDictionary error:nil];
-    });
+    NSError *error = nil;
+    game = [MTLJSONAdapter modelOfClass:Game.class fromJSONDictionary:JSONDictionary error:&error];
     
-    it(@"has a home team property", ^{
-      expect(game.homeTeam).to.equal(@"Richmond");
-    });
+    expect(game).notTo.beNil();
+    expect(error).to.beNil();
     
-    it(@"has an away team property", ^{
-      expect(game.awayTeam).to.equal(@"Collingwood");
-    });
-
-    it(@"has a venue property", ^{
-      expect(game.venue).to.equal(@"MCG");
-    });
+    expect(game.homeTeam).to.equal(@"Richmond");
+    expect(game.awayTeam).to.equal(@"Collingwood");
+    expect(game.venue).to.equal(@"MCG");
+    expect(game.timeZone).to.equal(@"AEST");
+    expect(game.date).to.beKindOf(NSDate.class);
     
-    describe(@"has a date property", ^{
-      
-      before(^{
-        components = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit)
-                                                     fromDate:game.date];
-      });
-      
-      it(@"which is an NSDate object", ^{
-        expect(game.date).to.beKindOf(NSDate.class);
-      });
-      
-      it(@"with the correct time units", ^{
-        expect(components.hour).to.equal(19);
-        expect(components.minute).to.equal(50);
-      });
-      
-      it(@"with the correct date units", ^{
-        expect(components.year).to.equal(2014);
-        expect(components.month).to.equal(4);
-        expect(components.day).to.equal(11);
-      });
-      
-      after(^{
-        components = nil;
-      });
-      
-    });
-    
-    it(@"has a time zone property", ^{
-      expect(game.timeZone).to.equal(@"AEST");
-    });
-    
-    after(^{
-      JSONDictionary = nil;
-      game = nil;
-    });
-    
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit)
+                                                                       fromDate:game.date];
+    expect(dateComponents.hour).to.equal(19);
+    expect(dateComponents.minute).to.equal(50);
+    expect(dateComponents.year).to.equal(2014);
+    expect(dateComponents.month).to.equal(4);
+    expect(dateComponents.day).to.equal(11);
+  });
+  
+  after(^{
+    JSONDictionary = nil;
+    game = nil;
   });
   
 });
