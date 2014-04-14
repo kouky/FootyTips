@@ -32,7 +32,7 @@ describe(@"Team", ^{
   });
   
   it(@"conforms to the Mantle JSON serializing protocol", ^{
-    expect([Team conformsToProtocol:@protocol(MTLJSONSerializing)]).to.beTruthy();
+    expect(Team.class).to.conformTo(@protocol(MTLJSONSerializing));
   });
   
   it(@"should initialize from JSON", ^{
