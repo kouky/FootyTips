@@ -18,6 +18,15 @@ SpecBegin(Team)
 
 describe(@"Team", ^{
   
+  before(^{
+    JSONDictionary = @{
+      @"name"           : @"Richmond",
+      @"mascotName"     : @"Tigers",
+      @"shortName"      : @"RICH",
+      @"ladderPosition" : @8
+    };
+  });
+  
   it(@"is an Mantle model subclass", ^{
     expect(Team.class).to.beSubclassOf([MTLModel class]);
   });
@@ -25,29 +34,18 @@ describe(@"Team", ^{
   it(@"conforms to the Mantle JSON serializing protocol", ^{
     expect([Team conformsToProtocol:@protocol(MTLJSONSerializing)]).to.beTruthy();
   });
-
-  describe(@"serialized from JSON", ^{
+  
+  it(@"should initialize from JSON", ^{
+    NSError *error = nil;
+    team = [MTLJSONAdapter modelOfClass:Team.class fromJSONDictionary:JSONDictionary error:&error];
     
-    before(^{
-      JSONDictionary = @{
-        @"name"           : @"Richmond",
-        @"mascotName"     : @"Tigers",
-        @"shortName"      : @"RICH",
-        @"ladderPosition" : @8
-      };
-      team = [MTLJSONAdapter modelOfClass:Team.class fromJSONDictionary:JSONDictionary error:nil];
-    });
+    expect(team).notTo.beNil();
+    expect(error).to.beNil();
     
-    it(@"has three name properties", ^{
-      expect(team.name).to.equal(@"Richmond");
-      expect(team.mascotName).to.equal(@"Tigers");
-      expect(team.shortName).to.equal(@"RICH");
-    });
-    
-    it(@"has a ladder position", ^{
-      expect(team.ladderPosition).to.equal(8);
-    });
-
+    expect(team.name).to.equal(@"Richmond");
+    expect(team.mascotName).to.equal(@"Tigers");
+    expect(team.shortName).to.equal(@"RICH");
+    expect(team.ladderPosition).to.equal(8);
   });
   
 });
