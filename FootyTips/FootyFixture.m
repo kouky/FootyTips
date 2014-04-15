@@ -10,4 +10,9 @@
 
 @implementation FootyFixture
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+  return @{};
+}
+
 @end

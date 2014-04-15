@@ -11,9 +11,16 @@
 #import <Expecta/Expecta.h>
 #import "FootyFixture.h"
 
+static FootyFixture *footyFixture;
+static NSDictionary *JSONDictionary;
+
 SpecBegin(FootyFixture)
 
 describe(@"FootyFixture", ^{
+  
+  before(^{
+    JSONDictionary = @{};
+  });
   
   it(@"is an Mantle model subclass", ^{
     expect(FootyFixture.class).to.beSubclassOf(MTLModel.class);
@@ -21,6 +28,19 @@ describe(@"FootyFixture", ^{
   
   it(@"conforms to the Mantle JSON serializing protocol", ^{
     expect(FootyFixture.class).to.conformTo(@protocol(MTLJSONSerializing));
+  });
+  
+  it(@"should initialize from JSON", ^{
+    NSError *error = nil;
+    footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:&error];
+    
+    expect(footyFixture).notTo.beNil();
+    expect(error).to.beNil();
+  });
+  
+  after(^{
+    footyFixture = nil;
+    JSONDictionary = nil;
   });
   
 });
