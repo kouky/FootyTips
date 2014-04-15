@@ -48,6 +48,11 @@ describe(@"Team", ^{
     expect(team.ladderPosition).to.equal(8);
   });
   
+  after(^{
+    JSONDictionary = nil;
+    team = nil;
+  });
+  
 });
 
 SpecEnd
