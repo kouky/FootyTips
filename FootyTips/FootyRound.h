@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <Mantle/Mantle.h>
+#import "Game.h"
 
 @interface FootyRound : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy,   readonly) NSNumber *id;
+@property (nonatomic, copy,   readonly) NSDate   *startDate;
+@property (nonatomic, copy,   readonly) NSDate   *endDate;
+@property (nonatomic, copy,   readonly) NSString *timeZone;
+@property (nonatomic, strong, readonly) NSArray  *games;
 
 @end
