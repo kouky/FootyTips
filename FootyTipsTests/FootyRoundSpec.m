@@ -74,8 +74,14 @@ describe(@"FootyRound", ^{
     Game *firstGame = footyRound.games[0];
     expect(firstGame.venue).to.equal(@"MCG");
     
+    Team *firstGameHomeTeam = firstGame.homeTeam;
+    expect(firstGameHomeTeam.name).to.equal(@"Richmond");
+    
     Game *secondGame = footyRound.games[1];
     expect(secondGame.venue).to.equal(@"Etihad");
+    
+    Team *secondGameHomeTeam = secondGame.homeTeam;
+    expect(secondGameHomeTeam.name).to.equal(@"Hawthorn");
     
   });
   
