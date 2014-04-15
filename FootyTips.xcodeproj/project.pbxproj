@@ -37,6 +37,9 @@
 		27CA38A818FCAC5000F4A0BE /* FootyFixtureSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38A618FCAC5000F4A0BE /* FootyFixtureSpec.m */; };
 		27CA38AB18FCAC8400F4A0BE /* FootyFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38AA18FCAC8400F4A0BE /* FootyFixture.m */; };
 		27CA38AC18FCAC8400F4A0BE /* FootyFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38AA18FCAC8400F4A0BE /* FootyFixture.m */; };
+		27CA38B418FCCBB300F4A0BE /* RoundSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38B318FCCBB300F4A0BE /* RoundSpec.m */; };
+		27CA38B718FCCBDA00F4A0BE /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38B618FCCBDA00F4A0BE /* Round.m */; };
+		27CA38B818FCCBDA00F4A0BE /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38B618FCCBDA00F4A0BE /* Round.m */; };
 		4E79025D56A64FFD8EF14350 /* libPods-FootyTipsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F92902B3FB214DD5A8267953 /* libPods-FootyTipsTests.a */; };
 		5339430DFE154E30B41197CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 499BDFEE9262436A83C59854 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,9 @@
 		27CA38A618FCAC5000F4A0BE /* FootyFixtureSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootyFixtureSpec.m; sourceTree = "<group>"; };
 		27CA38A918FCAC8400F4A0BE /* FootyFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootyFixture.h; sourceTree = "<group>"; };
 		27CA38AA18FCAC8400F4A0BE /* FootyFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootyFixture.m; sourceTree = "<group>"; };
+		27CA38B318FCCBB300F4A0BE /* RoundSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundSpec.m; sourceTree = "<group>"; };
+		27CA38B518FCCBDA00F4A0BE /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
+		27CA38B618FCCBDA00F4A0BE /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Round.m; sourceTree = "<group>"; };
 		27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootyCommunicatorDelegate.h; sourceTree = "<group>"; };
 		499BDFEE9262436A83C59854 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8EA9B19F537433CBB41C1A5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -123,9 +129,10 @@
 		2703C4B718FA9EDA00EB6D8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				27C9821D18F8C4D300E4D493 /* GameSpec.m */,
-				2703C4B818FA9F6700EB6D8E /* TeamSpec.m */,
 				27CA38A618FCAC5000F4A0BE /* FootyFixtureSpec.m */,
+				27C9821D18F8C4D300E4D493 /* GameSpec.m */,
+				27CA38B318FCCBB300F4A0BE /* RoundSpec.m */,
+				2703C4B818FA9F6700EB6D8E /* TeamSpec.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -220,12 +227,14 @@
 		27C9821F18F8C4F900E4D493 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				27C9822018F8C51400E4D493 /* Game.h */,
-				27C9822118F8C51400E4D493 /* Game.m */,
-				2703C4BE18FA9FC300EB6D8E /* Team.h */,
-				2703C4BF18FA9FC300EB6D8E /* Team.m */,
 				27CA38A918FCAC8400F4A0BE /* FootyFixture.h */,
 				27CA38AA18FCAC8400F4A0BE /* FootyFixture.m */,
+				27C9822018F8C51400E4D493 /* Game.h */,
+				27C9822118F8C51400E4D493 /* Game.m */,
+				27CA38B518FCCBDA00F4A0BE /* Round.h */,
+				27CA38B618FCCBDA00F4A0BE /* Round.m */,
+				2703C4BE18FA9FC300EB6D8E /* Team.h */,
+				2703C4BF18FA9FC300EB6D8E /* Team.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -394,6 +403,7 @@
 			files = (
 				27AD597118EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				27AD596718EA423800D54C65 /* TipsListViewController.m in Sources */,
+				27CA38B718FCCBDA00F4A0BE /* Round.m in Sources */,
 				27A0E57E18E9245500347BA8 /* AppDelegate.m in Sources */,
 				27C9822218F8C51400E4D493 /* Game.m in Sources */,
 				2703C4C018FA9FC300EB6D8E /* Team.m in Sources */,
@@ -410,11 +420,13 @@
 				27AD596C18EA4DBE00D54C65 /* TipsViewControllerSpec.m in Sources */,
 				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
+				27CA38B418FCCBB300F4A0BE /* RoundSpec.m in Sources */,
 				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,
 				27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
 				27AD596E18EA640500D54C65 /* FootyCommunicatorSpec.m in Sources */,
+				27CA38B818FCCBDA00F4A0BE /* Round.m in Sources */,
 				27CA38A818FCAC5000F4A0BE /* FootyFixtureSpec.m in Sources */,
 				27AD597518EABCD100D54C65 /* InspectableFootyCommunicator.m in Sources */,
 				27A0E59318E9245500347BA8 /* AppDelegateSpec.m in Sources */,
