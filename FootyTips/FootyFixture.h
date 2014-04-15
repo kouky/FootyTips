@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Mantle/Mantle.h>
+#import "FootyRound.h"
 
 @interface FootyFixture : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy,   readonly) NSNumber *season;
+@property (nonatomic, strong, readonly) NSArray  *rounds;
 
 @end

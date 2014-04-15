@@ -15,4 +15,9 @@
   return @{};
 }
 
++ (NSValueTransformer *)roundsJSONTransformer
+{
+  return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FootyRound.class];
+}
+
 @end

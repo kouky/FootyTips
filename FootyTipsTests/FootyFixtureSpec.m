@@ -19,7 +19,13 @@ SpecBegin(FootyFixture)
 describe(@"FootyFixture", ^{
   
   before(^{
-    JSONDictionary = @{};
+    JSONDictionary = @{
+      @"season": @2014,
+      @"rounds": @[
+        @{@"id" : @1},
+        @{@"id" : @2}
+      ]
+    };
   });
   
   it(@"is an Mantle model subclass", ^{
@@ -36,6 +42,15 @@ describe(@"FootyFixture", ^{
     
     expect(footyFixture).notTo.beNil();
     expect(error).to.beNil();
+    
+    expect(footyFixture.season).to.equal(2014);
+    expect(footyFixture.rounds).to.beKindOf(NSArray.class);
+    
+    FootyRound *firstRound = footyFixture.rounds[0];
+    expect(firstRound.id).to.equal(1);
+    
+    FootyRound *secondRound = footyFixture.rounds[1];
+    expect(secondRound.id).to.equal(2);
   });
   
   after(^{
