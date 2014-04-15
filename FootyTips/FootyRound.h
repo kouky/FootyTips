@@ -1,5 +1,5 @@
 //
-//  Round.h
+//  FootyRound.h
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 15/04/2014.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <Mantle/Mantle.h>
 
-@interface Round : MTLModel <MTLJSONSerializing>
+@interface FootyRound : MTLModel <MTLJSONSerializing>
 
 @end

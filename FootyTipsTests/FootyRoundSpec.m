@@ -1,5 +1,5 @@
 //
-//  RoundSpec.m
+//  FootyRoundSpec.m
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 15/04/2014.
@@ -9,18 +9,21 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
-#import "Round.h"
+#import "FootyRound.h"
 
-SpecBegin(Round)
+static NSDictionary *JSONDictionary;
+static FootyRound *footyRound;
 
-describe(@"Round", ^{
+SpecBegin(FootyRound)
+
+describe(@"FootyRound", ^{
   
   it(@"is an Mantle model subclass", ^{
-    expect(Round.class).to.beSubclassOf(MTLModel.class);
+    expect(FootyRound.class).to.beSubclassOf(MTLModel.class);
   });
   
   it(@"conforms to the Mantle JSON serializing protocol", ^{
-    expect(Round.class).to.conformTo(@protocol(MTLJSONSerializing));
+    expect(FootyRound.class).to.conformTo(@protocol(MTLJSONSerializing));
   });
   
 });
