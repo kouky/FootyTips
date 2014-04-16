@@ -1,5 +1,5 @@
 //
-//  TipsViewControllerSpec.m
+//  TipsListViewControllerSpec.m
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 1/04/2014.
@@ -13,9 +13,9 @@
 
 static TipsListViewController *tipsListViewController;
 
-SpecBegin(TipsViewController)
+SpecBegin(TipsListViewController)
 
-describe(@"TipsViewController", ^{
+describe(@"TipsListViewController", ^{
   
   before(^{
     tipsListViewController = [[TipsListViewController alloc] init];
