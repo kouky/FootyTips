@@ -22,7 +22,6 @@ describe(@"Game", ^{
   before(^{
     JSONDictionary = @{
       @"id"       : @140401,
-      @"round"    : @4,
       @"venue"    : @"MCG",
       @"homeTeam" : @{ @"name": @"Richmond" },
       @"awayTeam" : @{ @"name": @"Collingwood" },
@@ -48,7 +47,6 @@ describe(@"Game", ^{
     expect(error).to.beNil();
     
     expect(game.id).to.equal(140401);
-    expect(game.round).to.equal(4);
 
     expect(game.homeTeam).to.beKindOf(Team.class);
     expect(game.homeTeam.name).to.equal(@"Richmond");

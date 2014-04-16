@@ -13,7 +13,6 @@
 @interface Game : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *id;
-@property (nonatomic, copy, readonly) NSNumber *round;
 @property (nonatomic, strong, readonly) Team *homeTeam;
 @property (nonatomic, strong, readonly) Team *awayTeam;
 @property (nonatomic, copy, readonly) NSString *venue;
