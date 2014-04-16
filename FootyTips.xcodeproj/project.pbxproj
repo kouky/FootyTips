@@ -10,6 +10,9 @@
 		2703C4B918FA9F6700EB6D8E /* TeamSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703C4B818FA9F6700EB6D8E /* TeamSpec.m */; };
 		2703C4C018FA9FC300EB6D8E /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703C4BF18FA9FC300EB6D8E /* Team.m */; };
 		2703C4C118FA9FC300EB6D8E /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703C4BF18FA9FC300EB6D8E /* Team.m */; };
+		2717411A18FEA752001CF8AC /* TipsListManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411918FEA752001CF8AC /* TipsListManagerSpec.m */; };
+		2717411D18FEA780001CF8AC /* TipsListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsListManager.m */; };
+		2717411E18FEA780001CF8AC /* TipsListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsListManager.m */; };
 		27A0E56E18E9245500347BA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E56D18E9245500347BA8 /* Foundation.framework */; };
 		27A0E57018E9245500347BA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E56F18E9245500347BA8 /* CoreGraphics.framework */; };
 		27A0E57218E9245500347BA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E57118E9245500347BA8 /* UIKit.framework */; };
@@ -58,6 +61,10 @@
 		2703C4B818FA9F6700EB6D8E /* TeamSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamSpec.m; sourceTree = "<group>"; };
 		2703C4BE18FA9FC300EB6D8E /* Team.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team.h; sourceTree = "<group>"; };
 		2703C4BF18FA9FC300EB6D8E /* Team.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team.m; sourceTree = "<group>"; };
+		2717411918FEA752001CF8AC /* TipsListManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListManagerSpec.m; sourceTree = "<group>"; };
+		2717411B18FEA780001CF8AC /* TipsListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListManager.h; sourceTree = "<group>"; };
+		2717411C18FEA780001CF8AC /* TipsListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListManager.m; sourceTree = "<group>"; };
+		2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListManagerDelegate.h; sourceTree = "<group>"; };
 		27A0E56A18E9245500347BA8 /* FootyTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootyTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0E56D18E9245500347BA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27A0E56F18E9245500347BA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -181,6 +188,9 @@
 				27AD596F18EA642600D54C65 /* FootyCommunicator.h */,
 				27AD597018EA642600D54C65 /* FootyCommunicator.m */,
 				27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */,
+				2717411B18FEA780001CF8AC /* TipsListManager.h */,
+				2717411C18FEA780001CF8AC /* TipsListManager.m */,
+				2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */,
 				27C9821F18F8C4F900E4D493 /* Models */,
 				27A0E57F18E9245500347BA8 /* Images.xcassets */,
 				27A0E57418E9245500347BA8 /* Supporting Files */,
@@ -204,6 +214,7 @@
 			children = (
 				27A0E59218E9245500347BA8 /* AppDelegateSpec.m */,
 				27AD596D18EA640500D54C65 /* FootyCommunicatorSpec.m */,
+				2717411918FEA752001CF8AC /* TipsListManagerSpec.m */,
 				27AD596B18EA4DBE00D54C65 /* TipsListViewControllerSpec.m */,
 				2703C4B718FA9EDA00EB6D8E /* Models */,
 				27A0E58D18E9245500347BA8 /* Supporting Files */,
@@ -404,6 +415,7 @@
 				27AD597118EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				27AD596718EA423800D54C65 /* TipsListViewController.m in Sources */,
 				27CA38B718FCCBDA00F4A0BE /* FootyRound.m in Sources */,
+				2717411D18FEA780001CF8AC /* TipsListManager.m in Sources */,
 				27A0E57E18E9245500347BA8 /* AppDelegate.m in Sources */,
 				27C9822218F8C51400E4D493 /* Game.m in Sources */,
 				2703C4C018FA9FC300EB6D8E /* Team.m in Sources */,
@@ -419,11 +431,13 @@
 				27AD596818EA423800D54C65 /* TipsListViewController.m in Sources */,
 				27AD596C18EA4DBE00D54C65 /* TipsListViewControllerSpec.m in Sources */,
 				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
+				2717411E18FEA780001CF8AC /* TipsListManager.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
 				27CA38B418FCCBB300F4A0BE /* FootyRoundSpec.m in Sources */,
 				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,
 				27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
+				2717411A18FEA752001CF8AC /* TipsListManagerSpec.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
 				27AD596E18EA640500D54C65 /* FootyCommunicatorSpec.m in Sources */,
 				27CA38B818FCCBDA00F4A0BE /* FootyRound.m in Sources */,
