@@ -10,6 +10,8 @@
 
 @implementation FootyCommunicator
 
+# pragma mark Public Methods
+
 - (id)init
 {
   self = [super init];
