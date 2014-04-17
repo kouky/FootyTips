@@ -31,6 +31,10 @@ describe(@"FootyCommunicator", ^{
     nonNetworkedCommunicator.delegate = communicatorDelegate;
   });
   
+  pending(@"Test non conforming object as delegate");
+  
+  pending(@"Test conforming object as delegate");
+  
   it(@"uses a AFNetworking request manager", ^{
     expect(inspectableCommunicator.manager).to.beKindOf([AFHTTPRequestOperationManager class]);
   });
