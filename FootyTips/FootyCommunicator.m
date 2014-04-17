@@ -19,6 +19,7 @@
   return self;
 }
 
+// TODO: objectNotation type on success should be id
 - (void)fetchFixture
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/fixture.json" successHandler:^(NSString *objectNotation) {
@@ -31,6 +32,7 @@
   }];
 }
 
+// TODO: objectNotation type on success should be id
 - (void)fetchLadder
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/ladder.json" successHandler:^(NSString *objectNotation) {
@@ -45,6 +47,7 @@
 
 # pragma mark Private Methods
 
+// TODO: objectNotation type on success should be id
 - (void)fetchContentAtURL:(NSString *)URLString successHandler:(void (^)(NSString *))successBlock errorHandler:(void (^)(NSError *))errorBlock
 {
   _successHandler = [successBlock copy];
