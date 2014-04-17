@@ -11,6 +11,7 @@
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
 #import "TipsListManager.h"
+#import "FootyCommunicator.h"
 
 static TipsListManager *manager;
 
@@ -33,6 +34,14 @@ describe(@"TipsListManager", ^{
   
   it(@"can accept nil as a delegate", ^{
     expect(^{manager.delegate = nil;}).notTo.raise(NSInvalidArgumentException);
+  });
+  
+  it(@"asking for fixture means requesting data", ^{    
+    id mockCommunicator = [OCMockObject mockForClass:FootyCommunicator.class];
+    manager.communicator = mockCommunicator;
+    [[mockCommunicator expect] fetchFixture];
+    [manager fetchFixture];
+    [mockCommunicator verify];
   });
   
   after(^{

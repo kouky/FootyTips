@@ -7,6 +7,7 @@
 //
 
 #import "TipsListManager.h"
+#import "FootyCommunicator.h"
 
 @implementation TipsListManager
 
@@ -16,6 +17,13 @@
     [[NSException exceptionWithName:NSInvalidArgumentException reason:@"Delegate object does not conform to protocol" userInfo:nil] raise];
   }
   _delegate = delegate;
+}
+
+# pragma mark Public Methods
+
+- (void)fetchFixture
+{
+  [self.communicator fetchFixture];
 }
 
 @end
