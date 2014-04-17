@@ -22,7 +22,7 @@ describe(@"TipsListManager", ^{
     manager = [[TipsListManager alloc] init];
   });
   
-  it(@"non coforming object cannot be delegate", ^{
+  it(@"non conforming object cannot be delegate", ^{
     expect(^{manager.delegate = (id <TipsListManagerDelegate>)[NSNull null];}).to.raise(NSInvalidArgumentException);
   });
   
