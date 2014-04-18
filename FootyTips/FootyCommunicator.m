@@ -21,10 +21,9 @@
   return self;
 }
 
-// TODO: objectNotation type on success should be id
 - (void)fetchFixture
 {
-  [self fetchContentAtURL:@"http://footytips.kouky.org/fixture.json" successHandler:^(NSString *objectNotation) {
+  [self fetchContentAtURL:@"http://footytips.kouky.org/fixture.json" successHandler:^(id objectNotation) {
     [self.delegate didReceiveFixtureDictionary:objectNotation];
   } errorHandler:^(NSError *error) {
     NSError *localError = [NSError errorWithDomain:FootyCommunicatorErrorDomain
@@ -34,10 +33,9 @@
   }];
 }
 
-// TODO: objectNotation type on success should be id
 - (void)fetchLadder
 {
-  [self fetchContentAtURL:@"http://footytips.kouky.org/ladder.json" successHandler:^(NSString *objectNotation) {
+  [self fetchContentAtURL:@"http://footytips.kouky.org/ladder.json" successHandler:^(id objectNotation) {
     [self.delegate didReceiveLadderDictionary:objectNotation];
   } errorHandler:^(NSError *error) {
     NSError *localError = [NSError errorWithDomain:FootyCommunicatorErrorDomain
@@ -49,8 +47,7 @@
 
 # pragma mark Private Methods
 
-// TODO: objectNotation type on success should be id
-- (void)fetchContentAtURL:(NSString *)URLString successHandler:(void (^)(NSString *))successBlock errorHandler:(void (^)(NSError *))errorBlock
+- (void)fetchContentAtURL:(NSString *)URLString successHandler:(void (^)(id))successBlock errorHandler:(void (^)(NSError *))errorBlock
 {
   _successHandler = [successBlock copy];
   _errorHandler = [errorBlock copy];
