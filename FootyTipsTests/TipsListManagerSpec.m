@@ -16,6 +16,9 @@
 
 static TipsListManager *manager;
 static id mockDelegate;
+static id mockMTLJSONAdapter;
+static NSError *underlyingError;
+static NSDictionary *fixtureJSONDictionary;
 
 SpecBegin(TipsListManager)
 
@@ -24,6 +27,9 @@ describe(@"TipsListManager", ^{
   before(^{
     manager = [[TipsListManager alloc] init];
     mockDelegate = [OCMockObject mockForProtocol:@protocol(TipsListManagerDelegate)];
+    mockMTLJSONAdapter = [OCMockObject mockForClass:MTLJSONAdapter.class];
+    underlyingError = [NSError errorWithDomain:@"Test domain" code:0 userInfo:nil];
+    fixtureJSONDictionary = @{@"season": @2014};
   });
   
   it(@"conforms to the FootyCommunicator delegate protocol", ^{
@@ -52,9 +58,7 @@ describe(@"TipsListManager", ^{
   
   it(@"unsuccessful fetching of the fixture passes an error to the delegate", ^{
     manager.delegate = mockDelegate;
-    NSError *underlyingError = [NSError errorWithDomain:@"Test domain" code:0 userInfo:nil];
-    [[mockDelegate expect] buildingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
-      NSError *error = (NSError *)obj;
+    [[mockDelegate expect] buildingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(NSError *error) {
       BOOL matchesExpectedError = [error.domain isEqual:TipsListManagerErrorDomain];
       matchesExpectedError = matchesExpectedError && error.code == TipsListManagerCommunicatorError;
       matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:underlyingError];
@@ -65,19 +69,36 @@ describe(@"TipsListManager", ^{
   });
   
   it(@"on succcesul receipt of fixture dictionary a fixture model is passed to the delegate", ^{
-    NSDictionary *fixtureJSONDictionary = @{@"season": @2014};
+    underlyingError = nil;
     id mockFixtureModel = [OCMockObject mockForClass:FootyFixture.class];
-    id mockMTLJSONAdapter = [OCMockObject mockForClass:MTLJSONAdapter.class];
     [[[mockMTLJSONAdapter stub] andReturn:mockFixtureModel] modelOfClass:FootyFixture.class
                                                       fromJSONDictionary:fixtureJSONDictionary
-                                                                   error:nil];
+                                                                   error:[OCMArg setTo:underlyingError]];
     manager.delegate = mockDelegate;
     [[mockDelegate expect] didReceiveFixtureModel:mockFixtureModel];
     [manager didReceiveFixture:fixtureJSONDictionary];
     [mockDelegate verify];
   });
   
+  it(@"unsuccessful building of fixture model passes an error to the delegate", ^{
+    [[[mockMTLJSONAdapter stub] andReturn:nil] modelOfClass:FootyFixture.class
+                                         fromJSONDictionary:fixtureJSONDictionary
+                                                      error:[OCMArg setTo:underlyingError]];
+    manager.delegate = mockDelegate;
+    [[mockDelegate expect] buildingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(NSError *error) {
+      BOOL matchesExpectedError = [error.domain isEqual:TipsListManagerErrorDomain];
+      matchesExpectedError = matchesExpectedError && error.code == TipsListManagerMantleError;
+      matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:underlyingError];
+      return matchesExpectedError;
+    }]];
+    [manager didReceiveFixture:fixtureJSONDictionary];
+    [mockDelegate verify];
+  });
+  
   after(^{
+    fixtureJSONDictionary = nil;
+    underlyingError = nil;
+    mockMTLJSONAdapter = nil;
     mockDelegate = nil;
     manager = nil;
   });

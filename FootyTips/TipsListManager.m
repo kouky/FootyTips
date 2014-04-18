@@ -31,16 +31,24 @@
 
 - (void)didReceiveFixture:(id)fixture
 {
-  FootyFixture *fixtureModel =  [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:fixture error:nil];
-  [self.delegate didReceiveFixtureModel:fixtureModel];
-  
+  NSError *error = nil;
+  FootyFixture *fixtureModel =  [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:fixture error:&error];
+  if (error) {
+    NSError *localError = [NSError errorWithDomain:TipsListManagerErrorDomain
+                                              code:TipsListManagerMantleError
+                                          userInfo:@{NSUnderlyingErrorKey:error}];
+    [self.delegate buildingFixtureDidFailWithError:localError];
+  }
+  else {
+    [self.delegate didReceiveFixtureModel:fixtureModel];
+  }
 }
 
 - (void)fetchingFixtureDidFailWithError:(NSError *)error
 {
   NSError *localError = [NSError errorWithDomain:TipsListManagerErrorDomain
                                             code:TipsListManagerCommunicatorError
-                                        userInfo:@{NSUnderlyingErrorKey: error}];
+                                        userInfo:@{NSUnderlyingErrorKey:error}];
 
   [self.delegate buildingFixtureDidFailWithError:localError];
 }

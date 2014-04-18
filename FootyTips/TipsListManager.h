@@ -24,5 +24,6 @@
 extern NSString * const TipsListManagerErrorDomain;
 
 enum {
-  TipsListManagerCommunicatorError
+  TipsListManagerCommunicatorError,
+  TipsListManagerMantleError
 };
