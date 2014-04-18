@@ -23,6 +23,10 @@ describe(@"TipsListManager", ^{
     manager = [[TipsListManager alloc] init];
   });
   
+  it(@"conforms to the FootyCommunicator delegate protocol", ^{
+    expect(TipsListManager.class).to.conformTo(@protocol(FootyCommunicatorDelegate));
+  });
+  
   it(@"non conforming object cannot be delegate", ^{
     expect(^{manager.delegate = (id <TipsListManagerDelegate>)[NSNull null];}).to.raise(NSInvalidArgumentException);
   });
