@@ -21,7 +21,7 @@
 
 # pragma mark Public Methods
 
-- (void)fetchFixture
+- (void)buildFixture
 {
   [self.communicator fetchFixture];
 }

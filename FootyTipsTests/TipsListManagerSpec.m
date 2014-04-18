@@ -44,7 +44,7 @@ describe(@"TipsListManager", ^{
     id mockCommunicator = [OCMockObject mockForClass:FootyCommunicator.class];
     manager.communicator = mockCommunicator;
     [[mockCommunicator expect] fetchFixture];
-    [manager fetchFixture];
+    [manager buildFixture];
     [mockCommunicator verify];
   });
   

@@ -17,6 +17,6 @@
 @property (nonatomic, weak) id <TipsListManagerDelegate> delegate;
 @property (strong) FootyCommunicator *communicator;
 
-- (void)fetchFixture;
+- (void)buildFixture;
 
 @end
