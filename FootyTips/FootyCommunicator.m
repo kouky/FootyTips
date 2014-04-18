@@ -25,7 +25,7 @@
 - (void)fetchFixture
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/fixture.json" successHandler:^(NSString *objectNotation) {
-    [self.delegate didReceiveFixture:objectNotation];
+    [self.delegate didReceiveFixtureDictionary:objectNotation];
   } errorHandler:^(NSError *error) {
     NSError *localError = [NSError errorWithDomain:FootyCommunicatorErrorDomain
                                               code:FootyCommunicatorFixtureError
@@ -38,7 +38,7 @@
 - (void)fetchLadder
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/ladder.json" successHandler:^(NSString *objectNotation) {
-    [self.delegate didReceiveLadder:objectNotation];
+    [self.delegate didReceiveLadderDictionary:objectNotation];
   } errorHandler:^(NSError *error) {
     NSError *localError = [NSError errorWithDomain:FootyCommunicatorErrorDomain
                                               code:FootyCommunicatorLadderError

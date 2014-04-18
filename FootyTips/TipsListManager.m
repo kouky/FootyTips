@@ -29,7 +29,7 @@
 
 #pragma mark FootyCommunicatorDelegate protocol methods
 
-- (void)didReceiveFixture:(id)fixture
+- (void)didReceiveFixtureDictionary:(id)fixture
 {
   NSError *error = nil;
   FootyFixture *fixtureModel =  [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:fixture error:&error];

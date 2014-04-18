@@ -76,7 +76,7 @@ describe(@"TipsListManager", ^{
                                                                    error:[OCMArg setTo:underlyingError]];
     manager.delegate = mockDelegate;
     [[mockDelegate expect] didReceiveFixtureModel:mockFixtureModel];
-    [manager didReceiveFixture:fixtureJSONDictionary];
+    [manager didReceiveFixtureDictionary:fixtureJSONDictionary];
     [mockDelegate verify];
   });
   
@@ -91,7 +91,7 @@ describe(@"TipsListManager", ^{
       matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:underlyingError];
       return matchesExpectedError;
     }]];
-    [manager didReceiveFixture:fixtureJSONDictionary];
+    [manager didReceiveFixtureDictionary:fixtureJSONDictionary];
     [mockDelegate verify];
   });
   

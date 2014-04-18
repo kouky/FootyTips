@@ -68,14 +68,14 @@ describe(@"FootyCommunicator", ^{
 
     it(@"of fixture data is passed to the delegate", ^{
       [nonNetworkedCommunicator setReceivedData:@"JSON for fixture"];
-      [[communicatorDelegate expect] didReceiveFixture:@"JSON for fixture"];
+      [[communicatorDelegate expect] didReceiveFixtureDictionary:@"JSON for fixture"];
       [nonNetworkedCommunicator fetchFixture];
       [communicatorDelegate verify];
     });
     
     it(@"of ladder data is passed to the delegate", ^{
       [nonNetworkedCommunicator setReceivedData:@"JSON for ladder"];
-      [[communicatorDelegate expect] didReceiveLadder:@"JSON for ladder"];
+      [[communicatorDelegate expect] didReceiveLadderDictionary:@"JSON for ladder"];
       [nonNetworkedCommunicator fetchLadder];
       [communicatorDelegate verify];
     });
