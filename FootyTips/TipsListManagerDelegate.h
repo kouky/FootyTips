@@ -10,4 +10,6 @@
 
 @protocol TipsListManagerDelegate <NSObject>
 
+- (void)buildingFixtureDidFailWithError:(NSError *)error;
+
 @end

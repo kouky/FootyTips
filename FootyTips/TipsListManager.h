@@ -20,3 +20,9 @@
 - (void)buildFixture;
 
 @end
+
+extern NSString * const TipsListManagerErrorDomain;
+
+enum {
+  TipsListManagerCommunicatorError
+};

@@ -14,6 +14,7 @@
 #import "FootyCommunicator.h"
 
 static TipsListManager *manager;
+static id mockDelegate;
 
 SpecBegin(TipsListManager)
 
@@ -21,6 +22,7 @@ describe(@"TipsListManager", ^{
   
   before(^{
     manager = [[TipsListManager alloc] init];
+    mockDelegate = [OCMockObject mockForProtocol:@protocol(TipsListManagerDelegate)];
   });
   
   it(@"conforms to the FootyCommunicator delegate protocol", ^{
@@ -32,8 +34,7 @@ describe(@"TipsListManager", ^{
   });
   
   it(@"conforming object can be delegate", ^{
-    id delegate = [OCMockObject mockForProtocol:@protocol(TipsListManagerDelegate)];
-    expect(^{manager.delegate = delegate;}).notTo.raise(NSInvalidArgumentException);
+    expect(^{manager.delegate = mockDelegate;}).notTo.raise(NSInvalidArgumentException);
   });
   
   it(@"can accept nil as a delegate", ^{
@@ -48,7 +49,22 @@ describe(@"TipsListManager", ^{
     [mockCommunicator verify];
   });
   
+  it(@"unsuccessful fetching of the fixture passes an error to the delegate", ^{
+    manager.delegate = mockDelegate;
+    NSError *underlyingError = [NSError errorWithDomain:@"Test domain" code:0 userInfo:nil];
+    [[mockDelegate expect] buildingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
+      NSError *error = (NSError *)obj;
+      BOOL matchesExpectedError = [error.domain isEqual:TipsListManagerErrorDomain];
+      matchesExpectedError = matchesExpectedError && error.code == TipsListManagerCommunicatorError;
+      matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:underlyingError];
+      return matchesExpectedError;
+    }]];
+    [manager fetchingFixtureDidFailWithError:underlyingError];
+    [mockDelegate verify];
+  });
+  
   after(^{
+    mockDelegate = nil;
     manager = nil;
   });
   

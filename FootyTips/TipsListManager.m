@@ -26,4 +26,17 @@
   [self.communicator fetchFixture];
 }
 
+#pragma mark FootyCommunicatorDelegate protocol methods
+
+- (void)fetchingFixtureDidFailWithError:(NSError *)error
+{
+  NSError *localError = [NSError errorWithDomain:TipsListManagerErrorDomain
+                                            code:TipsListManagerCommunicatorError
+                                        userInfo:@{NSUnderlyingErrorKey: error}];
+
+  [self.delegate buildingFixtureDidFailWithError:localError];
+}
+
 @end
+
+NSString * const TipsListManagerErrorDomain = @"org.kouky.footytips.TipsListManagerErrorDomain";
