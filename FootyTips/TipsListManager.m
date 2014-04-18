@@ -8,6 +8,7 @@
 
 #import "TipsListManager.h"
 #import "FootyCommunicator.h"
+#import "FootyFixture.h"
 
 @implementation TipsListManager
 
@@ -27,6 +28,13 @@
 }
 
 #pragma mark FootyCommunicatorDelegate protocol methods
+
+- (void)didReceiveFixture:(id)fixture
+{
+  FootyFixture *fixtureModel =  [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:fixture error:nil];
+  [self.delegate didReceiveFixtureModel:fixtureModel];
+  
+}
 
 - (void)fetchingFixtureDidFailWithError:(NSError *)error
 {

@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class FootyFixture;
+
 @protocol TipsListManagerDelegate <NSObject>
 
 - (void)buildingFixtureDidFailWithError:(NSError *)error;
+- (void)didReceiveFixtureModel:(FootyFixture *)fixture;
 
 @end
