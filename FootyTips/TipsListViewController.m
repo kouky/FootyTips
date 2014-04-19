@@ -14,12 +14,14 @@
 
 @implementation TipsListViewController
 
+// Designated initializer
 - (id)init
 {
   self = [super initWithStyle:UITableViewStylePlain];
   return self;
 }
 
+// Previous designated initializer defers to init.
 - (id)initWithStyle:(UITableViewStyle)style
 {
   return [self init];
