@@ -21,6 +21,14 @@
   return self;
 }
 
+- (void)setDelegate:(id<FootyCommunicatorDelegate>)delegate
+{
+  if (delegate && ![delegate conformsToProtocol:@protocol(FootyCommunicatorDelegate)]) {
+    [[NSException exceptionWithName:NSInvalidArgumentException reason:@"Delegate object does not conform to protocol" userInfo:nil] raise];
+  }
+  _delegate = delegate;
+}
+
 - (void)fetchFixture
 {
   [self fetchContentAtURL:@"http://footytips.kouky.org/fixture.json" successHandler:^(id objectNotation) {

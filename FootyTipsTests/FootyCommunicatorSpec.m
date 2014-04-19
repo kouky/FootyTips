@@ -28,12 +28,19 @@ describe(@"FootyCommunicator", ^{
     inspectableCommunicator = [[InspectableFootyCommunicator alloc] init];
     nonNetworkedCommunicator = [[NonNetworkedFootyCommunicator alloc] init];
     mockCommunicatorDelegate = [OCMockObject mockForProtocol:@protocol(FootyCommunicatorDelegate)];
-    nonNetworkedCommunicator.delegate = mockCommunicatorDelegate;
+  });
+
+  it(@"non conforming object cannot be delegate", ^{
+    expect(^{inspectableCommunicator.delegate = (id <FootyCommunicatorDelegate>)[NSNull null];}).to.raise(NSInvalidArgumentException);
   });
   
-  pending(@"Test non conforming object as delegate");
+  it(@"conforming object can be delegate", ^{
+    expect(^{inspectableCommunicator.delegate = mockCommunicatorDelegate;}).notTo.raise(NSInvalidArgumentException);
+  });
   
-  pending(@"Test conforming object as delegate");
+  it(@"can accept nil as a delegate", ^{
+    expect(^{inspectableCommunicator.delegate = nil;}).notTo.raise(NSInvalidArgumentException);
+  });
   
   it(@"uses a AFNetworking request manager", ^{
     expect(inspectableCommunicator.manager).to.beKindOf([AFHTTPRequestOperationManager class]);
@@ -63,6 +70,7 @@ describe(@"FootyCommunicator", ^{
   describe(@"successful fetch", ^{
     
     before(^{
+      nonNetworkedCommunicator.delegate = mockCommunicatorDelegate;
       nonNetworkedCommunicator.fireSuccessHandler = YES;
     });
 
@@ -85,6 +93,7 @@ describe(@"FootyCommunicator", ^{
   describe(@"unsuccessful fetch", ^{
     
     before(^{
+      nonNetworkedCommunicator.delegate = mockCommunicatorDelegate;
       nonNetworkedCommunicator.fireErrorHandler = YES;
       networkingError = [NSError errorWithDomain:@"AF Networking Error" code:0 userInfo:nil];
       [nonNetworkedCommunicator setReceivedError:networkingError];

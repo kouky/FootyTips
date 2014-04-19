@@ -18,7 +18,7 @@
   void (^_errorHandler)(NSError *);
 }
 
-@property (weak) id <FootyCommunicatorDelegate> delegate;
+@property (nonatomic, weak) id <FootyCommunicatorDelegate> delegate;
 
 - (void)fetchFixture;
 - (void)fetchLadder;
