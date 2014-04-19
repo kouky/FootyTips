@@ -7,7 +7,17 @@
 //
 
 #import "TipsListObjectConfiguration.h"
+#import "TipsListManager.h"
+#import "FootyCommunicator.h"
 
 @implementation TipsListObjectConfiguration
+
+- (TipsListManager *)tipsListManager
+{
+  TipsListManager *manager = [[TipsListManager alloc] init];
+  manager.communicator = [[FootyCommunicator alloc] init];
+  manager.communicator.delegate = manager;
+  return manager;
+}
 
 @end
