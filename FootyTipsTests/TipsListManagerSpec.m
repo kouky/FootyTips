@@ -32,7 +32,7 @@ describe(@"TipsListManager", ^{
     fixtureJSONDictionary = @{@"season": @2014};
   });
   
-  it(@"conforms to the FootyCommunicator delegate protocol", ^{
+  it(@"conforms to the FootyCommunicatorDelegate protocol", ^{
     expect(TipsListManager.class).to.conformTo(@protocol(FootyCommunicatorDelegate));
   });
   
