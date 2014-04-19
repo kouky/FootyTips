@@ -34,6 +34,9 @@
 		27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597018EA642600D54C65 /* FootyCommunicator.m */; };
 		27AD597518EABCD100D54C65 /* InspectableFootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */; };
 		27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */; };
+		27B62C0D1902279A002089B6 /* TipsListObjectConfigurationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0C1902279A002089B6 /* TipsListObjectConfigurationSpec.m */; };
+		27B62C10190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */; };
+		27B62C11190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */; };
 		27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9821D18F8C4D300E4D493 /* GameSpec.m */; };
 		27C9822218F8C51400E4D493 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9822118F8C51400E4D493 /* Game.m */; };
 		27C9822318F8C51400E4D493 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9822118F8C51400E4D493 /* Game.m */; };
@@ -91,6 +94,9 @@
 		27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableFootyCommunicator.m; sourceTree = "<group>"; };
 		27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonNetworkedFootyCommunicator.h; sourceTree = "<group>"; };
 		27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonNetworkedFootyCommunicator.m; sourceTree = "<group>"; };
+		27B62C0C1902279A002089B6 /* TipsListObjectConfigurationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListObjectConfigurationSpec.m; sourceTree = "<group>"; };
+		27B62C0E190227B5002089B6 /* TipsListObjectConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListObjectConfiguration.h; sourceTree = "<group>"; };
+		27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListObjectConfiguration.m; sourceTree = "<group>"; };
 		27C9821D18F8C4D300E4D493 /* GameSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSpec.m; sourceTree = "<group>"; };
 		27C9822018F8C51400E4D493 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		27C9822118F8C51400E4D493 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
@@ -236,6 +242,8 @@
 				2717411B18FEA780001CF8AC /* TipsListManager.h */,
 				2717411C18FEA780001CF8AC /* TipsListManager.m */,
 				2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */,
+				27B62C0E190227B5002089B6 /* TipsListObjectConfiguration.h */,
+				27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */,
 				27AD596518EA423800D54C65 /* TipsListViewController.h */,
 				27AD596618EA423800D54C65 /* TipsListViewController.m */,
 			);
@@ -247,6 +255,7 @@
 			children = (
 				2717411918FEA752001CF8AC /* TipsListManagerSpec.m */,
 				27AD596B18EA4DBE00D54C65 /* TipsListViewControllerSpec.m */,
+				27B62C0C1902279A002089B6 /* TipsListObjectConfigurationSpec.m */,
 			);
 			name = TipsList;
 			sourceTree = "<group>";
@@ -437,6 +446,7 @@
 				2703C4C018FA9FC300EB6D8E /* Team.m in Sources */,
 				27A0E57A18E9245500347BA8 /* main.m in Sources */,
 				27CA38AB18FCAC8400F4A0BE /* FootyFixture.m in Sources */,
+				27B62C10190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +462,7 @@
 				27CA38B418FCCBB300F4A0BE /* FootyRoundSpec.m in Sources */,
 				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,
 				27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */,
+				27B62C0D1902279A002089B6 /* TipsListObjectConfigurationSpec.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				2717411A18FEA752001CF8AC /* TipsListManagerSpec.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
@@ -462,6 +473,7 @@
 				27A0E59318E9245500347BA8 /* AppDelegateSpec.m in Sources */,
 				2703C4B918FA9F6700EB6D8E /* TeamSpec.m in Sources */,
 				27CA38AC18FCAC8400F4A0BE /* FootyFixture.m in Sources */,
+				27B62C11190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
