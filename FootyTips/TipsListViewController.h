@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TipsListManagerDelegate.h"
 
-@interface TipsListViewController : UITableViewController
+@class TipsListManager;
+
+@interface TipsListViewController : UITableViewController <TipsListManagerDelegate>
+
+@property (strong) TipsListManager *manager;
 
 @end

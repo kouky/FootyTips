@@ -10,6 +10,7 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import "TipsListViewController.h"
+#import "TipsListManager.h"
 
 static TipsListViewController *tipsListViewController;
 
@@ -21,6 +22,10 @@ describe(@"TipsListViewController", ^{
     tipsListViewController = [[TipsListViewController alloc] init];
   });
   
+  it(@"conforms to the TipsListManagerDelegate protocol", ^{
+    expect(TipsListViewController.class).to.conformTo(@protocol(TipsListManagerDelegate));
+  });
+  
   describe(@"initialisation", ^{
 
     it(@"with designated initializer init configures a plain table view style", ^{
@@ -28,8 +33,17 @@ describe(@"TipsListViewController", ^{
     });
     
     it(@"with old deignated initializer initWithStyle defers to init", ^{
-      tipsListViewController = [[TipsListViewController alloc] initWithStyle:UITableViewStyleGrouped];
-      expect(tipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
+      TipsListViewController *tips = [[TipsListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+      expect(tips.tableView.style).to.equal(UITableViewStylePlain);
+    });
+    
+    it(@"configures the manager property", ^{
+      expect(tipsListViewController.manager).notTo.beNil();
+      expect(tipsListViewController.manager).to.beKindOf(TipsListManager.class);
+    });
+    
+    it(@"sets the manager delegate to self", ^{
+      expect(tipsListViewController.manager.delegate).to.beIdenticalTo(tipsListViewController);
     });
 
   });
