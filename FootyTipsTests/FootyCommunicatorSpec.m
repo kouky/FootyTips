@@ -17,7 +17,7 @@
 static InspectableFootyCommunicator *inspectableCommunicator;
 static NonNetworkedFootyCommunicator *nonNetworkedCommunicator;
 static id manager;
-static id communicatorDelegate;
+static id mockCommunicatorDelegate;
 static NSError *networkingError;
 
 SpecBegin(FootyCommunicator)
@@ -27,8 +27,8 @@ describe(@"FootyCommunicator", ^{
   before(^{
     inspectableCommunicator = [[InspectableFootyCommunicator alloc] init];
     nonNetworkedCommunicator = [[NonNetworkedFootyCommunicator alloc] init];
-    communicatorDelegate = [OCMockObject mockForProtocol:@protocol(FootyCommunicatorDelegate)];
-    nonNetworkedCommunicator.delegate = communicatorDelegate;
+    mockCommunicatorDelegate = [OCMockObject mockForProtocol:@protocol(FootyCommunicatorDelegate)];
+    nonNetworkedCommunicator.delegate = mockCommunicatorDelegate;
   });
   
   pending(@"Test non conforming object as delegate");
@@ -68,16 +68,16 @@ describe(@"FootyCommunicator", ^{
 
     it(@"of fixture data is passed to the delegate", ^{
       [nonNetworkedCommunicator setReceivedData:@{ @"season": @2014 }];
-      [[communicatorDelegate expect] didReceiveFixtureDictionary:@{ @"season": @2014 }];
+      [[mockCommunicatorDelegate expect] didReceiveFixtureDictionary:@{ @"season": @2014 }];
       [nonNetworkedCommunicator fetchFixture];
-      [communicatorDelegate verify];
+      [mockCommunicatorDelegate verify];
     });
     
     it(@"of ladder data is passed to the delegate", ^{
       [nonNetworkedCommunicator setReceivedData:@{ @"ladder": @2014 }];
-      [[communicatorDelegate expect] didReceiveLadderDictionary:@{ @"ladder": @2014 }];
+      [[mockCommunicatorDelegate expect] didReceiveLadderDictionary:@{ @"ladder": @2014 }];
       [nonNetworkedCommunicator fetchLadder];
-      [communicatorDelegate verify];
+      [mockCommunicatorDelegate verify];
     });
     
   });
@@ -91,7 +91,7 @@ describe(@"FootyCommunicator", ^{
     });
   
     it(@"of fixture data passes an error to the delegate", ^{
-      [[communicatorDelegate expect] fetchingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
+      [[mockCommunicatorDelegate expect] fetchingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
         NSError *error = (NSError *)obj;
         BOOL matchesExpectedError = [error.domain isEqual:FootyCommunicatorErrorDomain];
         matchesExpectedError = matchesExpectedError && error.code == FootyCommunicatorFixtureError;
@@ -99,11 +99,11 @@ describe(@"FootyCommunicator", ^{
         return matchesExpectedError;
       }]];
       [nonNetworkedCommunicator fetchFixture];
-      [communicatorDelegate verify];
+      [mockCommunicatorDelegate verify];
     });
     
     it(@"of ladder data passes an error to the delegate", ^{
-      [[communicatorDelegate expect] fetchingLadderDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
+      [[mockCommunicatorDelegate expect] fetchingLadderDidFailWithError:[OCMArg checkWithBlock:^BOOL(id obj) {
         NSError *error = (NSError *)obj;
         BOOL matchesExpectedError = [error.domain isEqual:FootyCommunicatorErrorDomain];
         matchesExpectedError = matchesExpectedError && error.code == FootyCommunicatorLadderError;
@@ -111,14 +111,14 @@ describe(@"FootyCommunicator", ^{
         return matchesExpectedError;
       }]];
       [nonNetworkedCommunicator fetchLadder];
-      [communicatorDelegate verify];
+      [mockCommunicatorDelegate verify];
     });
     
   });
   
   after(^{
     networkingError = nil;
-    communicatorDelegate = nil;
+    mockCommunicatorDelegate = nil;
     nonNetworkedCommunicator = nil;
     inspectableCommunicator = nil;
   });
