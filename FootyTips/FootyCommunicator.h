@@ -13,7 +13,7 @@
 @interface FootyCommunicator : NSObject {
 
 @protected
-  AFHTTPRequestOperationManager *_manager;
+  AFHTTPRequestOperationManager *_requestManager;
   void (^_successHandler)(NSString *);
   void (^_errorHandler)(NSError *);
 }

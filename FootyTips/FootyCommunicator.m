@@ -16,7 +16,7 @@
 {
   self = [super init];
   if (self) {
-    _manager = [AFHTTPRequestOperationManager manager];
+    _requestManager = [AFHTTPRequestOperationManager manager];
   }
   return self;
 }
@@ -64,7 +64,7 @@
    
 - (void)launchConnectionForURL:(NSString *)URLString
 {
-  [_manager GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+  [_requestManager GET:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     _successHandler(responseObject);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     _errorHandler(error);

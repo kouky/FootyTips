@@ -10,7 +10,7 @@
 
 @interface InspectableFootyCommunicator : FootyCommunicator
 
-- (AFHTTPRequestOperationManager *)manager;
-- (void)setManager:(AFHTTPRequestOperationManager *)manager;
+- (AFHTTPRequestOperationManager *)requestManager;
+- (void)setRequestManager:(AFHTTPRequestOperationManager *)requestManager;
 
 @end

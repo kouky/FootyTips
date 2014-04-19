@@ -10,14 +10,14 @@
 
 @implementation InspectableFootyCommunicator
 
-- (AFHTTPRequestOperationManager *)manager
+- (AFHTTPRequestOperationManager *)requestManager
 {
-  return _manager;
+  return _requestManager;
 }
 
-- (void)setManager:(AFHTTPRequestOperationManager *)manager
+- (void)setRequestManager:(AFHTTPRequestOperationManager *)requestManager
 {
-  _manager = manager;
+  _requestManager = requestManager;
 }
 
 @end

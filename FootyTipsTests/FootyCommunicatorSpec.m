@@ -16,7 +16,7 @@
 
 static InspectableFootyCommunicator *inspectableCommunicator;
 static NonNetworkedFootyCommunicator *nonNetworkedCommunicator;
-static id manager;
+static id requestManager;
 static id mockCommunicatorDelegate;
 static NSError *networkingError;
 
@@ -43,26 +43,26 @@ describe(@"FootyCommunicator", ^{
   });
   
   it(@"uses a AFNetworking request manager", ^{
-    expect(inspectableCommunicator.manager).to.beKindOf([AFHTTPRequestOperationManager class]);
+    expect(inspectableCommunicator.requestManager).to.beKindOf([AFHTTPRequestOperationManager class]);
   });
   
   describe(@"calls the json API", ^{
     
     before(^{
-      manager = [OCMockObject mockForClass:[AFHTTPRequestOperationManager class]];
-      inspectableCommunicator.manager = manager;
+      requestManager = [OCMockObject mockForClass:[AFHTTPRequestOperationManager class]];
+      inspectableCommunicator.requestManager = requestManager;
     });
 
     it(@"when fetching the fixture", ^{
-      [[manager expect] GET:@"http://footytips.kouky.org/fixture.json" parameters:nil success:[OCMArg any] failure:[OCMArg any]];
+      [[requestManager expect] GET:@"http://footytips.kouky.org/fixture.json" parameters:nil success:[OCMArg any] failure:[OCMArg any]];
       [inspectableCommunicator fetchFixture];
-      [manager verify];
+      [requestManager verify];
     });
 
     it(@"when fetching the ladder", ^{
-      [[manager expect] GET:@"http://footytips.kouky.org/ladder.json" parameters:nil success:[OCMArg any] failure:[OCMArg any]];
+      [[requestManager expect] GET:@"http://footytips.kouky.org/ladder.json" parameters:nil success:[OCMArg any] failure:[OCMArg any]];
       [inspectableCommunicator fetchLadder];
-      [manager verify];
+      [requestManager verify];
     });
 
   });
