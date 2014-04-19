@@ -183,14 +183,10 @@
 			children = (
 				27A0E57C18E9245500347BA8 /* AppDelegate.h */,
 				27A0E57D18E9245500347BA8 /* AppDelegate.m */,
-				27AD596518EA423800D54C65 /* TipsListViewController.h */,
-				27AD596618EA423800D54C65 /* TipsListViewController.m */,
 				27AD596F18EA642600D54C65 /* FootyCommunicator.h */,
 				27AD597018EA642600D54C65 /* FootyCommunicator.m */,
 				27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */,
-				2717411B18FEA780001CF8AC /* TipsListManager.h */,
-				2717411C18FEA780001CF8AC /* TipsListManager.m */,
-				2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */,
+				27B62C0A19022705002089B6 /* TipsList */,
 				27C9821F18F8C4F900E4D493 /* Models */,
 				27A0E57F18E9245500347BA8 /* Images.xcassets */,
 				27A0E57418E9245500347BA8 /* Supporting Files */,
@@ -214,8 +210,7 @@
 			children = (
 				27A0E59218E9245500347BA8 /* AppDelegateSpec.m */,
 				27AD596D18EA640500D54C65 /* FootyCommunicatorSpec.m */,
-				2717411918FEA752001CF8AC /* TipsListManagerSpec.m */,
-				27AD596B18EA4DBE00D54C65 /* TipsListViewControllerSpec.m */,
+				27B62C0B19022735002089B6 /* TipsList */,
 				2703C4B718FA9EDA00EB6D8E /* Models */,
 				27A0E58D18E9245500347BA8 /* Supporting Files */,
 			);
@@ -233,6 +228,27 @@
 				27A0E58F18E9245500347BA8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27B62C0A19022705002089B6 /* TipsList */ = {
+			isa = PBXGroup;
+			children = (
+				2717411B18FEA780001CF8AC /* TipsListManager.h */,
+				2717411C18FEA780001CF8AC /* TipsListManager.m */,
+				2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */,
+				27AD596518EA423800D54C65 /* TipsListViewController.h */,
+				27AD596618EA423800D54C65 /* TipsListViewController.m */,
+			);
+			name = TipsList;
+			sourceTree = "<group>";
+		};
+		27B62C0B19022735002089B6 /* TipsList */ = {
+			isa = PBXGroup;
+			children = (
+				2717411918FEA752001CF8AC /* TipsListManagerSpec.m */,
+				27AD596B18EA4DBE00D54C65 /* TipsListViewControllerSpec.m */,
+			);
+			name = TipsList;
 			sourceTree = "<group>";
 		};
 		27C9821F18F8C4F900E4D493 /* Models */ = {
