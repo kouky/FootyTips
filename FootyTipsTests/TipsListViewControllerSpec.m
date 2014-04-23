@@ -28,11 +28,11 @@ describe(@"TipsListViewController", ^{
   
   describe(@"initialisation", ^{
 
-    it(@"with designated initializer init configures a plain table view style", ^{
+    it(@"configures a plain table view style with using new designated initializer init", ^{
       expect(tipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
     });
     
-    it(@"with old deignated initializer initWithStyle defers to init", ^{
+    it(@"configures a plain table view style when the old desiginated initializer is used", ^{
       TipsListViewController *tips = [[TipsListViewController alloc] initWithStyle:UITableViewStyleGrouped];
       expect(tips.tableView.style).to.equal(UITableViewStylePlain);
     });
