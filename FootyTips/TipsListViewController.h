@@ -11,10 +11,8 @@
 
 @class TipsListManager;
 
-@interface TipsListViewController : UITableViewController <TipsListManagerDelegate> {
+@interface TipsListViewController : UITableViewController <TipsListManagerDelegate>
 
-@protected
-  TipsListManager *_manager;
-}
+@property (strong) TipsListManager *manager;
 
 @end
