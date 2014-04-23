@@ -1,3 +1,5 @@
 language: objective-c
 rvm: 1.9.3
+before_install:
+  - gem install cocoapods --no-rdoc --no-ri
 script: xcodebuild test -workspace FootyTips.xcworkspace -scheme FootyTips -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
