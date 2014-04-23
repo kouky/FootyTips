@@ -12,7 +12,7 @@
 
 @implementation TipsListObjectConfiguration
 
-- (TipsListManager *)tipsListManager
++ (TipsListManager *)tipsListManager
 {
   TipsListManager *manager = [[TipsListManager alloc] init];
   manager.communicator = [[FootyCommunicator alloc] init];

@@ -12,6 +12,6 @@
 
 @interface TipsListObjectConfiguration : NSObject
 
-- (TipsListManager *)tipsListManager;
++ (TipsListManager *)tipsListManager;
 
 @end
