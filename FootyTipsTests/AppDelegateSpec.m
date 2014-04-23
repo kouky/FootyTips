@@ -14,10 +14,9 @@ describe(@"AppDelegate", ^{
   
   before(^{
     appDelegate = [[AppDelegate alloc] init];
-    didFinishLaunchingWithOptionsReturn = [appDelegate application: nil didFinishLaunchingWithOptions: nil];
+    didFinishLaunchingWithOptionsReturn = [appDelegate application:nil didFinishLaunchingWithOptions: nil];
   });
   
-
   it(@"window is key after application launch", ^{
     expect(appDelegate.window.keyWindow).to.equal(@YES);
   });
@@ -29,7 +28,7 @@ describe(@"AppDelegate", ^{
   describe(@"tab bar controller", ^{
     
     it(@"is an instance of UITabBarController", ^{
-      expect(appDelegate.tabBarController).to.beInstanceOf([UITabBarController class]);
+      expect(appDelegate.tabBarController).to.beInstanceOf(UITabBarController.class);
     });
     
     it(@"is the root view controller", ^{
