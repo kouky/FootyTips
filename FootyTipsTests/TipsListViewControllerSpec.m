@@ -9,10 +9,14 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import <OCMock/OCMock.h>
 #import "TipsListViewController.h"
+#import "InspectableTipsListViewController.h"
 #import "TipsListManager.h"
+#import "TipsListObjectConfiguration.h"
 
 static TipsListViewController *tipsListViewController;
+static InspectableTipsListViewController *inspectableTipsListViewController;
 
 SpecBegin(TipsListViewController)
 
@@ -37,18 +41,19 @@ describe(@"TipsListViewController", ^{
       expect(tips.tableView.style).to.equal(UITableViewStylePlain);
     });
     
-    it(@"configures the manager property", ^{
-      expect(tipsListViewController.manager).notTo.beNil();
-      expect(tipsListViewController.manager).to.beKindOf(TipsListManager.class);
+    it(@"sets the manager ivar using the TipsListObjectConfiguration class", ^{
+      id mockConfiguration = [OCMockObject mockForClass:TipsListObjectConfiguration.class];
+      id mockManager = [OCMockObject mockForClass:TipsListManager.class];
+      [[[mockConfiguration expect] andReturn:mockManager] tipsListManager];
+      inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
+      [mockConfiguration verify];
+      expect(inspectableTipsListViewController.manager).to.beIdenticalTo(mockManager);
     });
     
-    it(@"sets the manager delegate to self", ^{
-      expect(tipsListViewController.manager.delegate).to.beIdenticalTo(tipsListViewController);
-    });
-
   });
   
   after(^{
+    inspectableTipsListViewController = nil;
     tipsListViewController = nil;
   });
   

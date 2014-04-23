@@ -8,6 +8,7 @@
 
 #import "TipsListViewController.h"
 #import "TipsListManager.h"
+#import "TipsListObjectConfiguration.h"
 
 @interface TipsListViewController ()
 
@@ -20,8 +21,7 @@
 {
   self = [super initWithStyle:UITableViewStylePlain];
   if (self) {
-    self.manager = [[TipsListManager alloc] init];
-    self.manager.delegate = self;
+    _manager = [TipsListObjectConfiguration tipsListManager];
   }
   
   return self;
