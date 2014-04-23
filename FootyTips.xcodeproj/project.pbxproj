@@ -37,6 +37,7 @@
 		27B62C0D1902279A002089B6 /* TipsListObjectConfigurationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0C1902279A002089B6 /* TipsListObjectConfigurationSpec.m */; };
 		27B62C10190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */; };
 		27B62C11190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */; };
+		27C8A7CF1907DD16001BF99C /* InspectableTipsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C8A7CE1907DD16001BF99C /* InspectableTipsListViewController.m */; };
 		27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9821D18F8C4D300E4D493 /* GameSpec.m */; };
 		27C9822218F8C51400E4D493 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9822118F8C51400E4D493 /* Game.m */; };
 		27C9822318F8C51400E4D493 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9822118F8C51400E4D493 /* Game.m */; };
@@ -97,6 +98,8 @@
 		27B62C0C1902279A002089B6 /* TipsListObjectConfigurationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListObjectConfigurationSpec.m; sourceTree = "<group>"; };
 		27B62C0E190227B5002089B6 /* TipsListObjectConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListObjectConfiguration.h; sourceTree = "<group>"; };
 		27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListObjectConfiguration.m; sourceTree = "<group>"; };
+		27C8A7CD1907DD16001BF99C /* InspectableTipsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTipsListViewController.h; sourceTree = "<group>"; };
+		27C8A7CE1907DD16001BF99C /* InspectableTipsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTipsListViewController.m; sourceTree = "<group>"; };
 		27C9821D18F8C4D300E4D493 /* GameSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSpec.m; sourceTree = "<group>"; };
 		27C9822018F8C51400E4D493 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		27C9822118F8C51400E4D493 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 			children = (
 				27AD597318EABCD100D54C65 /* InspectableFootyCommunicator.h */,
 				27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */,
+				27C8A7CD1907DD16001BF99C /* InspectableTipsListViewController.h */,
+				27C8A7CE1907DD16001BF99C /* InspectableTipsListViewController.m */,
 				27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */,
 				27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */,
 				27A0E58E18E9245500347BA8 /* FootyTipsTests-Info.plist */,
@@ -460,6 +465,7 @@
 				2717411E18FEA780001CF8AC /* TipsListManager.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
 				27CA38B418FCCBB300F4A0BE /* FootyRoundSpec.m in Sources */,
+				27C8A7CF1907DD16001BF99C /* InspectableTipsListViewController.m in Sources */,
 				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,
 				27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */,
 				27B62C0D1902279A002089B6 /* TipsListObjectConfigurationSpec.m in Sources */,
