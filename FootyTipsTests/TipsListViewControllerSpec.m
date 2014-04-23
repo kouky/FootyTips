@@ -9,8 +9,10 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import <OCMock/OCMock.h>
 #import "TipsListViewController.h"
 #import "TipsListManager.h"
+#import <objc/runtime.h>
 
 static TipsListViewController *tipsListViewController;
 
@@ -26,6 +28,11 @@ describe(@"TipsListViewController", ^{
     expect(TipsListViewController.class).to.conformTo(@protocol(TipsListManagerDelegate));
   });
   
+  it(@"has a manager property", ^{
+    objc_property_t managerProperty = class_getProperty(tipsListViewController.class, "manager");
+    expect(managerProperty).notTo.equal(NULL);
+  });
+  
   describe(@"initialisation", ^{
 
     it(@"configures a plain table view style with using new designated initializer init", ^{
@@ -37,15 +44,24 @@ describe(@"TipsListViewController", ^{
       expect(tips.tableView.style).to.equal(UITableViewStylePlain);
     });
     
-    it(@"configures the manager property", ^{
-      expect(tipsListViewController.manager).notTo.beNil();
-      expect(tipsListViewController.manager).to.beKindOf(TipsListManager.class);
+  });
+  
+  describe(@"setManager", ^{
+    
+    it(@"sets the manager property", ^{
+      id mockManager = [OCMockObject mockForClass:TipsListManager.class];
+      [[mockManager stub] setDelegate:[OCMArg any]];
+      tipsListViewController.manager = mockManager;
+      expect(tipsListViewController.manager).to.beIdenticalTo(mockManager);
     });
     
     it(@"sets the manager delegate to self", ^{
-      expect(tipsListViewController.manager.delegate).to.beIdenticalTo(tipsListViewController);
+      id mockManager = [OCMockObject mockForClass:TipsListManager.class];
+      [[mockManager expect] setDelegate:tipsListViewController];
+      tipsListViewController.manager = mockManager;
+      [mockManager verify];
     });
-
+    
   });
   
   after(^{

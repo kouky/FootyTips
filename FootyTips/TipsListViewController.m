@@ -18,12 +18,7 @@
 // Designated initializer
 - (id)init
 {
-  self = [super initWithStyle:UITableViewStylePlain];
-  if (self) {
-    self.manager = [[TipsListManager alloc] init];
-    self.manager.delegate = self;
-  }
-  
+  self = [super initWithStyle:UITableViewStylePlain];  
   return self;
 }
 
@@ -31,6 +26,12 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
   return [self init];
+}
+
+- (void)setManager:(TipsListManager *)manager
+{
+  _manager = manager;
+  _manager.delegate = self;
 }
 
 - (void)viewDidLoad

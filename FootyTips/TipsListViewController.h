@@ -13,6 +13,6 @@
 
 @interface TipsListViewController : UITableViewController <TipsListManagerDelegate>
 
-@property (strong) TipsListManager *manager;
+@property (nonatomic, strong) TipsListManager *manager;
 
 @end
