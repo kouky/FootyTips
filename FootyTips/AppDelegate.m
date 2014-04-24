@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TipsListViewController.h"
+#import "TipsListObjectConfiguration.h"
 
 @implementation AppDelegate
 
@@ -17,6 +18,7 @@
   
   // Configure TipsListViewController
   TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
+  tipsListViewController.manager = [TipsListObjectConfiguration tipsListManager];
   
   //  ViewControllers for tab bar
   NSArray *viewControllers = @[tipsListViewController];

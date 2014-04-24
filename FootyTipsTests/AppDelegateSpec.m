@@ -1,12 +1,17 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import <OCMock/OCMock.h>
 #import "AppDelegate.h"
 #import "TipsListViewController.h"
+#import "TipsListObjectConfiguration.h"
+#import "TipsListManager.h"
 
 static AppDelegate *appDelegate;
 static BOOL didFinishLaunchingWithOptionsReturn;
-
+static id mockTipsListObjectConfiguration;
+static id mockTipsListManager;
+static TipsListViewController *tipsListViewController;
 
 SpecBegin(AppDelegate)
 
@@ -44,7 +49,35 @@ describe(@"AppDelegate", ^{
   after(^{
     appDelegate = nil;
   });
+
+});
   
+describe(@"AppDelegate tips list view controller", ^{
+  
+  before(^{
+    appDelegate = [[AppDelegate alloc] init];
+    mockTipsListObjectConfiguration = [OCMockObject mockForClass:TipsListObjectConfiguration.class];
+    mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+  });
+    
+  it(@"has a properly configured manager property", ^{
+    [[mockTipsListManager stub] setDelegate:[OCMArg any]];
+    [[[mockTipsListObjectConfiguration expect] andReturn:mockTipsListManager] tipsListManager];
+    
+    [appDelegate application:nil didFinishLaunchingWithOptions: nil];
+    [mockTipsListObjectConfiguration verify];
+    
+    tipsListViewController = [appDelegate.tabBarController.viewControllers firstObject];
+    expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
+  });
+  
+  after(^{
+    mockTipsListManager = nil;
+    mockTipsListObjectConfiguration = nil;
+    tipsListViewController = nil;
+    appDelegate = nil;
+  });
+    
 });
 
 SpecEnd
