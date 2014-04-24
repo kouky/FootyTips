@@ -51,17 +51,15 @@ describe(@"TipsListViewController", ^{
   describe(@"setManager", ^{
     
     it(@"sets the manager property", ^{
-      id mockManager = [OCMockObject mockForClass:TipsListManager.class];
-      [[mockManager stub] setDelegate:[OCMArg any]];
-      tipsListViewController.manager = mockManager;
-      expect(tipsListViewController.manager).to.beIdenticalTo(mockManager);
+      [[mockTipsListManager stub] setDelegate:[OCMArg any]];
+      tipsListViewController.manager = mockTipsListManager;
+      expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
     });
     
     it(@"sets the manager delegate to self", ^{
-      id mockManager = [OCMockObject mockForClass:TipsListManager.class];
-      [[mockManager expect] setDelegate:tipsListViewController];
-      tipsListViewController.manager = mockManager;
-      [mockManager verify];
+      [[mockTipsListManager expect] setDelegate:tipsListViewController];
+      tipsListViewController.manager = mockTipsListManager;
+      [mockTipsListManager verify];
     });
     
   });
