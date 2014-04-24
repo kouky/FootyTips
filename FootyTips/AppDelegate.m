@@ -14,11 +14,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.tabBarController = [[UITabBarController alloc] init];
-  TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
-  [self.tabBarController setViewControllers:@[tipsListViewController] animated:NO];
-  [self.window setRootViewController:self.tabBarController];
   
+  // Configure TipsListViewController
+  TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
+  
+  //  ViewControllers for tab bar
+  NSArray *viewControllers = @[tipsListViewController];
+  
+  //  Configure UiTabBarController
+  self.tabBarController = [[UITabBarController alloc] init];
+  [self.tabBarController setViewControllers:viewControllers animated:NO];
+  
+  //  Set root controller and make window key and visible
+  [self.window setRootViewController:self.tabBarController];
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
   return YES;
