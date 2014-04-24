@@ -15,6 +15,7 @@
 #import <objc/runtime.h>
 
 static TipsListViewController *tipsListViewController;
+static id mockTipsListManager;
 
 SpecBegin(TipsListViewController)
 
@@ -22,6 +23,7 @@ describe(@"TipsListViewController", ^{
   
   before(^{
     tipsListViewController = [[TipsListViewController alloc] init];
+    mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
   });
   
   it(@"conforms to the TipsListManagerDelegate protocol", ^{
@@ -64,7 +66,20 @@ describe(@"TipsListViewController", ^{
     
   });
   
+  describe(@"viewDidLoad", ^{
+    
+    it(@"requests the building of the footy fixture", ^{
+      [[mockTipsListManager expect] buildFixture];
+      [[mockTipsListManager stub] setDelegate:[OCMArg any]];
+      tipsListViewController.manager = mockTipsListManager;
+      [tipsListViewController viewDidLoad];
+      [mockTipsListManager verify];
+    });
+    
+  });
+  
   after(^{
+    mockTipsListManager = nil;
     tipsListViewController = nil;
   });
   

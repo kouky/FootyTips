@@ -62,6 +62,7 @@ describe(@"AppDelegate tips list view controller", ^{
     
   it(@"has a properly configured manager property", ^{
     [[mockTipsListManager stub] setDelegate:[OCMArg any]];
+    [[mockTipsListManager stub] buildFixture];
     [[[mockTipsListObjectConfiguration expect] andReturn:mockTipsListManager] tipsListManager];
     
     [appDelegate application:nil didFinishLaunchingWithOptions: nil];
