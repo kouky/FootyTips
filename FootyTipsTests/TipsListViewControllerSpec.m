@@ -54,6 +54,11 @@ describe(@"TipsListViewController", ^{
   
   describe(@"setManager", ^{
     
+    it(@"can accept nil as an argument", ^{
+      tipsListViewController.manager = nil;
+      expect(tipsListViewController.manager).to.beNil();
+    });
+    
     it(@"sets the manager property", ^{
       [[mockTipsListManager stub] setDelegate:[OCMArg any]];
       tipsListViewController.manager = mockTipsListManager;
