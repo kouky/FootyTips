@@ -10,8 +10,13 @@
 #import "TipsListManagerDelegate.h"
 
 @class TipsListManager;
+@class FootyFixture;
 
-@interface TipsListViewController : UITableViewController <TipsListManagerDelegate>
+@interface TipsListViewController : UITableViewController <TipsListManagerDelegate> {
+
+@protected
+  FootyFixture *_footyFixture;
+}
 
 @property (nonatomic, strong) TipsListManager *manager;
 

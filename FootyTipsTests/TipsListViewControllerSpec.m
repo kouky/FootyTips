@@ -11,10 +11,13 @@
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
 #import "TipsListViewController.h"
+#import "InspectableTipsListViewController.h"
 #import "TipsListManager.h"
+#import "FootyFixture.h"
 #import <objc/runtime.h>
 
 static TipsListViewController *tipsListViewController;
+static InspectableTipsListViewController *inspectableTipsListViewController;
 static id mockTipsListManager;
 
 SpecBegin(TipsListViewController)
@@ -23,6 +26,7 @@ describe(@"TipsListViewController", ^{
   
   before(^{
     tipsListViewController = [[TipsListViewController alloc] init];
+    inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
   });
   
@@ -76,8 +80,15 @@ describe(@"TipsListViewController", ^{
     
   });
   
+  it(@"sets the fixture model when delegate method didReceiveFixtureModel is called", ^{
+    id mockFixture = [OCMockObject mockForClass:FootyFixture.class];
+    [inspectableTipsListViewController didReceiveFixtureModel:mockFixture];
+    expect([inspectableTipsListViewController footyFixture]).to.beIdenticalTo(mockFixture);
+  });
+  
   after(^{
     mockTipsListManager = nil;
+    inspectableTipsListViewController = nil;
     tipsListViewController = nil;
   });
   

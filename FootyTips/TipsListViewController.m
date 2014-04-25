@@ -76,4 +76,11 @@
 }
 */
 
+# pragma mark TipsListManagerDelegate protocol methods
+
+- (void)didReceiveFixtureModel:(FootyFixture *)fixture
+{
+  _footyFixture = fixture;
+}
+
 @end
