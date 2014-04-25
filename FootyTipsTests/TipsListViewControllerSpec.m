@@ -85,10 +85,21 @@ describe(@"TipsListViewController", ^{
     
   });
   
-  it(@"sets the fixture model when delegate method didReceiveFixtureModel is called", ^{
-    id mockFixture = [OCMockObject mockForClass:FootyFixture.class];
-    [inspectableTipsListViewController didReceiveFixtureModel:mockFixture];
-    expect([inspectableTipsListViewController footyFixture]).to.beIdenticalTo(mockFixture);
+  describe(@"calling delegate method didReceiveFixtureModel", ^{
+    
+    it(@"sets the fixture model", ^{
+      id mockFixture = [OCMockObject mockForClass:FootyFixture.class];
+      [inspectableTipsListViewController didReceiveFixtureModel:mockFixture];
+      expect([inspectableTipsListViewController footyFixture]).to.beIdenticalTo(mockFixture);
+    });
+    
+    it(@"calls reload data on the table view", ^{
+      id mockTableView = [OCMockObject partialMockForObject:tipsListViewController.tableView];
+      [[mockTableView expect] reloadData];
+      [tipsListViewController didReceiveFixtureModel:[OCMArg any]];
+      [mockTableView verify];
+    });
+
   });
   
   after(^{
