@@ -12,5 +12,6 @@
 @interface InspectableTipsListViewController : TipsListViewController
 
 - (FootyFixture *)footyFixture;
+- (void)setFootyFixture:(FootyFixture *)footyFixture;
 
 @end

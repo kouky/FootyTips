@@ -15,4 +15,9 @@
   return  _footyFixture;
 }
 
+- (void)setFootyFixture:(FootyFixture *)footyFixture
+{
+  _footyFixture = footyFixture;
+}
+
 @end
