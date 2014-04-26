@@ -19,6 +19,7 @@
 static TipsListViewController *tipsListViewController;
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static id mockTipsListManager;
+static id mockFootyFixture;
 
 SpecBegin(TipsListViewController)
 
@@ -28,6 +29,8 @@ describe(@"TipsListViewController", ^{
     tipsListViewController = [[TipsListViewController alloc] init];
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+    mockFootyFixture = [OCMockObject mockForClass:FootyFixture.class];
+    [[[mockFootyFixture stub] andReturn:@[@"round 1", @"round 2"]] rounds];
   });
   
   it(@"conforms to the TipsListManagerDelegate protocol", ^{
@@ -88,9 +91,8 @@ describe(@"TipsListViewController", ^{
   describe(@"calling delegate method didReceiveFixtureModel", ^{
     
     it(@"sets the fixture model", ^{
-      id mockFixture = [OCMockObject mockForClass:FootyFixture.class];
-      [inspectableTipsListViewController didReceiveFixtureModel:mockFixture];
-      expect([inspectableTipsListViewController footyFixture]).to.beIdenticalTo(mockFixture);
+      [inspectableTipsListViewController didReceiveFixtureModel:mockFootyFixture];
+      expect([inspectableTipsListViewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
     });
     
     it(@"calls reload data on the table view", ^{
@@ -102,7 +104,14 @@ describe(@"TipsListViewController", ^{
 
   });
   
+  it(@"number of sections in table view corresponds to number of rounds", ^{
+    [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
+    NSInteger numberSections = [inspectableTipsListViewController numberOfSectionsInTableView:nil];
+    expect(numberSections).to.equal(2);
+  });
+  
   after(^{
+    mockFootyFixture = nil;
     mockTipsListManager = nil;
     inspectableTipsListViewController = nil;
     tipsListViewController = nil;

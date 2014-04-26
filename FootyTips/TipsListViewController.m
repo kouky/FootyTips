@@ -8,6 +8,7 @@
 
 #import "TipsListViewController.h"
 #import "TipsListManager.h"
+#import "FootyFixture.h"
 
 @interface TipsListViewController ()
 
@@ -53,9 +54,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-  // Return the number of sections.
-  return 0;
+  return [[_footyFixture rounds] count];
+//  return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
