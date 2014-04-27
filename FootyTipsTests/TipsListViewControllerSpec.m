@@ -91,7 +91,7 @@ describe(@"TipsListViewController", ^{
     
   });
   
-  describe(@"calling delegate method didReceiveFixtureModel", ^{
+  describe(@"tips list manager delegate method didReceiveFixtureModel", ^{
     
     it(@"sets the fixture model", ^{
       [inspectableTipsListViewController didReceiveFixtureModel:mockFootyFixture];
