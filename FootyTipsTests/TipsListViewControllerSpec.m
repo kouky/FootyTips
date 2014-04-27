@@ -19,6 +19,7 @@
 static TipsListViewController *tipsListViewController;
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static id mockTipsListManager;
+static id mockFootyRound;
 static id mockFootyFixture;
 
 SpecBegin(TipsListViewController)
@@ -29,8 +30,10 @@ describe(@"TipsListViewController", ^{
     tipsListViewController = [[TipsListViewController alloc] init];
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+    mockFootyRound = [OCMockObject mockForClass:FootyRound.class];
+    [[[mockFootyRound stub] andReturn:@3] id];
     mockFootyFixture = [OCMockObject mockForClass:FootyFixture.class];
-    [[[mockFootyFixture stub] andReturn:@[@"round 1", @"round 2"]] rounds];
+    [[[mockFootyFixture stub] andReturn:@[mockFootyRound]] rounds];
   });
   
   it(@"conforms to the TipsListManagerDelegate protocol", ^{
@@ -107,10 +110,17 @@ describe(@"TipsListViewController", ^{
   it(@"number of sections in table view corresponds to number of rounds", ^{
     [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
     NSInteger numberSections = [inspectableTipsListViewController numberOfSectionsInTableView:nil];
-    expect(numberSections).to.equal(2);
+    expect(numberSections).to.equal(1);
+  });
+  
+  it(@"header for table view section correponds to the round number", ^{
+    [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
+    NSString *firstSectionTitle = [inspectableTipsListViewController tableView:nil titleForHeaderInSection:0];
+    expect(firstSectionTitle).to.equal(@"Round 3");
   });
   
   after(^{
+    mockFootyRound = nil;
     mockFootyFixture = nil;
     mockTipsListManager = nil;
     inspectableTipsListViewController = nil;

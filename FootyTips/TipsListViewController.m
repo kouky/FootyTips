@@ -76,6 +76,12 @@
 }
 */
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+  FootyRound *roundForSection = _footyFixture.rounds[section];
+  return [NSString stringWithFormat:@"Round %@", roundForSection.id];
+}
+
 # pragma mark TipsListManagerDelegate protocol methods
 
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture
