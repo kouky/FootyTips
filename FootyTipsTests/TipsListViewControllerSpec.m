@@ -107,16 +107,22 @@ describe(@"TipsListViewController", ^{
 
   });
   
-  it(@"number of sections in table view corresponds to number of rounds", ^{
-    [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
-    NSInteger numberSections = [inspectableTipsListViewController numberOfSectionsInTableView:nil];
-    expect(numberSections).to.equal(1);
-  });
-  
-  it(@"header for table view section correponds to the round number", ^{
-    [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
-    NSString *firstSectionTitle = [inspectableTipsListViewController tableView:nil titleForHeaderInSection:0];
-    expect(firstSectionTitle).to.equal(@"Round 3");
+  describe(@"table view data source", ^{
+    
+    before(^{
+      [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
+    });
+    
+    it(@"number of sections in table view corresponds to number of rounds", ^{
+      NSInteger numberSections = [inspectableTipsListViewController numberOfSectionsInTableView:nil];
+      expect(numberSections).to.equal(1);
+    });
+    
+    it(@"header for table view section correponds to the round number", ^{
+      NSString *firstSectionTitle = [inspectableTipsListViewController tableView:nil titleForHeaderInSection:0];
+      expect(firstSectionTitle).to.equal(@"Round 3");
+    });
+    
   });
   
   after(^{
