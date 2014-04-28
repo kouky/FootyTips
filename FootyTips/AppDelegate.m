@@ -19,13 +19,15 @@
   // Configure TipsListViewController
   TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
   tipsListViewController.manager = [TipsListObjectConfiguration tipsListManager];
+  UINavigationController *tipsNavigationController = [[UINavigationController alloc] init];
+  [tipsNavigationController setViewControllers:@[tipsListViewController] animated:NO];
   
   //  ViewControllers for tab bar
-  NSArray *viewControllers = @[tipsListViewController];
+  NSArray *tabBarViewControllers = @[tipsNavigationController];
   
   //  Configure UiTabBarController
   self.tabBarController = [[UITabBarController alloc] init];
-  [self.tabBarController setViewControllers:viewControllers animated:NO];
+  [self.tabBarController setViewControllers:tabBarViewControllers animated:NO];
   
   //  Set root controller and make window key and visible
   [self.window setRootViewController:self.tabBarController];

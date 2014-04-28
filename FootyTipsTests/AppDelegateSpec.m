@@ -40,10 +40,18 @@ describe(@"AppDelegate", ^{
       expect(appDelegate.window.rootViewController).to.beIdenticalTo(appDelegate.tabBarController);
     });
     
-    it(@"contains a tips list view controller as the first item", ^{
-      expect([appDelegate.tabBarController.viewControllers firstObject]).to.beKindOf([TipsListViewController class]);
+    describe(@"first item", ^{
+
+      it(@"is a navigation controller", ^{
+        expect([appDelegate.tabBarController.viewControllers firstObject]).to.beKindOf([UINavigationController class]);
+      });
+      
+      it(@"is a navigation controller containing a tips list view controller", ^{
+        UINavigationController *navController = [appDelegate.tabBarController.viewControllers firstObject];
+        expect([navController topViewController]).to.beKindOf([TipsListViewController class]);
+      });
+      
     });
-    
   });
   
   after(^{
@@ -68,7 +76,8 @@ describe(@"AppDelegate tips list view controller", ^{
     [appDelegate application:nil didFinishLaunchingWithOptions: nil];
     [mockTipsListObjectConfiguration verify];
     
-    tipsListViewController = [appDelegate.tabBarController.viewControllers firstObject];
+    UINavigationController *navController = [appDelegate.tabBarController.viewControllers firstObject];
+    tipsListViewController = (TipsListViewController *)[navController topViewController];
     expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
   });
   
