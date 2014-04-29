@@ -14,6 +14,7 @@
 #import "InspectableTipsListViewController.h"
 #import "TipsListManager.h"
 #import "FootyFixture.h"
+#import "GameSummaryCell.h"
 #import <objc/runtime.h>
 
 static TipsListViewController *tipsListViewController;
@@ -143,6 +144,15 @@ describe(@"TipsListViewController", ^{
     it(@"nuber of rows in section", ^{
       NSInteger numberRows = [inspectableTipsListViewController tableView:nil numberOfRowsInSection:0];
       expect(numberRows).to.equal(1);
+    });
+    
+    it(@"cell properties represent game details from the round", ^{
+      NSIndexPath *firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+      UITableView *tableView = inspectableTipsListViewController.tableView;
+      GameSummaryCell *cell = (GameSummaryCell *)[inspectableTipsListViewController tableView:tableView cellForRowAtIndexPath:firstCellIndexPath];
+      [inspectableTipsListViewController tableView:tableView willDisplayCell:cell forRowAtIndexPath:firstCellIndexPath];
+      expect(cell.homeTeamLabel.text).to.equal([mockHomeTeam shortName]);
+      expect(cell.awayTeamLabel.text).to.equal([mockAwayTeam shortName]);
     });
     
   });

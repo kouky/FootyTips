@@ -9,6 +9,7 @@
 #import "TipsListViewController.h"
 #import "TipsListManager.h"
 #import "FootyFixture.h"
+#import "GameSummaryCell.h"
 
 @interface TipsListViewController ()
 
@@ -62,16 +63,26 @@
   return [[[[_footyFixture rounds] objectAtIndex:section] games] count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+  static NSString *cellIdentifier = @"gameSummaryCell";
   
-  // Configure the cell...
+  GameSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  if (!cell) {
+    [tableView registerNib:[UINib nibWithNibName:@"GameSummaryCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  }
   
   return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(GameSummaryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  Game *game = [[[[_footyFixture rounds] objectAtIndex:indexPath.section] games] objectAtIndex:indexPath.row];
+  
+  cell.homeTeamLabel.text = game.homeTeam.shortName;
+  cell.awayTeamLabel.text = game.awayTeam.shortName;
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

@@ -14,6 +14,10 @@
 		2717411D18FEA780001CF8AC /* TipsListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsListManager.m */; };
 		2717411E18FEA780001CF8AC /* TipsListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsListManager.m */; };
 		27743E6D190A397500447BD9 /* InspectableTipsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */; };
+		2785FB21190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
+		2785FB22190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
+		2785FB25190FBE5200A45404 /* GameSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785FB24190FBE5200A45404 /* GameSummaryCell.m */; };
+		2785FB26190FBE5200A45404 /* GameSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785FB24190FBE5200A45404 /* GameSummaryCell.m */; };
 		27A0E56E18E9245500347BA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E56D18E9245500347BA8 /* Foundation.framework */; };
 		27A0E57018E9245500347BA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E56F18E9245500347BA8 /* CoreGraphics.framework */; };
 		27A0E57218E9245500347BA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E57118E9245500347BA8 /* UIKit.framework */; };
@@ -71,6 +75,9 @@
 		2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListManagerDelegate.h; sourceTree = "<group>"; };
 		27743E6B190A397500447BD9 /* InspectableTipsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTipsListViewController.h; sourceTree = "<group>"; };
 		27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTipsListViewController.m; sourceTree = "<group>"; };
+		2785FB20190FBDE500A45404 /* GameSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameSummaryCell.xib; path = FootyTips/GameSummaryCell.xib; sourceTree = SOURCE_ROOT; };
+		2785FB23190FBE5200A45404 /* GameSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSummaryCell.h; path = FootyTipsTests/GameSummaryCell.h; sourceTree = SOURCE_ROOT; };
+		2785FB24190FBE5200A45404 /* GameSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameSummaryCell.m; path = FootyTipsTests/GameSummaryCell.m; sourceTree = SOURCE_ROOT; };
 		27A0E56A18E9245500347BA8 /* FootyTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootyTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0E56D18E9245500347BA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27A0E56F18E9245500347BA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,6 +160,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		2785FB27190FC7EE00A45404 /* GameSummaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				2785FB20190FBDE500A45404 /* GameSummaryCell.xib */,
+				2785FB23190FBE5200A45404 /* GameSummaryCell.h */,
+				2785FB24190FBE5200A45404 /* GameSummaryCell.m */,
+			);
+			name = GameSummaryCell;
+			sourceTree = "<group>";
+		};
 		27A0E56118E9245500347BA8 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +212,7 @@
 				27AD596F18EA642600D54C65 /* FootyCommunicator.h */,
 				27AD597018EA642600D54C65 /* FootyCommunicator.m */,
 				27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */,
+				2785FB27190FC7EE00A45404 /* GameSummaryCell */,
 				27B62C0A19022705002089B6 /* TipsList */,
 				27C9821F18F8C4F900E4D493 /* Models */,
 				27A0E57F18E9245500347BA8 /* Images.xcassets */,
@@ -361,6 +379,7 @@
 			files = (
 				27A0E57818E9245500347BA8 /* InfoPlist.strings in Resources */,
 				27A0E58018E9245500347BA8 /* Images.xcassets in Resources */,
+				2785FB21190FBDE500A45404 /* GameSummaryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2785FB22190FBDE500A45404 /* GameSummaryCell.xib in Resources */,
 				27A0E59118E9245500347BA8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +472,7 @@
 				27A0E57A18E9245500347BA8 /* main.m in Sources */,
 				27CA38AB18FCAC8400F4A0BE /* FootyFixture.m in Sources */,
 				27B62C10190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */,
+				2785FB25190FBE5200A45404 /* GameSummaryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +490,7 @@
 				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,
 				27C9821E18F8C4D300E4D493 /* GameSpec.m in Sources */,
 				27B62C0D1902279A002089B6 /* TipsListObjectConfigurationSpec.m in Sources */,
+				2785FB26190FBE5200A45404 /* GameSummaryCell.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				2717411A18FEA752001CF8AC /* TipsListManagerSpec.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
