@@ -19,6 +19,9 @@
 static TipsListViewController *tipsListViewController;
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static id mockTipsListManager;
+static id mockHomeTeam;
+static id mockAwayTeam;
+static id mockGame;
 static id mockFootyRound;
 static id mockFootyFixture;
 
@@ -30,8 +33,22 @@ describe(@"TipsListViewController", ^{
     tipsListViewController = [[TipsListViewController alloc] init];
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+
+    // Mock models
+    mockHomeTeam = [OCMockObject mockForClass:Team.class];
+    [[[mockHomeTeam stub] andReturn:@"HAW"] shortName];
+    
+    mockAwayTeam = [OCMockObject mockForClass:Team.class];
+    [[[mockAwayTeam stub] andReturn:@"ESS"] shortName];
+    
+    mockGame = [OCMockObject mockForClass:Game.class];
+    [[[mockGame stub] andReturn:mockHomeTeam] homeTeam];
+    [[[mockGame stub] andReturn:mockAwayTeam] awayTeam];
+    
     mockFootyRound = [OCMockObject mockForClass:FootyRound.class];
     [[[mockFootyRound stub] andReturn:@3] id];
+    [[[mockFootyRound stub] andReturn:@[mockGame]] games];
+    
     mockFootyFixture = [OCMockObject mockForClass:FootyFixture.class];
     [[[mockFootyFixture stub] andReturn:@[mockFootyRound]] rounds];
   });
@@ -123,9 +140,17 @@ describe(@"TipsListViewController", ^{
       expect(firstSectionTitle).to.equal(@"Round 3");
     });
     
+    it(@"nuber of rows in section", ^{
+      NSInteger numberRows = [inspectableTipsListViewController tableView:nil numberOfRowsInSection:0];
+      expect(numberRows).to.equal(1);
+    });
+    
   });
   
   after(^{
+    mockAwayTeam = nil;
+    mockHomeTeam = nil;
+    mockGame = nil;
     mockFootyRound = nil;
     mockFootyFixture = nil;
     mockTipsListManager = nil;
