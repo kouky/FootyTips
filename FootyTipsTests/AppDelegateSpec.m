@@ -41,7 +41,11 @@ describe(@"AppDelegate", ^{
     });
     
     describe(@"first item", ^{
-
+      
+      it(@"has it's title set to 'Tips'", ^{
+        expect([[appDelegate.tabBarController.viewControllers firstObject] title]).to.equal(@"Tips");
+      });
+      
       it(@"is a navigation controller", ^{
         expect([appDelegate.tabBarController.viewControllers firstObject]).to.beKindOf([UINavigationController class]);
       });

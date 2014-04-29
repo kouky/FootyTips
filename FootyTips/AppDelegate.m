@@ -20,6 +20,7 @@
   TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
   tipsListViewController.manager = [TipsListObjectConfiguration tipsListManager];
   UINavigationController *tipsNavigationController = [[UINavigationController alloc] init];
+  [tipsNavigationController setTitle:@"Tips"];
   [tipsNavigationController setViewControllers:@[tipsListViewController] animated:NO];
   
   //  ViewControllers for tab bar
