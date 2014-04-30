@@ -10,6 +10,7 @@
 #import "TipsListManager.h"
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
+#import "GameDetailsViewController.h"
 
 @interface TipsListViewController ()
 
@@ -88,6 +89,12 @@
 {
   FootyRound *roundForSection = _footyFixture.rounds[section];
   return [NSString stringWithFormat:@"Round %@", roundForSection.id];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  GameDetailsViewController *gameDetailsViewController = [[GameDetailsViewController alloc] init];
+  [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
 }
 
 # pragma mark TipsListManagerDelegate protocol methods

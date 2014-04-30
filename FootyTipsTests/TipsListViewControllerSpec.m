@@ -10,15 +10,18 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
+#import <objc/runtime.h>
 #import "TipsListViewController.h"
 #import "InspectableTipsListViewController.h"
 #import "TipsListManager.h"
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
-#import <objc/runtime.h>
+#import "GameDetailsViewController.h"
 
 static TipsListViewController *tipsListViewController;
 static InspectableTipsListViewController *inspectableTipsListViewController;
+static NSIndexPath *firstCellIndexPath;
+static UINavigationController *navController;
 static id mockTipsListManager;
 static id mockHomeTeam;
 static id mockAwayTeam;
@@ -33,7 +36,9 @@ describe(@"TipsListViewController", ^{
   before(^{
     tipsListViewController = [[TipsListViewController alloc] init];
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
+    navController = [[UINavigationController alloc] initWithRootViewController:inspectableTipsListViewController];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+    firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 
     // Mock models
     mockHomeTeam = [OCMockObject mockForClass:Team.class];
@@ -146,13 +151,18 @@ describe(@"TipsListViewController", ^{
       expect(numberRows).to.equal(1);
     });
     
-    it(@"cell properties represent game details from the round", ^{
+    it(@"cell properties represent game  details", ^{
       NSIndexPath *firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
       UITableView *tableView = inspectableTipsListViewController.tableView;
       GameSummaryCell *cell = (GameSummaryCell *)[inspectableTipsListViewController tableView:tableView cellForRowAtIndexPath:firstCellIndexPath];
       [inspectableTipsListViewController tableView:tableView willDisplayCell:cell forRowAtIndexPath:firstCellIndexPath];
       expect(cell.homeTeamLabel.text).to.equal([mockHomeTeam shortName]);
       expect(cell.awayTeamLabel.text).to.equal([mockAwayTeam shortName]);
+    });
+    
+    it(@"cell selection pushes a game details view controller", ^{
+      [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
+      expect(navController.topViewController).to.beKindOf(GameDetailsViewController.class);
     });
     
   });
@@ -164,8 +174,10 @@ describe(@"TipsListViewController", ^{
     mockFootyRound = nil;
     mockFootyFixture = nil;
     mockTipsListManager = nil;
+    firstCellIndexPath = nil;
     inspectableTipsListViewController = nil;
     tipsListViewController = nil;
+    navController = nil;
   });
   
 });
