@@ -79,7 +79,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GameSummaryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  Game *game = [[[[_footyFixture rounds] objectAtIndex:indexPath.section] games] objectAtIndex:indexPath.row];
+  Game *game = [self gameForRowAtIndexPath:indexPath];
   
   cell.homeTeamLabel.text = game.homeTeam.shortName;
   cell.awayTeamLabel.text = game.awayTeam.shortName;
@@ -94,6 +94,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   GameDetailsViewController *gameDetailsViewController = [[GameDetailsViewController alloc] init];
+  Game *game = [self gameForRowAtIndexPath:indexPath];
+  [gameDetailsViewController setGame:game];
   [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
 }
 
@@ -103,6 +105,13 @@
 {
   _footyFixture = fixture;
   [self.tableView reloadData];
+}
+
+# pragma mark Private
+
+- (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return [[[[_footyFixture rounds] objectAtIndex:indexPath.section] games] objectAtIndex:indexPath.row];
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Game;
+
 @interface GameDetailsViewController : UITableViewController
+
+@property (strong) Game *game;
 
 @end
