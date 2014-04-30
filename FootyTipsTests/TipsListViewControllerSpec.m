@@ -18,7 +18,6 @@
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
 
-static TipsListViewController *tipsListViewController;
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static NSIndexPath *firstCellIndexPath;
 static UINavigationController *navController;
@@ -34,7 +33,6 @@ SpecBegin(TipsListViewController)
 describe(@"TipsListViewController", ^{
   
   before(^{
-    tipsListViewController = [[TipsListViewController alloc] init];
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
     navController = [[UINavigationController alloc] initWithRootViewController:inspectableTipsListViewController];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
@@ -64,14 +62,14 @@ describe(@"TipsListViewController", ^{
   });
   
   it(@"has a manager property", ^{
-    objc_property_t managerProperty = class_getProperty(tipsListViewController.class, "manager");
+    objc_property_t managerProperty = class_getProperty(inspectableTipsListViewController.class, "manager");
     expect(managerProperty).notTo.equal(NULL);
   });
   
   describe(@"initialisation", ^{
 
     it(@"with init configures a plain table view style", ^{
-      expect(tipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
+      expect(inspectableTipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
     });
     
     it(@"with initWithStyle always configues a plain table view style", ^{
@@ -84,19 +82,19 @@ describe(@"TipsListViewController", ^{
   describe(@"setManager", ^{
     
     it(@"can accept nil as an argument", ^{
-      tipsListViewController.manager = nil;
-      expect(tipsListViewController.manager).to.beNil();
+      inspectableTipsListViewController.manager = nil;
+      expect(inspectableTipsListViewController.manager).to.beNil();
     });
     
     it(@"sets the manager property", ^{
       [[mockTipsListManager stub] setDelegate:[OCMArg any]];
-      tipsListViewController.manager = mockTipsListManager;
-      expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
+      inspectableTipsListViewController.manager = mockTipsListManager;
+      expect(inspectableTipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
     });
     
     it(@"sets the manager delegate to self", ^{
-      [[mockTipsListManager expect] setDelegate:tipsListViewController];
-      tipsListViewController.manager = mockTipsListManager;
+      [[mockTipsListManager expect] setDelegate:inspectableTipsListViewController];
+      inspectableTipsListViewController.manager = mockTipsListManager;
       [mockTipsListManager verify];
     });
     
@@ -107,8 +105,8 @@ describe(@"TipsListViewController", ^{
     it(@"requests the building of the footy fixture", ^{
       [[mockTipsListManager expect] buildFixture];
       [[mockTipsListManager stub] setDelegate:[OCMArg any]];
-      tipsListViewController.manager = mockTipsListManager;
-      [tipsListViewController viewDidLoad];
+      inspectableTipsListViewController.manager = mockTipsListManager;
+      [inspectableTipsListViewController viewDidLoad];
       [mockTipsListManager verify];
     });
     
@@ -122,9 +120,9 @@ describe(@"TipsListViewController", ^{
     });
     
     it(@"calls reload data on the table view", ^{
-      id mockTableView = [OCMockObject partialMockForObject:tipsListViewController.tableView];
+      id mockTableView = [OCMockObject partialMockForObject:inspectableTipsListViewController.tableView];
       [[mockTableView expect] reloadData];
-      [tipsListViewController didReceiveFixtureModel:[OCMArg any]];
+      [inspectableTipsListViewController didReceiveFixtureModel:[OCMArg any]];
       [mockTableView verify];
     });
 
@@ -176,7 +174,6 @@ describe(@"TipsListViewController", ^{
     mockTipsListManager = nil;
     firstCellIndexPath = nil;
     inspectableTipsListViewController = nil;
-    tipsListViewController = nil;
     navController = nil;
   });
   
