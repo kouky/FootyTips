@@ -10,7 +10,6 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
-#import <objc/runtime.h>
 #import "TipsListViewController.h"
 #import "InspectableTipsListViewController.h"
 #import "TipsListManager.h"
@@ -59,11 +58,6 @@ describe(@"TipsListViewController", ^{
   
   it(@"conforms to the TipsListManagerDelegate protocol", ^{
     expect(TipsListViewController.class).to.conformTo(@protocol(TipsListManagerDelegate));
-  });
-  
-  it(@"has a manager property", ^{
-    objc_property_t managerProperty = class_getProperty(inspectableTipsListViewController.class, "manager");
-    expect(managerProperty).notTo.equal(NULL);
   });
   
   describe(@"initialisation", ^{
