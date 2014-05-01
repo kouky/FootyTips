@@ -16,6 +16,7 @@
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
+#import "GameDetailsObjectConfiguration.h"
 
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static NSIndexPath *firstCellIndexPath;
@@ -151,13 +152,18 @@ describe(@"TipsListViewController", ^{
       expect(cell.awayTeamLabel.text).to.equal([mockAwayTeam shortName]);
     });
     
-    it(@"cell selection pushes a game details view controller", ^{
+    it(@"cell selection pushes a game details view controller for the selected game", ^{
       id mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
-      [[mockNavController expect] pushViewController:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return [obj class] == [GameDetailsViewController class];
-      }] animated:YES];
+      id mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
+      id mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
+      
+      [[[mockGameDetailsObjectConfiguration expect] andReturn:mockGameDetailsViewController] gameDetailsViewControllerForGame:mockGame];
+      
+      [[mockNavController expect] pushViewController:mockGameDetailsViewController animated:YES];
+      
       inspectableTipsListViewController.navigationController = mockNavController;
       [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
+      [mockGameDetailsObjectConfiguration verify];
       [mockNavController verify];
     });
     

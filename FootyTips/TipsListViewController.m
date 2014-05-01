@@ -11,6 +11,7 @@
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
+#import "GameDetailsObjectConfiguration.h";
 
 @interface TipsListViewController ()
 
@@ -93,8 +94,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  GameDetailsViewController *gameDetailsViewController = [[GameDetailsViewController alloc] init];
   Game *game = [self gameForRowAtIndexPath:indexPath];
+  GameDetailsViewController *gameDetailsViewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:game];
   [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
 }
 
