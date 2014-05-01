@@ -156,13 +156,6 @@ describe(@"TipsListViewController", ^{
       [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
       expect(navController.topViewController).to.beKindOf(GameDetailsViewController.class);
     });
-    
-    it(@"cell selection sets the game model on the details view controller", ^{
-      [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
-      GameDetailsViewController *gameDetailsViewController = (GameDetailsViewController *)[navController topViewController];
-      expect(gameDetailsViewController.game).to.beIdenticalTo(mockGame);
-    });
-    
   });
   
   after(^{

@@ -95,7 +95,6 @@
 {
   GameDetailsViewController *gameDetailsViewController = [[GameDetailsViewController alloc] init];
   Game *game = [self gameForRowAtIndexPath:indexPath];
-  [gameDetailsViewController setGame:game];
   [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
 }
 
