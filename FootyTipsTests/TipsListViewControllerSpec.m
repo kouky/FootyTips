@@ -20,8 +20,10 @@
 
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static NSIndexPath *firstCellIndexPath;
-static UINavigationController *navController;
 static id mockTipsListManager;
+static id mockNavController;
+static id mockGameDetailsViewController;
+static id mockGameDetailsObjectConfiguration;
 static id mockHomeTeam;
 static id mockAwayTeam;
 static id mockGame;
@@ -36,6 +38,10 @@ describe(@"TipsListViewController", ^{
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
     firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
+    mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
+    mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
+    inspectableTipsListViewController.navigationController = mockNavController;
 
     // Mock models
     mockHomeTeam = [OCMockObject mockForClass:Team.class];
@@ -144,7 +150,6 @@ describe(@"TipsListViewController", ^{
     });
     
     it(@"cell properties represent game  details", ^{
-      NSIndexPath *firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
       UITableView *tableView = inspectableTipsListViewController.tableView;
       GameSummaryCell *cell = (GameSummaryCell *)[inspectableTipsListViewController tableView:tableView cellForRowAtIndexPath:firstCellIndexPath];
       [inspectableTipsListViewController tableView:tableView willDisplayCell:cell forRowAtIndexPath:firstCellIndexPath];
@@ -153,15 +158,9 @@ describe(@"TipsListViewController", ^{
     });
     
     it(@"cell selection pushes a game details view controller for the selected game", ^{
-      id mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
-      id mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
-      id mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
-      
       [[[mockGameDetailsObjectConfiguration expect] andReturn:mockGameDetailsViewController] gameDetailsViewControllerForGame:mockGame];
-      
       [[mockNavController expect] pushViewController:mockGameDetailsViewController animated:YES];
       
-      inspectableTipsListViewController.navigationController = mockNavController;
       [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
       [mockGameDetailsObjectConfiguration verify];
       [mockNavController verify];
@@ -175,6 +174,9 @@ describe(@"TipsListViewController", ^{
     mockGame = nil;
     mockFootyRound = nil;
     mockFootyFixture = nil;
+    mockNavController = nil;
+    mockGameDetailsViewController = nil;
+    mockGameDetailsObjectConfiguration = nil;
     mockTipsListManager = nil;
     firstCellIndexPath = nil;
     inspectableTipsListViewController = nil;
