@@ -20,4 +20,14 @@
   _footyFixture = footyFixture;
 }
 
+- (id)navigationController
+{
+  return _navigationController;
+}
+
+- (void)setNavigationController:(id)navigationController
+{
+  _navigationController = navigationController;
+}
+
 @end

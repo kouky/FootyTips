@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "TipsListViewController.h"
 
-@interface InspectableTipsListViewController : TipsListViewController
+@interface InspectableTipsListViewController : TipsListViewController {
+  id _navigationController;
+}
 
 - (FootyFixture *)footyFixture;
 - (void)setFootyFixture:(FootyFixture *)footyFixture;
+- (id)navigationController;
+- (void)setNavigationController:(id)navigationController;
 
 @end

@@ -33,7 +33,6 @@ describe(@"TipsListViewController", ^{
   
   before(^{
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
-    navController = [[UINavigationController alloc] initWithRootViewController:inspectableTipsListViewController];
     mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
     firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 
@@ -153,9 +152,15 @@ describe(@"TipsListViewController", ^{
     });
     
     it(@"cell selection pushes a game details view controller", ^{
+      id mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
+      [[mockNavController expect] pushViewController:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return [obj class] == [GameDetailsViewController class];
+      }] animated:YES];
+      inspectableTipsListViewController.navigationController = mockNavController;
       [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
-      expect(navController.topViewController).to.beKindOf(GameDetailsViewController.class);
+      [mockNavController verify];
     });
+    
   });
   
   after(^{
@@ -167,7 +172,6 @@ describe(@"TipsListViewController", ^{
     mockTipsListManager = nil;
     firstCellIndexPath = nil;
     inspectableTipsListViewController = nil;
-    navController = nil;
   });
   
 });
