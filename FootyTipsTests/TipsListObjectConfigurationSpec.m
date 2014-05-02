@@ -19,16 +19,19 @@ SpecBegin(TipsListObjectConfiguration)
 
 describe(@"TipsListObjectConfiguration", ^{
   
-  it(@"returns a TipsListManager", ^{
-    expect([TipsListObjectConfiguration tipsListManager]).to.beKindOf(TipsListManager.class);
-  });
-  
-  it(@"returns a correctly configured TipsListManager", ^{
-    TipsListManager *manager = [TipsListObjectConfiguration tipsListManager];
-    expect(manager.communicator).to.beKindOf(FootyCommunicator.class);
-    expect(manager.communicator.delegate).to.beIdenticalTo(manager);
-  });
+  describe(@"tipsListManager class method", ^{
     
+    it(@"returns a TipsListManager", ^{
+      expect([TipsListObjectConfiguration tipsListManager]).to.beKindOf(TipsListManager.class);
+    });
+    
+    it(@"returns a correctly configured TipsListManager", ^{
+      TipsListManager *manager = [TipsListObjectConfiguration tipsListManager];
+      expect(manager.communicator).to.beKindOf(FootyCommunicator.class);
+      expect(manager.communicator.delegate).to.beIdenticalTo(manager);
+    });
+
+  });
 });
 
 SpecEnd
