@@ -13,7 +13,9 @@
 
 + (GameDetailsViewController *)gameDetailsViewControllerForGame:(Game *)game
 {
-  return [[GameDetailsViewController alloc] init];
+  GameDetailsViewController *viewController = [[GameDetailsViewController alloc] init];
+  [viewController setGame:game];
+  return viewController;
 }
 
 @end
