@@ -13,6 +13,7 @@
 		2717411A18FEA752001CF8AC /* TipsListManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411918FEA752001CF8AC /* TipsListManagerSpec.m */; };
 		2717411D18FEA780001CF8AC /* TipsListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsListManager.m */; };
 		2717411E18FEA780001CF8AC /* TipsListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsListManager.m */; };
+		275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */; };
 		27743E6D190A397500447BD9 /* InspectableTipsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */; };
 		2785FB21190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
 		2785FB22190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
@@ -79,6 +80,7 @@
 		2717411B18FEA780001CF8AC /* TipsListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListManager.h; sourceTree = "<group>"; };
 		2717411C18FEA780001CF8AC /* TipsListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsListManager.m; sourceTree = "<group>"; };
 		2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListManagerDelegate.h; sourceTree = "<group>"; };
+		275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailsViewControllerSpec.m; sourceTree = "<group>"; };
 		27743E6B190A397500447BD9 /* InspectableTipsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTipsListViewController.h; sourceTree = "<group>"; };
 		27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTipsListViewController.m; sourceTree = "<group>"; };
 		2785FB20190FBDE500A45404 /* GameSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameSummaryCell.xib; path = FootyTips/GameSummaryCell.xib; sourceTree = SOURCE_ROOT; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				27AFE73E191381FC00E1EA38 /* GameDetailsObjectConfigurationSpec.m */,
+				275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */,
 			);
 			name = GameDetails;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
 				2717411E18FEA780001CF8AC /* TipsListManager.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
+				275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */,
 				27CA38B418FCCBB300F4A0BE /* FootyRoundSpec.m in Sources */,
 				27743E6D190A397500447BD9 /* InspectableTipsListViewController.m in Sources */,
 				2703C4C118FA9FC300EB6D8E /* Team.m in Sources */,

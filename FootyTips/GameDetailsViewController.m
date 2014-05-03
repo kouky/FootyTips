@@ -7,6 +7,7 @@
 //
 
 #import "GameDetailsViewController.h"
+#import "Game.h"
 
 @interface GameDetailsViewController ()
 
@@ -32,6 +33,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [self setTitle:[NSString stringWithFormat:@"%@ vs %@", self.game.homeTeam.shortName, self.game.awayTeam.shortName]];
+  [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
