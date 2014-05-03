@@ -9,12 +9,9 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
-#import <OCMock/OCMock.h>
 #import "GameDetailsObjectConfiguration.h"
 #import "GameDetailsViewController.h"
-#import "Game.h"
-
-static id mockGameModel;
+#import "MockModels.h"
 
 SpecBegin(GameDetailsObjectConfiguration)
 
@@ -23,22 +20,22 @@ describe(@"GameDetailsObjectConfiguration", ^{
   describe(@"gameDetailsViewControllerForGame class method", ^{
     
     before(^{
-      mockGameModel = [OCMockObject mockForClass:Game.class];
+      [MockModels enumerate];
     });
     
     it(@"returns a game details view controller", ^{
-      id viewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:mockGameModel];
+      id viewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:mockGame];
       expect(viewController).to.beKindOf(GameDetailsViewController.class);
     });
     
     it(@"returns a game details view controller with the game property set", ^{
       
-      GameDetailsViewController *viewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:mockGameModel];
-      expect(viewController.game).to.beIdenticalTo(mockGameModel);
+      GameDetailsViewController *viewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:mockGame];
+      expect(viewController.game).to.beIdenticalTo(mockGame);
     });
     
     after(^{
-      mockGameModel = nil;
+      [MockModels clear];
     });
     
   });

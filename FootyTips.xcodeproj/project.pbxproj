@@ -52,6 +52,7 @@
 		27CA38B418FCCBB300F4A0BE /* FootyRoundSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38B318FCCBB300F4A0BE /* FootyRoundSpec.m */; };
 		27CA38B718FCCBDA00F4A0BE /* FootyRound.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38B618FCCBDA00F4A0BE /* FootyRound.m */; };
 		27CA38B818FCCBDA00F4A0BE /* FootyRound.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA38B618FCCBDA00F4A0BE /* FootyRound.m */; };
+		27F11CB31914AE4D0045B4FE /* MockModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F11CB21914AE4D0045B4FE /* MockModels.m */; };
 		27F17ABA19126B9500D1268A /* GameDetailsObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F17AB919126B9500D1268A /* GameDetailsObjectConfiguration.m */; };
 		27F17ABB19126B9500D1268A /* GameDetailsObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F17AB919126B9500D1268A /* GameDetailsObjectConfiguration.m */; };
 		27FED3851910FF6C00DA7618 /* GameDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FED3841910FF6C00DA7618 /* GameDetailsViewController.m */; };
@@ -123,6 +124,8 @@
 		27CA38B518FCCBDA00F4A0BE /* FootyRound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootyRound.h; sourceTree = "<group>"; };
 		27CA38B618FCCBDA00F4A0BE /* FootyRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootyRound.m; sourceTree = "<group>"; };
 		27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootyCommunicatorDelegate.h; sourceTree = "<group>"; };
+		27F11CB11914AE4D0045B4FE /* MockModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockModels.h; sourceTree = "<group>"; };
+		27F11CB21914AE4D0045B4FE /* MockModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockModels.m; sourceTree = "<group>"; };
 		27F17AB819126B9500D1268A /* GameDetailsObjectConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDetailsObjectConfiguration.h; sourceTree = "<group>"; };
 		27F17AB919126B9500D1268A /* GameDetailsObjectConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailsObjectConfiguration.m; sourceTree = "<group>"; };
 		27FED3831910FF6C00DA7618 /* GameDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDetailsViewController.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */,
 				27743E6B190A397500447BD9 /* InspectableTipsListViewController.h */,
 				27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */,
+				27F11CB11914AE4D0045B4FE /* MockModels.h */,
+				27F11CB21914AE4D0045B4FE /* MockModels.m */,
 				27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */,
 				27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */,
 				27A0E58E18E9245500347BA8 /* FootyTipsTests-Info.plist */,
@@ -536,6 +541,7 @@
 				27A0E59318E9245500347BA8 /* AppDelegateSpec.m in Sources */,
 				27F17ABB19126B9500D1268A /* GameDetailsObjectConfiguration.m in Sources */,
 				2703C4B918FA9F6700EB6D8E /* TeamSpec.m in Sources */,
+				27F11CB31914AE4D0045B4FE /* MockModels.m in Sources */,
 				27CA38AC18FCAC8400F4A0BE /* FootyFixture.m in Sources */,
 				27B62C11190227B5002089B6 /* TipsListObjectConfiguration.m in Sources */,
 			);

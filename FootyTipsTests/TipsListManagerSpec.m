@@ -12,7 +12,7 @@
 #import <OCMock/OCMock.h>
 #import "TipsListManager.h"
 #import "FootyCommunicator.h"
-#import "FootyFixture.h"
+#import "MockModels.h"
 
 static TipsListManager *manager;
 static id mockDelegate;
@@ -30,6 +30,7 @@ describe(@"TipsListManager", ^{
     mockMTLJSONAdapter = [OCMockObject mockForClass:MTLJSONAdapter.class];
     underlyingError = [NSError errorWithDomain:@"Test domain" code:0 userInfo:nil];
     fixtureJSONDictionary = @{@"season": @2014};
+    [MockModels enumerate];
   });
   
   it(@"conforms to the FootyCommunicatorDelegate protocol", ^{
@@ -70,12 +71,11 @@ describe(@"TipsListManager", ^{
   
   it(@"on succcesul receipt of fixture dictionary a fixture model is passed to the delegate", ^{
     underlyingError = nil;
-    id mockFixtureModel = [OCMockObject mockForClass:FootyFixture.class];
-    [[[mockMTLJSONAdapter stub] andReturn:mockFixtureModel] modelOfClass:FootyFixture.class
+    [[[mockMTLJSONAdapter stub] andReturn:mockFootyFixture] modelOfClass:FootyFixture.class
                                                       fromJSONDictionary:fixtureJSONDictionary
                                                                    error:[OCMArg setTo:underlyingError]];
     manager.delegate = mockDelegate;
-    [[mockDelegate expect] didReceiveFixtureModel:mockFixtureModel];
+    [[mockDelegate expect] didReceiveFixtureModel:mockFootyFixture];
     [manager didReceiveFixtureDictionary:fixtureJSONDictionary];
     [mockDelegate verify];
   });
@@ -96,6 +96,7 @@ describe(@"TipsListManager", ^{
   });
   
   after(^{
+    [MockModels clear];
     fixtureJSONDictionary = nil;
     underlyingError = nil;
     mockMTLJSONAdapter = nil;

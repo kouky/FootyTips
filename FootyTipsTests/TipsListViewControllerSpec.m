@@ -9,11 +9,10 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
-#import <OCMock/OCMock.h>
+#import "MockModels.h"
 #import "TipsListViewController.h"
 #import "InspectableTipsListViewController.h"
 #import "TipsListManager.h"
-#import "FootyFixture.h"
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
 #import "GameDetailsObjectConfiguration.h"
@@ -24,11 +23,6 @@ static id mockTipsListManager;
 static id mockNavController;
 static id mockGameDetailsViewController;
 static id mockGameDetailsObjectConfiguration;
-static id mockHomeTeam;
-static id mockAwayTeam;
-static id mockGame;
-static id mockFootyRound;
-static id mockFootyFixture;
 
 SpecBegin(TipsListViewController)
 
@@ -42,24 +36,7 @@ describe(@"TipsListViewController", ^{
     mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
     mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
     inspectableTipsListViewController.navigationController = mockNavController;
-
-    // Mock models
-    mockHomeTeam = [OCMockObject mockForClass:Team.class];
-    [[[mockHomeTeam stub] andReturn:@"HAW"] shortName];
-    
-    mockAwayTeam = [OCMockObject mockForClass:Team.class];
-    [[[mockAwayTeam stub] andReturn:@"ESS"] shortName];
-    
-    mockGame = [OCMockObject mockForClass:Game.class];
-    [[[mockGame stub] andReturn:mockHomeTeam] homeTeam];
-    [[[mockGame stub] andReturn:mockAwayTeam] awayTeam];
-    
-    mockFootyRound = [OCMockObject mockForClass:FootyRound.class];
-    [[[mockFootyRound stub] andReturn:@3] id];
-    [[[mockFootyRound stub] andReturn:@[mockGame]] games];
-    
-    mockFootyFixture = [OCMockObject mockForClass:FootyFixture.class];
-    [[[mockFootyFixture stub] andReturn:@[mockFootyRound]] rounds];
+    [MockModels enumerate];
   });
   
   it(@"conforms to the TipsListManagerDelegate protocol", ^{
@@ -169,11 +146,7 @@ describe(@"TipsListViewController", ^{
   });
   
   after(^{
-    mockAwayTeam = nil;
-    mockHomeTeam = nil;
-    mockGame = nil;
-    mockFootyRound = nil;
-    mockFootyFixture = nil;
+    [MockModels clear];
     mockNavController = nil;
     mockGameDetailsViewController = nil;
     mockGameDetailsObjectConfiguration = nil;
