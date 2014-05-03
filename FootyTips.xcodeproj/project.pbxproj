@@ -224,9 +224,7 @@
 			children = (
 				27A0E57C18E9245500347BA8 /* AppDelegate.h */,
 				27A0E57D18E9245500347BA8 /* AppDelegate.m */,
-				27AD596F18EA642600D54C65 /* FootyCommunicator.h */,
-				27AD597018EA642600D54C65 /* FootyCommunicator.m */,
-				27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */,
+				27F11CB41914C99A0045B4FE /* FootyCommunicator */,
 				27FED3871910FF7500DA7618 /* GameDetails */,
 				2785FB27190FC7EE00A45404 /* GameSummaryCell */,
 				27B62C0A19022705002089B6 /* TipsList */,
@@ -324,6 +322,16 @@
 				2703C4BF18FA9FC300EB6D8E /* Team.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		27F11CB41914C99A0045B4FE /* FootyCommunicator */ = {
+			isa = PBXGroup;
+			children = (
+				27AD596F18EA642600D54C65 /* FootyCommunicator.h */,
+				27AD597018EA642600D54C65 /* FootyCommunicator.m */,
+				27CB8BEA18EE9EB400D1B903 /* FootyCommunicatorDelegate.h */,
+			);
+			name = FootyCommunicator;
 			sourceTree = "<group>";
 		};
 		27FED3871910FF7500DA7618 /* GameDetails */ = {
