@@ -24,6 +24,19 @@ describe(@"GameDetailsViewController", ^{
     viewController.game = mockGame;
   });
   
+  describe(@"initialisation", ^{
+    
+    it(@"with init configures a plain table view style", ^{
+      expect(viewController.tableView.style).to.equal(UITableViewStylePlain);
+    });
+    
+    it(@"with initWithStyle always configues a plain table view style", ^{
+      GameDetailsViewController *gameVC = [[GameDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+      expect(gameVC.tableView.style).to.equal(UITableViewStylePlain);
+    });
+    
+  });
+
   it(@"sets the game title on view will appear", ^{
     [viewController viewWillAppear:NO];
     expect(viewController.title).to.equal(@"HAW vs ESS");
