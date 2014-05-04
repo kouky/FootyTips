@@ -12,6 +12,7 @@ static BOOL didFinishLaunchingWithOptionsReturn;
 static id mockTipsListObjectConfiguration;
 static id mockTipsListManager;
 static TipsListViewController *tipsListViewController;
+static id viewController;
 
 SpecBegin(AppDelegate)
 
@@ -55,6 +56,26 @@ describe(@"AppDelegate", ^{
         expect([navController topViewController]).to.beKindOf([TipsListViewController class]);
       });
       
+    });
+    
+    describe(@"second item", ^{
+      
+      before(^{
+        viewController = appDelegate.tabBarController.viewControllers[1];
+      });
+      
+      it(@"is a navigation controller", ^{
+        expect(viewController).to.beKindOf(UINavigationController.class);
+      });
+      
+      it(@"has it's title set to 'Ladder'", ^{
+        expect([viewController title]).to.equal(@"Ladder");
+      });
+
+      after(^{
+          viewController = nil;
+      });
+
     });
   });
   

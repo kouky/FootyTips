@@ -16,15 +16,19 @@
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
-  // Configure TipsListViewController
+  // Configure Tips
   TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
   tipsListViewController.manager = [TipsListObjectConfiguration tipsListManager];
   UINavigationController *tipsNavigationController = [[UINavigationController alloc] init];
   [tipsNavigationController setTitle:@"Tips"];
   [tipsNavigationController setViewControllers:@[tipsListViewController] animated:NO];
   
+  // Configure Ladder
+  UINavigationController *ladderNavigationConroller = [[UINavigationController alloc] init];
+  [ladderNavigationConroller setTitle:@"Ladder"];
+  
   //  ViewControllers for tab bar
-  NSArray *tabBarViewControllers = @[tipsNavigationController];
+  NSArray *tabBarViewControllers = @[tipsNavigationController, ladderNavigationConroller];
   
   //  Configure UiTabBarController
   self.tabBarController = [[UITabBarController alloc] init];
