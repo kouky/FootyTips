@@ -43,17 +43,25 @@ describe(@"AppDelegate", ^{
     
     describe(@"first item", ^{
       
-      it(@"has it's title set to 'Tips'", ^{
-        expect([[appDelegate.tabBarController.viewControllers firstObject] title]).to.equal(@"Tips");
+      before(^{
+        viewController = appDelegate.tabBarController.viewControllers[0];
       });
       
       it(@"is a navigation controller", ^{
-        expect([appDelegate.tabBarController.viewControllers firstObject]).to.beKindOf([UINavigationController class]);
+        expect(viewController).to.beKindOf([UINavigationController class]);
+      });
+
+      it(@"has it's title set to 'Tips'", ^{
+        expect([viewController title]).to.equal(@"Tips");
+      });
+
+      it(@"is a navigation controller containing a tips list view controller", ^{
+        UINavigationController *navController = viewController;
+        expect([navController topViewController]).to.beKindOf([TipsListViewController class]);
       });
       
-      it(@"is a navigation controller containing a tips list view controller", ^{
-        UINavigationController *navController = [appDelegate.tabBarController.viewControllers firstObject];
-        expect([navController topViewController]).to.beKindOf([TipsListViewController class]);
+      after(^{
+        viewController = nil;
       });
       
     });
