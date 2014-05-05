@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TipsListManagerDelegate.h"
 
-@class TipsListManager;
+@class TipsManager;
 @class FootyFixture;
 
 @interface TipsListViewController : UITableViewController <TipsListManagerDelegate> {
@@ -18,6 +18,6 @@
   FootyFixture *_footyFixture;
 }
 
-@property (nonatomic, strong) TipsListManager *manager;
+@property (nonatomic, strong) TipsManager *manager;
 
 @end

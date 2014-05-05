@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class TipsListManager;
+@class TipsManager;
 
 @interface TipsListObjectConfiguration : NSObject
 
-+ (TipsListManager *)tipsListManager;
++ (TipsManager *)tipsManager;
 
 @end

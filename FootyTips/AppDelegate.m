@@ -18,7 +18,7 @@
   
   // Configure Tips
   TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
-  tipsListViewController.manager = [TipsListObjectConfiguration tipsListManager];
+  tipsListViewController.manager = [TipsListObjectConfiguration tipsManager];
   UINavigationController *tipsNavigationController = [[UINavigationController alloc] init];
   [tipsNavigationController setTitle:@"Tips"];
   [tipsNavigationController setViewControllers:@[tipsListViewController] animated:NO];

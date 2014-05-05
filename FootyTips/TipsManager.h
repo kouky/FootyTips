@@ -1,5 +1,5 @@
 //
-//  TipsListManager.h
+//  TipsManager.h
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 16/04/2014.
@@ -12,7 +12,7 @@
 
 @class FootyCommunicator;
 
-@interface TipsListManager : NSObject <FootyCommunicatorDelegate>
+@interface TipsManager : NSObject <FootyCommunicatorDelegate>
 
 @property (nonatomic, weak) id <TipsListManagerDelegate> delegate;
 @property (strong) FootyCommunicator *communicator;
@@ -21,9 +21,9 @@
 
 @end
 
-extern NSString * const TipsListManagerErrorDomain;
+extern NSString * const TipsManagerErrorDomain;
 
 enum {
-  TipsListManagerCommunicatorError,
-  TipsListManagerMantleError
+  TipsManagerCommunicatorError,
+  TipsManagerMantleError
 };

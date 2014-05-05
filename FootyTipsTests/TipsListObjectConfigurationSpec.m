@@ -10,7 +10,7 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import "TipsListObjectConfiguration.h"
-#import "TipsListManager.h"
+#import "TipsManager.h"
 #import "FootyCommunicator.h"
 
 static TipsListObjectConfiguration *configuration;
@@ -19,14 +19,14 @@ SpecBegin(TipsListObjectConfiguration)
 
 describe(@"TipsListObjectConfiguration", ^{
   
-  describe(@"tipsListManager class method", ^{
+  describe(@"tipsManager class method", ^{
     
-    it(@"returns a TipsListManager", ^{
-      expect([TipsListObjectConfiguration tipsListManager]).to.beKindOf(TipsListManager.class);
+    it(@"returns a TipsManager", ^{
+      expect([TipsListObjectConfiguration tipsManager]).to.beKindOf(TipsManager.class);
     });
     
-    it(@"returns a correctly configured TipsListManager", ^{
-      TipsListManager *manager = [TipsListObjectConfiguration tipsListManager];
+    it(@"returns a correctly configured TipsManager", ^{
+      TipsManager *manager = [TipsListObjectConfiguration tipsManager];
       expect(manager.communicator).to.beKindOf(FootyCommunicator.class);
       expect(manager.communicator.delegate).to.beIdenticalTo(manager);
     });

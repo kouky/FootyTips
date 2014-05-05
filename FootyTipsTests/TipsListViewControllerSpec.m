@@ -12,14 +12,14 @@
 #import "MockModels.h"
 #import "TipsListViewController.h"
 #import "InspectableTipsListViewController.h"
-#import "TipsListManager.h"
+#import "TipsManager.h"
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
 #import "GameDetailsObjectConfiguration.h"
 
 static InspectableTipsListViewController *inspectableTipsListViewController;
 static NSIndexPath *firstCellIndexPath;
-static id mockTipsListManager;
+static id mockTipsManager;
 static id mockNavController;
 static id mockGameDetailsViewController;
 static id mockGameDetailsObjectConfiguration;
@@ -30,7 +30,7 @@ describe(@"TipsListViewController", ^{
   
   before(^{
     inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
-    mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+    mockTipsManager = [OCMockObject mockForClass:TipsManager.class];
     firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
     mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
@@ -64,15 +64,15 @@ describe(@"TipsListViewController", ^{
     });
     
     it(@"sets the manager property", ^{
-      [[mockTipsListManager stub] setDelegate:[OCMArg any]];
-      inspectableTipsListViewController.manager = mockTipsListManager;
-      expect(inspectableTipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
+      [[mockTipsManager stub] setDelegate:[OCMArg any]];
+      inspectableTipsListViewController.manager = mockTipsManager;
+      expect(inspectableTipsListViewController.manager).to.beIdenticalTo(mockTipsManager);
     });
     
     it(@"sets the manager delegate to self", ^{
-      [[mockTipsListManager expect] setDelegate:inspectableTipsListViewController];
-      inspectableTipsListViewController.manager = mockTipsListManager;
-      [mockTipsListManager verify];
+      [[mockTipsManager expect] setDelegate:inspectableTipsListViewController];
+      inspectableTipsListViewController.manager = mockTipsManager;
+      [mockTipsManager verify];
     });
     
   });
@@ -80,11 +80,11 @@ describe(@"TipsListViewController", ^{
   describe(@"viewDidLoad", ^{
     
     it(@"requests the building of the footy fixture", ^{
-      [[mockTipsListManager expect] buildFixture];
-      [[mockTipsListManager stub] setDelegate:[OCMArg any]];
-      inspectableTipsListViewController.manager = mockTipsListManager;
+      [[mockTipsManager expect] buildFixture];
+      [[mockTipsManager stub] setDelegate:[OCMArg any]];
+      inspectableTipsListViewController.manager = mockTipsManager;
       [inspectableTipsListViewController viewDidLoad];
-      [mockTipsListManager verify];
+      [mockTipsManager verify];
     });
     
   });
@@ -150,7 +150,7 @@ describe(@"TipsListViewController", ^{
     mockNavController = nil;
     mockGameDetailsViewController = nil;
     mockGameDetailsObjectConfiguration = nil;
-    mockTipsListManager = nil;
+    mockTipsManager = nil;
     firstCellIndexPath = nil;
     inspectableTipsListViewController = nil;
   });

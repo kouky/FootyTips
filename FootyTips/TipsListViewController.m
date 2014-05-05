@@ -7,7 +7,7 @@
 //
 
 #import "TipsListViewController.h"
-#import "TipsListManager.h"
+#import "TipsManager.h"
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
@@ -32,7 +32,7 @@
   return [self init];
 }
 
-- (void)setManager:(TipsListManager *)manager
+- (void)setManager:(TipsManager *)manager
 {
   _manager = manager;
   _manager.delegate = self;

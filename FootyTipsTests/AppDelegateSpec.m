@@ -5,12 +5,12 @@
 #import "AppDelegate.h"
 #import "TipsListViewController.h"
 #import "TipsListObjectConfiguration.h"
-#import "TipsListManager.h"
+#import "TipsManager.h"
 
 static AppDelegate *appDelegate;
 static BOOL didFinishLaunchingWithOptionsReturn;
 static id mockTipsListObjectConfiguration;
-static id mockTipsListManager;
+static id mockTipsManager;
 static TipsListViewController *tipsListViewController;
 static id viewController;
 
@@ -98,24 +98,24 @@ describe(@"AppDelegate tips list view controller", ^{
   before(^{
     appDelegate = [[AppDelegate alloc] init];
     mockTipsListObjectConfiguration = [OCMockObject mockForClass:TipsListObjectConfiguration.class];
-    mockTipsListManager = [OCMockObject mockForClass:TipsListManager.class];
+    mockTipsManager = [OCMockObject mockForClass:TipsManager.class];
   });
     
   it(@"has a properly configured manager property", ^{
-    [[mockTipsListManager stub] setDelegate:[OCMArg any]];
-    [[mockTipsListManager stub] buildFixture];
-    [[[mockTipsListObjectConfiguration expect] andReturn:mockTipsListManager] tipsListManager];
+    [[mockTipsManager stub] setDelegate:[OCMArg any]];
+    [[mockTipsManager stub] buildFixture];
+    [[[mockTipsListObjectConfiguration expect] andReturn:mockTipsManager] tipsManager];
     
     [appDelegate application:nil didFinishLaunchingWithOptions: nil];
     [mockTipsListObjectConfiguration verify];
     
     UINavigationController *navController = [appDelegate.tabBarController.viewControllers firstObject];
     tipsListViewController = (TipsListViewController *)[navController topViewController];
-    expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsListManager);
+    expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsManager);
   });
   
   after(^{
-    mockTipsListManager = nil;
+    mockTipsManager = nil;
     mockTipsListObjectConfiguration = nil;
     tipsListViewController = nil;
     appDelegate = nil;

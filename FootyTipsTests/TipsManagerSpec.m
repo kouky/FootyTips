@@ -1,5 +1,5 @@
 //
-//  TipsListManagerSpec.m
+//  TipsManagerSpec.m
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 16/04/2014.
@@ -10,22 +10,22 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
-#import "TipsListManager.h"
+#import "TipsManager.h"
 #import "FootyCommunicator.h"
 #import "MockModels.h"
 
-static TipsListManager *manager;
+static TipsManager *manager;
 static id mockDelegate;
 static id mockMTLJSONAdapter;
 static NSError *underlyingError;
 static NSDictionary *fixtureJSONDictionary;
 
-SpecBegin(TipsListManager)
+SpecBegin(TipsManager)
 
-describe(@"TipsListManager", ^{
+describe(@"TipsManager", ^{
   
   before(^{
-    manager = [[TipsListManager alloc] init];
+    manager = [[TipsManager alloc] init];
     mockDelegate = [OCMockObject mockForProtocol:@protocol(TipsListManagerDelegate)];
     mockMTLJSONAdapter = [OCMockObject mockForClass:MTLJSONAdapter.class];
     underlyingError = [NSError errorWithDomain:@"Test domain" code:0 userInfo:nil];
@@ -34,7 +34,7 @@ describe(@"TipsListManager", ^{
   });
   
   it(@"conforms to the FootyCommunicatorDelegate protocol", ^{
-    expect(TipsListManager.class).to.conformTo(@protocol(FootyCommunicatorDelegate));
+    expect(TipsManager.class).to.conformTo(@protocol(FootyCommunicatorDelegate));
   });
   
   it(@"non conforming object cannot be delegate", ^{
@@ -60,8 +60,8 @@ describe(@"TipsListManager", ^{
   it(@"unsuccessful fetching of the fixture passes an error to the delegate", ^{
     manager.delegate = mockDelegate;
     [[mockDelegate expect] buildingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(NSError *error) {
-      BOOL matchesExpectedError = [error.domain isEqual:TipsListManagerErrorDomain];
-      matchesExpectedError = matchesExpectedError && error.code == TipsListManagerCommunicatorError;
+      BOOL matchesExpectedError = [error.domain isEqual:TipsManagerErrorDomain];
+      matchesExpectedError = matchesExpectedError && error.code == TipsManagerCommunicatorError;
       matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:underlyingError];
       return matchesExpectedError;
     }]];
@@ -86,8 +86,8 @@ describe(@"TipsListManager", ^{
                                                       error:[OCMArg setTo:underlyingError]];
     manager.delegate = mockDelegate;
     [[mockDelegate expect] buildingFixtureDidFailWithError:[OCMArg checkWithBlock:^BOOL(NSError *error) {
-      BOOL matchesExpectedError = [error.domain isEqual:TipsListManagerErrorDomain];
-      matchesExpectedError = matchesExpectedError && error.code == TipsListManagerMantleError;
+      BOOL matchesExpectedError = [error.domain isEqual:TipsManagerErrorDomain];
+      matchesExpectedError = matchesExpectedError && error.code == TipsManagerMantleError;
       matchesExpectedError = matchesExpectedError && [error.userInfo[NSUnderlyingErrorKey] isEqual:underlyingError];
       return matchesExpectedError;
     }]];
