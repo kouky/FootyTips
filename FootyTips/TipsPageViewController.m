@@ -14,13 +14,19 @@
 
 @implementation TipsPageViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+// Designated initializer
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                  navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                options:nil];
+  return self;
+}
+
+// Previous designated initializer defers to init.
+- (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation options:(NSDictionary *)options
+{
+  return [self init];
 }
 
 - (void)viewDidLoad

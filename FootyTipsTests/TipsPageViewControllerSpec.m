@@ -11,12 +11,28 @@
 #import <Expecta/Expecta.h>
 #import "TipsPageViewController.h"
 
+static TipsPageViewController *viewController;
+
 SpecBegin(TipsPageViewController)
 
 describe(@"TipsPageViewController", ^{
   
+  before(^{
+    viewController = [[TipsPageViewController alloc] init];
+  });
+  
   it(@"conforms to the TipsManagerDelegate protocol", ^{
     expect(TipsPageViewController.class).to.conformTo(@protocol(TipsManagerDelegate));
+  });
+  
+  it(@"init configures a horizontal scrolling page controller", ^{
+    expect(viewController.navigationOrientation).to.equal(UIPageViewControllerNavigationOrientationHorizontal);
+    expect(viewController.transitionStyle).to.equal(UIPageViewControllerTransitionStyleScroll);
+    expect(viewController.spineLocation).to.equal(UIPageViewControllerSpineLocationNone);
+  });
+  
+  after(^{
+    viewController = nil;
   });
 
 });
