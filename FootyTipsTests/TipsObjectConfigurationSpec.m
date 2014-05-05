@@ -1,5 +1,5 @@
 //
-//  TipsListObjectConfigurationSpec.m
+//  TipsObjectConfigurationSpec.m
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 19/04/2014.
@@ -9,24 +9,24 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
-#import "TipsListObjectConfiguration.h"
+#import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 #import "FootyCommunicator.h"
 
-static TipsListObjectConfiguration *configuration;
+static TipsObjectConfiguration *configuration;
 
-SpecBegin(TipsListObjectConfiguration)
+SpecBegin(TipsObjectConfiguration)
 
-describe(@"TipsListObjectConfiguration", ^{
+describe(@"TipsObjectConfiguration", ^{
   
   describe(@"tipsManager class method", ^{
     
     it(@"returns a TipsManager", ^{
-      expect([TipsListObjectConfiguration tipsManager]).to.beKindOf(TipsManager.class);
+      expect([TipsObjectConfiguration tipsManager]).to.beKindOf(TipsManager.class);
     });
     
     it(@"returns a correctly configured TipsManager", ^{
-      TipsManager *manager = [TipsListObjectConfiguration tipsManager];
+      TipsManager *manager = [TipsObjectConfiguration tipsManager];
       expect(manager.communicator).to.beKindOf(FootyCommunicator.class);
       expect(manager.communicator.delegate).to.beIdenticalTo(manager);
     });

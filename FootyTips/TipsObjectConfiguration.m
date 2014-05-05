@@ -1,16 +1,16 @@
 //
-//  TipsListObjectConfiguration.m
+//  TipsObjectConfiguration.m
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 19/04/2014.
 //  Copyright (c) 2014 Michael Koukoullis. All rights reserved.
 //
 
-#import "TipsListObjectConfiguration.h"
+#import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 #import "FootyCommunicator.h"
 
-@implementation TipsListObjectConfiguration
+@implementation TipsObjectConfiguration
 
 + (TipsManager *)tipsManager
 {

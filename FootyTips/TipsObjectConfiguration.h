@@ -1,5 +1,5 @@
 //
-//  TipsListObjectConfiguration.h
+//  TipsObjectConfiguration.h
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 19/04/2014.
@@ -10,7 +10,7 @@
 
 @class TipsManager;
 
-@interface TipsListObjectConfiguration : NSObject
+@interface TipsObjectConfiguration : NSObject
 
 + (TipsManager *)tipsManager;
 

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TipsListViewController.h"
-#import "TipsListObjectConfiguration.h"
+#import "TipsObjectConfiguration.h"
 
 @implementation AppDelegate
 
@@ -18,7 +18,7 @@
   
   // Configure Tips
   TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
-  tipsListViewController.manager = [TipsListObjectConfiguration tipsManager];
+  tipsListViewController.manager = [TipsObjectConfiguration tipsManager];
   UINavigationController *tipsNavigationController = [[UINavigationController alloc] init];
   [tipsNavigationController setTitle:@"Tips"];
   [tipsNavigationController setViewControllers:@[tipsListViewController] animated:NO];
