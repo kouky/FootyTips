@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TipsListManagerDelegate.h"
+#import "TipsManagerDelegate.h"
 #import "FootyCommunicatorDelegate.h"
 
 @class FootyCommunicator;
 
 @interface TipsManager : NSObject <FootyCommunicatorDelegate>
 
-@property (nonatomic, weak) id <TipsListManagerDelegate> delegate;
+@property (nonatomic, weak) id <TipsManagerDelegate> delegate;
 @property (strong) FootyCommunicator *communicator;
 
 - (void)buildFixture;

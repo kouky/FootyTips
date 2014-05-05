@@ -39,8 +39,8 @@ describe(@"TipsListViewController", ^{
     [MockModels enumerate];
   });
   
-  it(@"conforms to the TipsListManagerDelegate protocol", ^{
-    expect(TipsListViewController.class).to.conformTo(@protocol(TipsListManagerDelegate));
+  it(@"conforms to the TipsManagerDelegate protocol", ^{
+    expect(TipsListViewController.class).to.conformTo(@protocol(TipsManagerDelegate));
   });
   
   describe(@"initialisation", ^{

@@ -12,9 +12,9 @@
 
 @implementation TipsManager
 
-- (void)setDelegate:(id<TipsListManagerDelegate>)delegate
+- (void)setDelegate:(id<TipsManagerDelegate>)delegate
 {
-  if (delegate && ![delegate conformsToProtocol:@protocol(TipsListManagerDelegate)]) {
+  if (delegate && ![delegate conformsToProtocol:@protocol(TipsManagerDelegate)]) {
     [[NSException exceptionWithName:NSInvalidArgumentException reason:@"Delegate object does not conform to protocol" userInfo:nil] raise];
   }
   _delegate = delegate;

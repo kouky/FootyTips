@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TipsListManagerDelegate.h"
+#import "TipsManagerDelegate.h"
 
 @class TipsManager;
 @class FootyFixture;
 
-@interface TipsListViewController : UITableViewController <TipsListManagerDelegate> {
+@interface TipsListViewController : UITableViewController <TipsManagerDelegate> {
 
 @protected
   FootyFixture *_footyFixture;

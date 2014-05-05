@@ -99,7 +99,7 @@
   [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
 }
 
-# pragma mark TipsListManagerDelegate protocol methods
+# pragma mark TipsManagerDelegate protocol methods
 
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture
 {

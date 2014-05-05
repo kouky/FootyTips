@@ -26,7 +26,7 @@ describe(@"TipsManager", ^{
   
   before(^{
     manager = [[TipsManager alloc] init];
-    mockDelegate = [OCMockObject mockForProtocol:@protocol(TipsListManagerDelegate)];
+    mockDelegate = [OCMockObject mockForProtocol:@protocol(TipsManagerDelegate)];
     mockMTLJSONAdapter = [OCMockObject mockForClass:MTLJSONAdapter.class];
     underlyingError = [NSError errorWithDomain:@"Test domain" code:0 userInfo:nil];
     fixtureJSONDictionary = @{@"season": @2014};
@@ -38,7 +38,7 @@ describe(@"TipsManager", ^{
   });
   
   it(@"non conforming object cannot be delegate", ^{
-    expect(^{manager.delegate = (id <TipsListManagerDelegate>)[NSNull null];}).to.raise(NSInvalidArgumentException);
+    expect(^{manager.delegate = (id <TipsManagerDelegate>)[NSNull null];}).to.raise(NSInvalidArgumentException);
   });
   
   it(@"conforming object can be delegate", ^{

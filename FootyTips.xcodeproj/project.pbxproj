@@ -82,7 +82,7 @@
 		2717411918FEA752001CF8AC /* TipsManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsManagerSpec.m; sourceTree = "<group>"; };
 		2717411B18FEA780001CF8AC /* TipsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsManager.h; sourceTree = "<group>"; };
 		2717411C18FEA780001CF8AC /* TipsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsManager.m; sourceTree = "<group>"; };
-		2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsListManagerDelegate.h; sourceTree = "<group>"; };
+		2717411F18FEAEE9001CF8AC /* TipsManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsManagerDelegate.h; sourceTree = "<group>"; };
 		275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailsViewControllerSpec.m; sourceTree = "<group>"; };
 		27743E6B190A397500447BD9 /* InspectableTipsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTipsListViewController.h; sourceTree = "<group>"; };
 		27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTipsListViewController.m; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 			children = (
 				2717411B18FEA780001CF8AC /* TipsManager.h */,
 				2717411C18FEA780001CF8AC /* TipsManager.m */,
-				2717411F18FEAEE9001CF8AC /* TipsListManagerDelegate.h */,
+				2717411F18FEAEE9001CF8AC /* TipsManagerDelegate.h */,
 				27B62C0E190227B5002089B6 /* TipsListObjectConfiguration.h */,
 				27B62C0F190227B5002089B6 /* TipsListObjectConfiguration.m */,
 				27AD596518EA423800D54C65 /* TipsListViewController.h */,

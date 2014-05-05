@@ -1,5 +1,5 @@
 //
-//  TipsListManagerDelegate.h
+//  TipsManagerDelegate.h
 //  FootyTips
 //
 //  Created by Michael Koukoullis on 16/04/2014.
@@ -10,7 +10,7 @@
 
 @class FootyFixture;
 
-@protocol TipsListManagerDelegate <NSObject>
+@protocol TipsManagerDelegate <NSObject>
 
 - (void)buildingFixtureDidFailWithError:(NSError *)error;
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture;
