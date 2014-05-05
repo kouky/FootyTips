@@ -15,6 +15,10 @@ SpecBegin(TipsPageViewController)
 
 describe(@"TipsPageViewController", ^{
   
+  it(@"conforms to the TipsManagerDelegate protocol", ^{
+    expect(TipsPageViewController.class).to.conformTo(@protocol(TipsManagerDelegate));
+  });
+
 });
 
 SpecEnd

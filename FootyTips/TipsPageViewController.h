@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TipsManagerDelegate.h"
 
-@interface TipsPageViewController : UIPageViewController
+@interface TipsPageViewController : UIPageViewController <TipsManagerDelegate>
 
 @end
