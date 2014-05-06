@@ -56,6 +56,18 @@ describe(@"TipsPageViewController", ^{
     
   });
   
+  describe(@"viewDidLoad", ^{
+    
+    it(@"requests the building of the footy fixture", ^{
+      [[mockTipsManager expect] buildFixture];
+      [[mockTipsManager stub] setDelegate:[OCMArg any]];
+      viewController.manager = mockTipsManager;
+      [viewController viewDidLoad];
+      [mockTipsManager verify];
+    });
+    
+  });
+  
   after(^{
     mockTipsManager = nil;
     viewController = nil;
