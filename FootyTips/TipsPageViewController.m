@@ -7,6 +7,7 @@
 //
 
 #import "TipsPageViewController.h"
+#import "TipsManager.h"
 
 @interface TipsPageViewController ()
 
@@ -27,6 +28,12 @@
 - (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation options:(NSDictionary *)options
 {
   return [self init];
+}
+
+- (void)setManager:(TipsManager *)manager
+{
+  _manager = manager;
+  manager.delegate = self;
 }
 
 - (void)viewDidLoad
