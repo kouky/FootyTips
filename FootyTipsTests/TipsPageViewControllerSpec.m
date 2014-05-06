@@ -22,7 +22,7 @@ describe(@"TipsPageViewController", ^{
   
   before(^{
     viewController = [[TipsPageViewController alloc] init];
-    mockTipsManager = [OCMockObject mockForClass:TipsManager.class];
+    mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
   });
   
   it(@"conforms to the TipsManagerDelegate protocol", ^{
@@ -43,7 +43,6 @@ describe(@"TipsPageViewController", ^{
     });
     
     it(@"sets the manager property", ^{
-      [[mockTipsManager stub] setDelegate:[OCMArg any]];
       viewController.manager = mockTipsManager;
       expect(viewController.manager).to.beIdenticalTo(mockTipsManager);
     });
@@ -60,7 +59,6 @@ describe(@"TipsPageViewController", ^{
     
     it(@"requests the building of the footy fixture", ^{
       [[mockTipsManager expect] buildFixture];
-      [[mockTipsManager stub] setDelegate:[OCMArg any]];
       viewController.manager = mockTipsManager;
       [viewController viewDidLoad];
       [mockTipsManager verify];
