@@ -55,15 +55,11 @@ describe(@"TipsPageViewController", ^{
     
   });
   
-  describe(@"viewDidLoad", ^{
-    
-    it(@"requests the building of the footy fixture", ^{
-      [[mockTipsManager expect] buildFixture];
-      viewController.manager = mockTipsManager;
-      [viewController viewDidLoad];
-      [mockTipsManager verify];
-    });
-    
+  it(@"viewDidLoad requests the building of the footy fixture", ^{
+    [[mockTipsManager expect] buildFixture];
+    viewController.manager = mockTipsManager;
+    [viewController viewDidLoad];
+    [mockTipsManager verify];
   });
   
   after(^{
