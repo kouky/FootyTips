@@ -11,7 +11,7 @@
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
 #import "GameDetailsViewController.h"
-#import "GameDetailsObjectConfiguration.h";
+#import "GameDetailsObjectConfiguration.h"
 
 @interface TipsListViewController ()
 
