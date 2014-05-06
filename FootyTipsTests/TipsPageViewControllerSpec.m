@@ -10,11 +10,9 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import "MockModels.h"
-#import "TipsPageViewController.h"
-#import "TipsManager.h"
 #import "InspectableTipsPageViewController.h"
+#import "TipsManager.h"
 
-static TipsPageViewController *viewController;
 static InspectableTipsPageViewController *inspectableViewController;
 static id mockTipsManager;
 
@@ -24,7 +22,6 @@ describe(@"TipsPageViewController", ^{
   
   before(^{
     inspectableViewController = [[InspectableTipsPageViewController alloc] init];
-    viewController = [[TipsPageViewController alloc] init];
     mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
     [MockModels enumerate];
   });
@@ -34,26 +31,26 @@ describe(@"TipsPageViewController", ^{
   });
   
   it(@"init configures a horizontal scrolling page controller", ^{
-    expect(viewController.navigationOrientation).to.equal(UIPageViewControllerNavigationOrientationHorizontal);
-    expect(viewController.transitionStyle).to.equal(UIPageViewControllerTransitionStyleScroll);
-    expect(viewController.spineLocation).to.equal(UIPageViewControllerSpineLocationNone);
+    expect(inspectableViewController.navigationOrientation).to.equal(UIPageViewControllerNavigationOrientationHorizontal);
+    expect(inspectableViewController.transitionStyle).to.equal(UIPageViewControllerTransitionStyleScroll);
+    expect(inspectableViewController.spineLocation).to.equal(UIPageViewControllerSpineLocationNone);
   });
   
   describe(@"setManager", ^{
     
     it(@"can accept nil as an argument", ^{
-      viewController.manager = nil;
-      expect(viewController.manager).to.beNil();
+      inspectableViewController.manager = nil;
+      expect(inspectableViewController.manager).to.beNil();
     });
     
     it(@"sets the manager property", ^{
-      viewController.manager = mockTipsManager;
-      expect(viewController.manager).to.beIdenticalTo(mockTipsManager);
+      inspectableViewController.manager = mockTipsManager;
+      expect(inspectableViewController.manager).to.beIdenticalTo(mockTipsManager);
     });
 
     it(@"sets the manager delegate to self", ^{
-      [[mockTipsManager expect] setDelegate:viewController];
-      viewController.manager = mockTipsManager;
+      [[mockTipsManager expect] setDelegate:inspectableViewController];
+      inspectableViewController.manager = mockTipsManager;
       [mockTipsManager verify];
     });
     
@@ -61,8 +58,8 @@ describe(@"TipsPageViewController", ^{
   
   it(@"viewDidLoad requests the building of the footy fixture", ^{
     [[mockTipsManager expect] buildFixture];
-    viewController.manager = mockTipsManager;
-    [viewController viewDidLoad];
+    inspectableViewController.manager = mockTipsManager;
+    [inspectableViewController viewDidLoad];
     [mockTipsManager verify];
   });
   
@@ -74,14 +71,12 @@ describe(@"TipsPageViewController", ^{
     });
     
     pending(@"calls reload data on the table views");
-    
   });
   
   after(^{
     [MockModels clear];
     mockTipsManager = nil;
     inspectableViewController = nil;
-    viewController = nil;
   });
 
 });
