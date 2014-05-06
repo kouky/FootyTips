@@ -10,8 +10,13 @@
 #import "TipsManagerDelegate.h"
 
 @class TipsManager;
+@class FootyFixture;
 
-@interface TipsPageViewController : UIPageViewController <TipsManagerDelegate>
+@interface TipsPageViewController : UIPageViewController <TipsManagerDelegate> {
+
+@protected
+  FootyFixture *_footyFixture;
+}
 
 @property (nonatomic, strong) TipsManager *manager;
 

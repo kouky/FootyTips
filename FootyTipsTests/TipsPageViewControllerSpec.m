@@ -9,11 +9,13 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
-#import <OCMock/OCMock.h>
+#import "MockModels.h"
 #import "TipsPageViewController.h"
 #import "TipsManager.h"
+#import "InspectableTipsPageViewController.h"
 
 static TipsPageViewController *viewController;
+static InspectableTipsPageViewController *inspectableViewController;
 static id mockTipsManager;
 
 SpecBegin(TipsPageViewController)
@@ -21,8 +23,10 @@ SpecBegin(TipsPageViewController)
 describe(@"TipsPageViewController", ^{
   
   before(^{
+    inspectableViewController = [[InspectableTipsPageViewController alloc] init];
     viewController = [[TipsPageViewController alloc] init];
     mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
+    [MockModels enumerate];
   });
   
   it(@"conforms to the TipsManagerDelegate protocol", ^{
@@ -62,8 +66,21 @@ describe(@"TipsPageViewController", ^{
     [mockTipsManager verify];
   });
   
+  describe(@"delegate method didReceiveFixtureModel", ^{
+    
+    it(@"sets the fixture ivar", ^{
+      [inspectableViewController didReceiveFixtureModel:mockFootyFixture];
+      expect([inspectableViewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
+    });
+    
+    pending(@"calls reload data on the table views");
+    
+  });
+  
   after(^{
+    [MockModels clear];
     mockTipsManager = nil;
+    inspectableViewController = nil;
     viewController = nil;
   });
 
