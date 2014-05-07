@@ -17,7 +17,7 @@
 #import "GameDetailsViewController.h"
 #import "GameDetailsObjectConfiguration.h"
 
-static InspectableTipsListViewController *inspectableTipsListViewController;
+static InspectableTipsListViewController *inspectableViewController;
 static NSIndexPath *firstCellIndexPath;
 static id mockTipsManager;
 static id mockNavController;
@@ -29,13 +29,13 @@ SpecBegin(TipsListViewController)
 describe(@"TipsListViewController", ^{
   
   before(^{
-    inspectableTipsListViewController = [[InspectableTipsListViewController alloc] init];
+    inspectableViewController = [[InspectableTipsListViewController alloc] init];
     mockTipsManager = [OCMockObject mockForClass:TipsManager.class];
     firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
     mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
     mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
-    inspectableTipsListViewController.navigationController = mockNavController;
+    inspectableViewController.navigationController = mockNavController;
     [MockModels enumerate];
   });
   
@@ -46,7 +46,7 @@ describe(@"TipsListViewController", ^{
   describe(@"initialisation", ^{
 
     it(@"with init configures a plain table view style", ^{
-      expect(inspectableTipsListViewController.tableView.style).to.equal(UITableViewStylePlain);
+      expect(inspectableViewController.tableView.style).to.equal(UITableViewStylePlain);
     });
     
     it(@"with initWithStyle always configues a plain table view style", ^{
@@ -59,19 +59,19 @@ describe(@"TipsListViewController", ^{
   describe(@"setManager", ^{
     
     it(@"can accept nil as an argument", ^{
-      inspectableTipsListViewController.manager = nil;
-      expect(inspectableTipsListViewController.manager).to.beNil();
+      inspectableViewController.manager = nil;
+      expect(inspectableViewController.manager).to.beNil();
     });
     
     it(@"sets the manager property", ^{
       [[mockTipsManager stub] setDelegate:[OCMArg any]];
-      inspectableTipsListViewController.manager = mockTipsManager;
-      expect(inspectableTipsListViewController.manager).to.beIdenticalTo(mockTipsManager);
+      inspectableViewController.manager = mockTipsManager;
+      expect(inspectableViewController.manager).to.beIdenticalTo(mockTipsManager);
     });
     
     it(@"sets the manager delegate to self", ^{
-      [[mockTipsManager expect] setDelegate:inspectableTipsListViewController];
-      inspectableTipsListViewController.manager = mockTipsManager;
+      [[mockTipsManager expect] setDelegate:inspectableViewController];
+      inspectableViewController.manager = mockTipsManager;
       [mockTipsManager verify];
     });
     
@@ -82,8 +82,8 @@ describe(@"TipsListViewController", ^{
     it(@"requests the building of the footy fixture", ^{
       [[mockTipsManager expect] buildFixture];
       [[mockTipsManager stub] setDelegate:[OCMArg any]];
-      inspectableTipsListViewController.manager = mockTipsManager;
-      [inspectableTipsListViewController viewDidLoad];
+      inspectableViewController.manager = mockTipsManager;
+      [inspectableViewController viewDidLoad];
       [mockTipsManager verify];
     });
     
@@ -92,14 +92,14 @@ describe(@"TipsListViewController", ^{
   describe(@"tips list manager delegate method didReceiveFixtureModel", ^{
     
     it(@"sets the fixture model", ^{
-      [inspectableTipsListViewController didReceiveFixtureModel:mockFootyFixture];
-      expect([inspectableTipsListViewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
+      [inspectableViewController didReceiveFixtureModel:mockFootyFixture];
+      expect([inspectableViewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
     });
     
     it(@"calls reload data on the table view", ^{
-      id mockTableView = [OCMockObject partialMockForObject:inspectableTipsListViewController.tableView];
+      id mockTableView = [OCMockObject partialMockForObject:inspectableViewController.tableView];
       [[mockTableView expect] reloadData];
-      [inspectableTipsListViewController didReceiveFixtureModel:[OCMArg any]];
+      [inspectableViewController didReceiveFixtureModel:[OCMArg any]];
       [mockTableView verify];
     });
 
@@ -108,28 +108,28 @@ describe(@"TipsListViewController", ^{
   describe(@"table view data source", ^{
     
     before(^{
-      [inspectableTipsListViewController setFootyFixture:mockFootyFixture];
+      [inspectableViewController setFootyFixture:mockFootyFixture];
     });
     
     it(@"number of sections in table view corresponds to number of rounds", ^{
-      NSInteger numberSections = [inspectableTipsListViewController numberOfSectionsInTableView:nil];
+      NSInteger numberSections = [inspectableViewController numberOfSectionsInTableView:nil];
       expect(numberSections).to.equal(1);
     });
     
     it(@"header for table view section correponds to the round number", ^{
-      NSString *firstSectionTitle = [inspectableTipsListViewController tableView:nil titleForHeaderInSection:0];
+      NSString *firstSectionTitle = [inspectableViewController tableView:nil titleForHeaderInSection:0];
       expect(firstSectionTitle).to.equal(@"Round 3");
     });
     
     it(@"nuber of rows in section", ^{
-      NSInteger numberRows = [inspectableTipsListViewController tableView:nil numberOfRowsInSection:0];
+      NSInteger numberRows = [inspectableViewController tableView:nil numberOfRowsInSection:0];
       expect(numberRows).to.equal(1);
     });
     
     it(@"cell properties represent game  details", ^{
-      UITableView *tableView = inspectableTipsListViewController.tableView;
-      GameSummaryCell *cell = (GameSummaryCell *)[inspectableTipsListViewController tableView:tableView cellForRowAtIndexPath:firstCellIndexPath];
-      [inspectableTipsListViewController tableView:tableView willDisplayCell:cell forRowAtIndexPath:firstCellIndexPath];
+      UITableView *tableView = inspectableViewController.tableView;
+      GameSummaryCell *cell = (GameSummaryCell *)[inspectableViewController tableView:tableView cellForRowAtIndexPath:firstCellIndexPath];
+      [inspectableViewController tableView:tableView willDisplayCell:cell forRowAtIndexPath:firstCellIndexPath];
       expect(cell.homeTeamLabel.text).to.equal([mockHomeTeam shortName]);
       expect(cell.awayTeamLabel.text).to.equal([mockAwayTeam shortName]);
     });
@@ -138,7 +138,7 @@ describe(@"TipsListViewController", ^{
       [[[mockGameDetailsObjectConfiguration expect] andReturn:mockGameDetailsViewController] gameDetailsViewControllerForGame:mockGame];
       [[mockNavController expect] pushViewController:mockGameDetailsViewController animated:YES];
       
-      [inspectableTipsListViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
+      [inspectableViewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
       [mockGameDetailsObjectConfiguration verify];
       [mockNavController verify];
     });
@@ -152,7 +152,7 @@ describe(@"TipsListViewController", ^{
     mockGameDetailsObjectConfiguration = nil;
     mockTipsManager = nil;
     firstCellIndexPath = nil;
-    inspectableTipsListViewController = nil;
+    inspectableViewController = nil;
   });
   
 });
