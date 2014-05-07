@@ -3,7 +3,7 @@
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
 #import "AppDelegate.h"
-#import "TipsListViewController.h"
+#import "TipsPageViewController.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 
@@ -11,7 +11,7 @@ static AppDelegate *appDelegate;
 static BOOL didFinishLaunchingWithOptionsReturn;
 static id mockTipsObjectConfiguration;
 static id mockTipsManager;
-static TipsListViewController *tipsListViewController;
+static TipsPageViewController *tipsPageViewController;
 static id viewController;
 
 SpecBegin(AppDelegate)
@@ -57,7 +57,7 @@ describe(@"AppDelegate", ^{
 
       it(@"is a navigation controller containing a tips list view controller", ^{
         UINavigationController *navController = viewController;
-        expect([navController topViewController]).to.beKindOf([TipsListViewController class]);
+        expect([navController topViewController]).to.beKindOf([TipsPageViewController class]);
       });
       
       after(^{
@@ -93,7 +93,7 @@ describe(@"AppDelegate", ^{
 
 });
   
-describe(@"AppDelegate tips list view controller", ^{
+describe(@"AppDelegate tips page view controller", ^{
   
   before(^{
     appDelegate = [[AppDelegate alloc] init];
@@ -110,14 +110,14 @@ describe(@"AppDelegate tips list view controller", ^{
     [mockTipsObjectConfiguration verify];
     
     UINavigationController *navController = [appDelegate.tabBarController.viewControllers firstObject];
-    tipsListViewController = (TipsListViewController *)[navController topViewController];
-    expect(tipsListViewController.manager).to.beIdenticalTo(mockTipsManager);
+    tipsPageViewController = (TipsPageViewController *)[navController topViewController];
+    expect(tipsPageViewController.manager).to.beIdenticalTo(mockTipsManager);
   });
   
   after(^{
     mockTipsManager = nil;
     mockTipsObjectConfiguration = nil;
-    tipsListViewController = nil;
+    tipsPageViewController = nil;
     appDelegate = nil;
   });
     

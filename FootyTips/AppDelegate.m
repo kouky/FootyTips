@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TipsListViewController.h"
+#import "TipsPageViewController.h"
 #import "TipsObjectConfiguration.h"
 
 @implementation AppDelegate
@@ -17,11 +17,11 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   // Configure Tips
-  TipsListViewController *tipsListViewController = [[TipsListViewController alloc] init];
-  tipsListViewController.manager = [TipsObjectConfiguration tipsManager];
+  TipsPageViewController *tipsPageViewController = [[TipsPageViewController alloc] init];
+  tipsPageViewController.manager = [TipsObjectConfiguration tipsManager];
   UINavigationController *tipsNavigationController = [[UINavigationController alloc] init];
   [tipsNavigationController setTitle:@"Tips"];
-  [tipsNavigationController setViewControllers:@[tipsListViewController] animated:NO];
+  [tipsNavigationController setViewControllers:@[tipsPageViewController] animated:NO];
   
   // Configure Ladder
   UINavigationController *ladderNavigationConroller = [[UINavigationController alloc] init];
