@@ -98,14 +98,11 @@ describe(@"AppDelegate tips page view controller", ^{
   before(^{
     appDelegate = [[AppDelegate alloc] init];
     mockTipsObjectConfiguration = [OCMockObject mockForClass:TipsObjectConfiguration.class];
-    mockTipsManager = [OCMockObject mockForClass:TipsManager.class];
+    mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
   });
     
   it(@"has a properly configured manager property", ^{
-    [[mockTipsManager stub] setDelegate:[OCMArg any]];
-    [[mockTipsManager stub] buildFixture];
     [[[mockTipsObjectConfiguration expect] andReturn:mockTipsManager] tipsManager];
-    
     [appDelegate application:nil didFinishLaunchingWithOptions: nil];
     [mockTipsObjectConfiguration verify];
     
