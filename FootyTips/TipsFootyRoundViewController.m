@@ -14,13 +14,17 @@
 
 @implementation TipsFootyRoundViewController
 
+// Designated initializer
+- (id)init
+{
+  self = [super initWithStyle:UITableViewStylePlain];
+  return self;
+}
+
+// Previous designated initializer defers to init
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  return [self init];
 }
 
 - (void)viewDidLoad

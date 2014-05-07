@@ -47,6 +47,7 @@
 		27B4A47E191A4749005CF7AD /* TipsFootyRoundViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4A47D191A4749005CF7AD /* TipsFootyRoundViewControllerSpec.m */; };
 		27B4A481191A47FB005CF7AD /* TipsFootyRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4A480191A47FB005CF7AD /* TipsFootyRoundViewController.m */; };
 		27B4A482191A47FB005CF7AD /* TipsFootyRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4A480191A47FB005CF7AD /* TipsFootyRoundViewController.m */; };
+		27B4A485191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4A484191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.m */; };
 		27B62C0D1902279A002089B6 /* TipsObjectConfigurationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0C1902279A002089B6 /* TipsObjectConfigurationSpec.m */; };
 		27B62C10190227B5002089B6 /* TipsObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0F190227B5002089B6 /* TipsObjectConfiguration.m */; };
 		27B62C11190227B5002089B6 /* TipsObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B62C0F190227B5002089B6 /* TipsObjectConfiguration.m */; };
@@ -126,6 +127,8 @@
 		27B4A47D191A4749005CF7AD /* TipsFootyRoundViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsFootyRoundViewControllerSpec.m; sourceTree = "<group>"; };
 		27B4A47F191A47FB005CF7AD /* TipsFootyRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsFootyRoundViewController.h; sourceTree = "<group>"; };
 		27B4A480191A47FB005CF7AD /* TipsFootyRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsFootyRoundViewController.m; sourceTree = "<group>"; };
+		27B4A483191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTipsFootyRoundViewController.h; sourceTree = "<group>"; };
+		27B4A484191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTipsFootyRoundViewController.m; sourceTree = "<group>"; };
 		27B62C0C1902279A002089B6 /* TipsObjectConfigurationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsObjectConfigurationSpec.m; sourceTree = "<group>"; };
 		27B62C0E190227B5002089B6 /* TipsObjectConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsObjectConfiguration.h; sourceTree = "<group>"; };
 		27B62C0F190227B5002089B6 /* TipsObjectConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsObjectConfiguration.m; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 			children = (
 				27AD597318EABCD100D54C65 /* InspectableFootyCommunicator.h */,
 				27AD597418EABCD100D54C65 /* InspectableFootyCommunicator.m */,
+				27B4A483191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.h */,
+				27B4A484191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.m */,
 				27743E6B190A397500447BD9 /* InspectableTipsListViewController.h */,
 				27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */,
 				27FCCBEB1918F09900826B30 /* InspectableTipsPageViewController.h */,
@@ -572,6 +577,7 @@
 				2785FB26190FBE5200A45404 /* GameSummaryCell.m in Sources */,
 				27AD597218EA642600D54C65 /* FootyCommunicator.m in Sources */,
 				27B4A482191A47FB005CF7AD /* TipsFootyRoundViewController.m in Sources */,
+				27B4A485191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.m in Sources */,
 				279E5A4F191791FF005DF058 /* TipsPageViewController.m in Sources */,
 				2717411A18FEA752001CF8AC /* TipsManagerSpec.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
