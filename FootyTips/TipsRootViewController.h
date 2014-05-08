@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TipsManagerDelegate.h"
 
+@class TipsManager;
+
 @interface TipsRootViewController : UIViewController <TipsManagerDelegate>
+
+@property (nonatomic, strong) TipsManager *manager;
 
 @end

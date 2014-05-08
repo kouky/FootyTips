@@ -7,6 +7,7 @@
 //
 
 #import "TipsRootViewController.h"
+#import "TipsManager.h"
 
 @interface TipsRootViewController ()
 
@@ -25,6 +26,12 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
   return [self init];
+}
+
+- (void)setManager:(TipsManager *)manager
+{
+  _manager = manager;
+  manager.delegate = self;
 }
 
 - (void)viewDidLoad
