@@ -7,7 +7,6 @@
 //
 
 #import "TipsPageViewController.h"
-#import "TipsManager.h"
 
 @interface TipsPageViewController ()
 
@@ -30,29 +29,15 @@
   return [self init];
 }
 
-- (void)setManager:(TipsManager *)manager
-{
-  _manager = manager;
-  manager.delegate = self;
-}
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.manager buildFixture];
 }
 
 - (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
-}
-
-# pragma mark TipsManagerDelegate protocol methods
-
-- (void)didReceiveFixtureModel:(FootyFixture *)fixture
-{
-  _footyFixture = fixture;
 }
 
 @end

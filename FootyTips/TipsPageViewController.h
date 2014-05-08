@@ -12,12 +12,6 @@
 @class TipsManager;
 @class FootyFixture;
 
-@interface TipsPageViewController : UIPageViewController <TipsManagerDelegate, UIPageViewControllerDataSource> {
-
-@protected
-  FootyFixture *_footyFixture;
-}
-
-@property (nonatomic, strong) TipsManager *manager;
+@interface TipsPageViewController : UIPageViewController <UIPageViewControllerDataSource>
 
 @end
