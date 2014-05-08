@@ -22,6 +22,7 @@
 		278A2E9B191BA3BC00D3778B /* TipsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A2E9A191BA3BC00D3778B /* TipsRootViewController.m */; };
 		278A2E9C191BA3BC00D3778B /* TipsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A2E9A191BA3BC00D3778B /* TipsRootViewController.m */; };
 		278A2E9E191BA3FD00D3778B /* TipsRootViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A2E9D191BA3FD00D3778B /* TipsRootViewControllerSpec.m */; };
+		278A2EA1191BBE3C00D3778B /* InspectableTipsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A2EA0191BBE3C00D3778B /* InspectableTipsRootViewController.m */; };
 		279E5A4E191791FF005DF058 /* TipsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E5A4D191791FF005DF058 /* TipsPageViewController.m */; };
 		279E5A4F191791FF005DF058 /* TipsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E5A4D191791FF005DF058 /* TipsPageViewController.m */; };
 		279E5A51191792AC005DF058 /* TipsPageViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E5A50191792AC005DF058 /* TipsPageViewControllerSpec.m */; };
@@ -100,6 +101,8 @@
 		278A2E99191BA3BC00D3778B /* TipsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsRootViewController.h; sourceTree = "<group>"; };
 		278A2E9A191BA3BC00D3778B /* TipsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsRootViewController.m; sourceTree = "<group>"; };
 		278A2E9D191BA3FD00D3778B /* TipsRootViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsRootViewControllerSpec.m; sourceTree = "<group>"; };
+		278A2E9F191BBE3C00D3778B /* InspectableTipsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTipsRootViewController.h; sourceTree = "<group>"; };
+		278A2EA0191BBE3C00D3778B /* InspectableTipsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTipsRootViewController.m; sourceTree = "<group>"; };
 		279E5A4C191791FF005DF058 /* TipsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsPageViewController.h; sourceTree = "<group>"; };
 		279E5A4D191791FF005DF058 /* TipsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsPageViewController.m; sourceTree = "<group>"; };
 		279E5A50191792AC005DF058 /* TipsPageViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsPageViewControllerSpec.m; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 				27743E6C190A397500447BD9 /* InspectableTipsListViewController.m */,
 				27FCCBEB1918F09900826B30 /* InspectableTipsPageViewController.h */,
 				27FCCBEC1918F09900826B30 /* InspectableTipsPageViewController.m */,
+				278A2E9F191BBE3C00D3778B /* InspectableTipsRootViewController.h */,
+				278A2EA0191BBE3C00D3778B /* InspectableTipsRootViewController.m */,
 				27F11CB11914AE4D0045B4FE /* MockModels.h */,
 				27F11CB21914AE4D0045B4FE /* MockModels.m */,
 				27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */,
@@ -592,6 +597,7 @@
 				2717411A18FEA752001CF8AC /* TipsManagerSpec.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
 				278A2E9C191BA3BC00D3778B /* TipsRootViewController.m in Sources */,
+				278A2EA1191BBE3C00D3778B /* InspectableTipsRootViewController.m in Sources */,
 				27AD596E18EA640500D54C65 /* FootyCommunicatorSpec.m in Sources */,
 				27FCCBED1918F09900826B30 /* InspectableTipsPageViewController.m in Sources */,
 				27CA38B818FCCBDA00F4A0BE /* FootyRound.m in Sources */,

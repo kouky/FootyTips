@@ -11,7 +11,11 @@
 
 @class TipsManager;
 
-@interface TipsRootViewController : UIViewController <TipsManagerDelegate>
+@interface TipsRootViewController : UIViewController <TipsManagerDelegate> {
+
+@protected
+  FootyFixture *_footyFixture;
+}
 
 @property (nonatomic, strong) TipsManager *manager;
 

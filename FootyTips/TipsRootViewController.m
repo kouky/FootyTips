@@ -46,4 +46,11 @@
   // Dispose of any resources that can be recreated.
 }
 
+# pragma mark TipsManagerDelegate protocol methods
+
+- (void)didReceiveFixtureModel:(FootyFixture *)fixture
+{
+  _footyFixture = fixture;
+}
+
 @end
