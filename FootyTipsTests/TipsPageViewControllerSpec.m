@@ -30,6 +30,10 @@ describe(@"TipsPageViewController", ^{
     expect(TipsPageViewController.class).to.conformTo(@protocol(TipsManagerDelegate));
   });
   
+  it(@"conforms to the UIPageViewControllerDataSource protocol", ^{
+    expect(TipsPageViewController.class).to.conformTo(@protocol(UIPageViewControllerDataSource));
+  });
+  
   it(@"init configures a horizontal scrolling page controller", ^{
     expect(inspectableViewController.navigationOrientation).to.equal(UIPageViewControllerNavigationOrientationHorizontal);
     expect(inspectableViewController.transitionStyle).to.equal(UIPageViewControllerTransitionStyleScroll);
