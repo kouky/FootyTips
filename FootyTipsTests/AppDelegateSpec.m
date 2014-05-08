@@ -3,7 +3,7 @@
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
 #import "AppDelegate.h"
-#import "TipsPageViewController.h"
+#import "TipsRootViewController.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 
@@ -11,7 +11,7 @@ static AppDelegate *appDelegate;
 static BOOL didFinishLaunchingWithOptionsReturn;
 static id mockTipsObjectConfiguration;
 static id mockTipsManager;
-static TipsPageViewController *tipsPageViewController;
+static TipsRootViewController *tipsRootViewController;
 static id viewController;
 
 SpecBegin(AppDelegate)
@@ -55,9 +55,9 @@ describe(@"AppDelegate", ^{
         expect([viewController title]).to.equal(@"Tips");
       });
 
-      it(@"is a navigation controller containing a tips list view controller", ^{
+      it(@"is a navigation controller containing a tips root view controller", ^{
         UINavigationController *navController = viewController;
-        expect([navController topViewController]).to.beKindOf([TipsPageViewController class]);
+        expect([navController topViewController]).to.beKindOf(TipsRootViewController.class);
       });
       
       after(^{
@@ -93,7 +93,7 @@ describe(@"AppDelegate", ^{
 
 });
   
-describe(@"AppDelegate tips page view controller", ^{
+describe(@"AppDelegate tips root view controller", ^{
   
   before(^{
     appDelegate = [[AppDelegate alloc] init];
@@ -107,14 +107,14 @@ describe(@"AppDelegate tips page view controller", ^{
     [mockTipsObjectConfiguration verify];
     
     UINavigationController *navController = [appDelegate.tabBarController.viewControllers firstObject];
-    tipsPageViewController = (TipsPageViewController *)[navController topViewController];
-    expect(tipsPageViewController.manager).to.beIdenticalTo(mockTipsManager);
+    tipsRootViewController = (TipsRootViewController *)[navController topViewController];
+    expect(tipsRootViewController.manager).to.beIdenticalTo(mockTipsManager);
   });
   
   after(^{
     mockTipsManager = nil;
     mockTipsObjectConfiguration = nil;
-    tipsPageViewController = nil;
+    tipsRootViewController = nil;
     appDelegate = nil;
   });
     
