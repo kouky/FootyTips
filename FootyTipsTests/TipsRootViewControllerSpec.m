@@ -49,6 +49,13 @@ describe(@"TipsRootViewController", ^{
     
   });
   
+  it(@"viewDidLoad requests the building of the footy fixture", ^{
+    [[mockTipsManager expect] buildFixture];
+    viewController.manager = mockTipsManager;
+    [viewController viewDidLoad];
+    [mockTipsManager verify];
+  });
+  
   after(^{
     mockTipsManager = nil;
     viewController = nil;
