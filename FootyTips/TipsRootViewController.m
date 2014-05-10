@@ -30,6 +30,14 @@
   return [self init];
 }
 
+- (void)loadView
+{
+  UIScrollView *scrollView = [[UIScrollView alloc] init];
+  scrollView.pagingEnabled = YES;
+  self.view = scrollView;
+  [self.view setAutoresizesSubviews:YES];
+}
+
 - (void)setManager:(TipsManager *)manager
 {
   _manager = manager;
@@ -53,26 +61,18 @@
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture
 {
   _footyFixture = fixture;
-  _scrollView = [self buildScrollView];
+  [self sizeScrollView];
   _tableViews = [self buildTableViews];
-
-  [self.view addSubview:_scrollView];
   [self addTableViewsToScrollView];
 }
 
 # pragma mark Private
 
-- (UIScrollView *)buildScrollView
+- (void)sizeScrollView
 {
-  CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-  NSInteger footyRoundsCount = [[_footyFixture rounds] count];
-  CGSize scrollContentSize = CGSizeMake(self.view.frame.size.width * footyRoundsCount, self.view.frame.size.height);
-  
-  UIScrollView *scrollView = [[TipsScrollView alloc] initWithFrame:scrollFrame];
-  scrollView.contentSize = scrollContentSize;
-  scrollView.pagingEnabled = YES;
-
-  return scrollView;
+  UIScrollView *scrollView = (UIScrollView *)self.view;
+  CGSize scrollContentSize = CGSizeMake(self.view.bounds.size.width * [_footyFixture.rounds count], self.view.bounds.size.height);
+  [scrollView setContentSize:scrollContentSize];
 }
 
 - (NSMutableArray *)buildTableViews
@@ -95,7 +95,7 @@
 {
   UITableView *tableView;
   for (tableView in _tableViews) {
-    [_scrollView addSubview:tableView];
+    [self.view addSubview:tableView];
   }
 }
 

@@ -14,7 +14,6 @@
 @interface TipsRootViewController : UIViewController <TipsManagerDelegate> {
 
 @protected
-  UIScrollView *_scrollView;
   NSArray *_tableViews;
   FootyFixture *_footyFixture;
 }
