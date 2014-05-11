@@ -8,7 +8,6 @@
 
 #import "TipsRootViewController.h"
 #import "TipsManager.h"
-#import "TipsScrollView.h"
 #import "FootyFixture.h"
 #import "GameSummaryCell.h"
 
