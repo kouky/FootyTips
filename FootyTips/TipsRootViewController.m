@@ -10,6 +10,7 @@
 #import "TipsManager.h"
 #import "TipsScrollView.h"
 #import "FootyFixture.h"
+#import "GameSummaryCell.h"
 
 @interface TipsRootViewController ()
 
@@ -66,6 +67,32 @@
   [self addTableViewsToScrollView];
 }
 
+# pragma mark TableViewDataSource protocol methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  FootyRound *footyRound = _footyFixture.rounds[tableView.tag];
+  return [footyRound.games count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  static NSString *cellIdentifier = @"gameSummaryCell";
+  
+  GameSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  if (!cell) {
+    [tableView registerNib:[UINib nibWithNibName:@"GameSummaryCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  }
+  
+  return cell;
+}
+
 # pragma mark Private
 
 - (void)sizeScrollView
@@ -85,6 +112,8 @@
   for (index = 0; index < [_footyFixture.rounds count]; index++) {
     frame = CGRectMake(index * self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
     tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    tableView.tag =  index;
+    tableView.dataSource = self;
     [tableViews addObject:tableView];
   }
 

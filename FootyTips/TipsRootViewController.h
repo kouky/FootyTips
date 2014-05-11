@@ -11,7 +11,7 @@
 
 @class TipsManager;
 
-@interface TipsRootViewController : UIViewController <TipsManagerDelegate> {
+@interface TipsRootViewController : UIViewController <TipsManagerDelegate, UITableViewDataSource> {
 
 @protected
   NSArray *_tableViews;
