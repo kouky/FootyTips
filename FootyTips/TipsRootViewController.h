@@ -11,10 +11,9 @@
 
 @class TipsManager;
 
-@interface TipsRootViewController : UIViewController <TipsManagerDelegate, UITableViewDataSource> {
+@interface TipsRootViewController : UIViewController <TipsManagerDelegate> {
 
 @protected
-  NSArray *_tableViews;
   FootyFixture *_footyFixture;
 }
 
