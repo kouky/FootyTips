@@ -75,17 +75,17 @@ describe(@"TipsRootViewController", ^{
     
     it(@"configures a tips page view controller", ^{
       [[[mockTipsObjectConfiguration expect] andReturn:mockTipsPageViewController] tipsPageViewControllerForFootyFixture:mockFootyFixture];
-      [inspectableViewController didReceiveFixtureModel:mockFootyFixture];
+      [viewController didReceiveFixtureModel:mockFootyFixture];
       [mockTipsObjectConfiguration verify];
-      expect(inspectableViewController.pageViewController).to.beIdenticalTo(mockTipsPageViewController);
+      expect(viewController.pageViewController).to.beIdenticalTo(mockTipsPageViewController);
     });
     
     it(@"only configure a tips page view controller if it's nil", ^{
       id mock = [OCMockObject mockForClass:TipsPageViewController.class];
-      inspectableViewController.pageViewController = mock;
+      viewController.pageViewController = mock;
       [[[mockTipsObjectConfiguration stub] andReturn:mockTipsPageViewController] tipsPageViewControllerForFootyFixture:mockFootyFixture];
-      [inspectableViewController didReceiveFixtureModel:mockFootyFixture];
-      expect(inspectableViewController.pageViewController).to.beIdenticalTo(mock);
+      [viewController didReceiveFixtureModel:mockFootyFixture];
+      expect(viewController.pageViewController).to.beIdenticalTo(mock);
     });
     
   });
