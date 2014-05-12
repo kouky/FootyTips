@@ -10,6 +10,7 @@
 #import "TipsManagerDelegate.h"
 
 @class TipsManager;
+@class TipsPageViewController;
 
 @interface TipsRootViewController : UIViewController <TipsManagerDelegate> {
 
@@ -18,5 +19,6 @@
 }
 
 @property (nonatomic, strong) TipsManager *manager;
+@property (strong) TipsPageViewController *pageViewController;
 
 @end

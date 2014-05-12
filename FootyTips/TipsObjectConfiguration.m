@@ -20,4 +20,10 @@
   return manager;
 }
 
++ (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture
+{
+#warning incomplete method
+  return nil;
+}
+
 @end

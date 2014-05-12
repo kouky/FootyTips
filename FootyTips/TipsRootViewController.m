@@ -8,6 +8,7 @@
 
 #import "TipsRootViewController.h"
 #import "TipsManager.h"
+#import "TipsObjectConfiguration.h"
 
 @interface TipsRootViewController ()
 
@@ -51,6 +52,7 @@
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture
 {
   _footyFixture = fixture;
+  self.pageViewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:_footyFixture];
 }
 
 @end

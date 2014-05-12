@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class TipsManager;
+@class TipsPageViewController;
+@class FootyFixture;
 
 @interface TipsObjectConfiguration : NSObject
 
 + (TipsManager *)tipsManager;
++ (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture;
 
 @end

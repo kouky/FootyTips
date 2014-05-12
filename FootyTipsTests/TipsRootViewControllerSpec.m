@@ -13,10 +13,14 @@
 #import "TipsRootViewController.h"
 #import "InspectableTipsRootViewController.h"
 #import "TipsManager.h"
+#import "TipsObjectConfiguration.h"
+#import "TipsPageViewController.h"
 
 static TipsRootViewController *viewController;
 static InspectableTipsRootViewController *inspectableViewController;
 static id mockTipsManager;
+static id mockTipsObjectConfiguration;
+static id mockTipsPageViewController;
 
 SpecBegin(TipsRootViewController)
 
@@ -26,6 +30,8 @@ describe(@"TipsRootViewController", ^{
     viewController = [[TipsRootViewController alloc] init];
     inspectableViewController = [[InspectableTipsRootViewController alloc] init];
     mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
+    mockTipsObjectConfiguration = [OCMockObject mockForClass:TipsObjectConfiguration.class];
+    mockTipsPageViewController = [OCMockObject mockForClass:TipsPageViewController.class];
     [MockModels enumerate];
   });
   
@@ -67,11 +73,19 @@ describe(@"TipsRootViewController", ^{
       expect([inspectableViewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
     });
     
-    pending(@"configure tips page view controller");
+    it(@"configures a tips page view controller", ^{
+      [[[mockTipsObjectConfiguration expect] andReturn:mockTipsPageViewController] tipsPageViewControllerForFootyFixture:mockFootyFixture];
+      [inspectableViewController didReceiveFixtureModel:mockFootyFixture];
+      [mockTipsObjectConfiguration verify];
+      expect(inspectableViewController.pageViewController).to.beIdenticalTo(mockTipsPageViewController);
+    });
+    
   });
   
   after(^{
     [MockModels clear];
+    mockTipsPageViewController = nil;
+    mockTipsObjectConfiguration = nil;
     mockTipsManager = nil;
     inspectableViewController = nil;
     viewController = nil;
