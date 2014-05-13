@@ -9,9 +9,11 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import "MockModels.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 #import "FootyCommunicator.h"
+#import "TipsPageViewController.h"
 
 static TipsObjectConfiguration *configuration;
 
@@ -30,8 +32,24 @@ describe(@"TipsObjectConfiguration", ^{
       expect(manager.communicator).to.beKindOf(FootyCommunicator.class);
       expect(manager.communicator.delegate).to.beIdenticalTo(manager);
     });
+  });
+  
+  describe(@"tipsPageViewControllerForFootyFixture class method", ^{
+    
+    before(^{
+      [MockModels enumerate];
+    });
+    
+    it(@"returns a TipsPageViewController", ^{
+      expect([TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture]).to.beKindOf(TipsPageViewController.class);
+    });
+    
+    before(^{
+      [MockModels clear];
+    });
 
   });
+  
 });
 
 SpecEnd

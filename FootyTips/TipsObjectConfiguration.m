@@ -9,6 +9,7 @@
 #import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 #import "FootyCommunicator.h"
+#import "TipsPageViewController.h"
 
 @implementation TipsObjectConfiguration
 
@@ -22,8 +23,7 @@
 
 + (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture
 {
-#warning incomplete method
-  return nil;
+  return [[TipsPageViewController alloc] init];
 }
 
 @end
