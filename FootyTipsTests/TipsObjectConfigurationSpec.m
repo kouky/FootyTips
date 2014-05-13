@@ -48,6 +48,10 @@ describe(@"TipsObjectConfiguration", ^{
       TipsPageViewController *viewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture];
       expect(viewController.footyFixture).to.equal(mockFootyFixture);
     });
+    
+    it(@"throws an error if configured with a nil footy fixture", ^{
+      expect(^{[TipsObjectConfiguration tipsPageViewControllerForFootyFixture:nil]; }).to.raise(@"NSInternalInconsistencyException");
+    });
   });
   
   after(^{

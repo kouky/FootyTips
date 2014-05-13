@@ -23,6 +23,7 @@
 
 + (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture
 {
+  NSParameterAssert(footyFixture != nil);
   TipsPageViewController *pageViewController = [[TipsPageViewController alloc] init];
   pageViewController.footyFixture = footyFixture;
   return pageViewController;
