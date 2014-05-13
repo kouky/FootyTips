@@ -21,6 +21,10 @@ SpecBegin(TipsObjectConfiguration)
 
 describe(@"TipsObjectConfiguration", ^{
   
+  before(^{
+    [MockModels enumerate];
+  });
+  
   describe(@"tipsManager class method", ^{
     
     it(@"returns a TipsManager", ^{
@@ -36,18 +40,18 @@ describe(@"TipsObjectConfiguration", ^{
   
   describe(@"tipsPageViewControllerForFootyFixture class method", ^{
     
-    before(^{
-      [MockModels enumerate];
-    });
-    
     it(@"returns a TipsPageViewController", ^{
       expect([TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture]).to.beKindOf(TipsPageViewController.class);
     });
     
-    before(^{
-      [MockModels clear];
+    it(@"returns a correctly configured TipsPageViewController", ^{
+      TipsPageViewController *viewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture];
+      expect(viewController.footyFixture).to.equal(mockFootyFixture);
     });
-
+  });
+  
+  after(^{
+    [MockModels clear];
   });
   
 });

@@ -23,7 +23,9 @@
 
 + (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture
 {
-  return [[TipsPageViewController alloc] init];
+  TipsPageViewController *pageViewController = [[TipsPageViewController alloc] init];
+  pageViewController.footyFixture = footyFixture;
+  return pageViewController;
 }
 
 @end

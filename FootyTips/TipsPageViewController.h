@@ -14,4 +14,6 @@
 
 @interface TipsPageViewController : UIPageViewController <UIPageViewControllerDataSource>
 
+@property (strong) FootyFixture *footyFixture;
+
 @end
