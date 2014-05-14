@@ -28,6 +28,7 @@
   
   mockFootyFixture = [OCMockObject mockForClass:FootyFixture.class];
   [[[mockFootyFixture stub] andReturn:@[mockFootyRound]] rounds];
+  [[[mockFootyFixture stub] andReturn:mockFootyFixture] copyWithZone:[OCMArg anyPointer]];
 }
 
 + (void)clear

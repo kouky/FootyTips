@@ -10,6 +10,7 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import "TipsPageViewController.h"
+#import <objc/runtime.h>
 
 static TipsPageViewController *viewController;
 
@@ -29,6 +30,14 @@ describe(@"TipsPageViewController", ^{
     expect(viewController.navigationOrientation).to.equal(UIPageViewControllerNavigationOrientationHorizontal);
     expect(viewController.transitionStyle).to.equal(UIPageViewControllerTransitionStyleScroll);
     expect(viewController.spineLocation).to.equal(UIPageViewControllerSpineLocationNone);
+  });
+  
+  it(@"has a footyFixture property with a copy attribute", ^{
+    objc_property_t footyFixtureProperty = class_getProperty(TipsPageViewController.class, "footyFixture");
+    expect(footyFixtureProperty).notTo.equal(NULL);
+    const char *propertyAttrs = property_getAttributes(footyFixtureProperty);
+    // See Objective-C Runtime Programming Guide
+    expect(propertyAttrs).to.equal("T@\"FootyFixture\",C,V_footyFixture");
   });
   
   after(^{
