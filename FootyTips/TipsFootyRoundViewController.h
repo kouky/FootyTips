@@ -12,6 +12,6 @@
 
 @interface TipsFootyRoundViewController : UITableViewController
 
-@property (strong) FootyRound *footyRound;
+@property (copy) FootyRound *footyRound;
 
 @end

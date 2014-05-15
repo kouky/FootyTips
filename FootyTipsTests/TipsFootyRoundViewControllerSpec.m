@@ -10,6 +10,7 @@
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
 #import "InspectableTipsFootyRoundViewController.h"
+#import <objc/runtime.h>
 
 static InspectableTipsFootyRoundViewController *inspectableViewController;
 
@@ -24,6 +25,15 @@ describe(@"TipsFootyRoundViewController", ^{
   it(@"init configures a plain table view style", ^{
     expect(inspectableViewController.tableView.style).to.equal(UITableViewStylePlain);
   });
+  
+  it(@"has a footyRound property with a copy attribute", ^{
+    objc_property_t footyRoundProperty = class_getProperty(TipsFootyRoundViewController.class, "footyRound");
+    expect(footyRoundProperty).notTo.equal(NULL);
+    const char *propertyAttrs = property_getAttributes(footyRoundProperty);
+    // See Objective-C Runtime Programming Guide
+    expect(propertyAttrs).to.equal("T@\"FootyRound\",C,V_footyRound");
+  });
+
 
 });
 

@@ -25,6 +25,7 @@
   mockFootyRound = [OCMockObject mockForClass:FootyRound.class];
   [[[mockFootyRound stub] andReturn:@3] id];
   [[[mockFootyRound stub] andReturn:@[mockGame]] games];
+  [[[mockFootyRound stub] andReturn:mockFootyRound] copyWithZone:[OCMArg anyPointer]];
   
   mockFootyFixture = [OCMockObject mockForClass:FootyFixture.class];
   [[[mockFootyFixture stub] andReturn:@[mockFootyRound]] rounds];
