@@ -14,6 +14,7 @@
 #import "TipsManager.h"
 #import "FootyCommunicator.h"
 #import "TipsPageViewController.h"
+#import "TipsFootyRoundViewController.h"
 
 static TipsObjectConfiguration *configuration;
 
@@ -52,6 +53,23 @@ describe(@"TipsObjectConfiguration", ^{
     it(@"throws an error if configured with a nil footy fixture", ^{
       expect(^{[TipsObjectConfiguration tipsPageViewControllerForFootyFixture:nil]; }).to.raise(@"NSInternalInconsistencyException");
     });
+  });
+  
+  describe(@"tipsFootyRoundViewControllerForFootyRound class method", ^{
+    
+    it(@"returns a TipsFootyRoundViewController", ^{
+      expect([TipsObjectConfiguration tipsFootyRoundViewControllerForFootyRound:mockFootyRound]).to.beKindOf(TipsFootyRoundViewController.class);
+    });
+    
+    it(@"returns a correctly configured TipsFootyRoundViewController", ^{
+      TipsFootyRoundViewController *viewController = [TipsObjectConfiguration tipsFootyRoundViewControllerForFootyRound:mockFootyRound];
+      expect(viewController.footyRound).to.equal(mockFootyRound);
+    });
+    
+    it(@"throws an error if configured with a nil footy fixture", ^{
+      expect(^{[TipsObjectConfiguration tipsFootyRoundViewControllerForFootyRound:nil]; }).to.raise(@"NSInternalInconsistencyException");
+    });
+    
   });
   
   after(^{

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class FootyRound;
+
 @interface TipsFootyRoundViewController : UITableViewController
+
+@property (strong) FootyRound *footyRound;
 
 @end

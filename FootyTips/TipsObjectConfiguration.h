@@ -10,11 +10,14 @@
 
 @class TipsManager;
 @class TipsPageViewController;
+@class TipsFootyRoundViewController;
 @class FootyFixture;
+@class FootyRound;
 
 @interface TipsObjectConfiguration : NSObject
 
 + (TipsManager *)tipsManager;
 + (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture;
++ (TipsFootyRoundViewController *)tipsFootyRoundViewControllerForFootyRound:(FootyRound *)footyRound;
 
 @end

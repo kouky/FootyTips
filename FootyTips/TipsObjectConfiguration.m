@@ -10,6 +10,7 @@
 #import "TipsManager.h"
 #import "FootyCommunicator.h"
 #import "TipsPageViewController.h"
+#import "TipsFootyRoundViewController.h"
 
 @implementation TipsObjectConfiguration
 
@@ -27,6 +28,14 @@
   TipsPageViewController *pageViewController = [[TipsPageViewController alloc] init];
   pageViewController.footyFixture = footyFixture;
   return pageViewController;
+}
+
++ (TipsFootyRoundViewController *)tipsFootyRoundViewControllerForFootyRound:(FootyRound *)footyRound
+{
+  NSParameterAssert(footyRound != nil);
+  TipsFootyRoundViewController *viewController = [[TipsFootyRoundViewController alloc] init];
+  viewController.footyRound = footyRound;
+  return viewController;
 }
 
 @end
