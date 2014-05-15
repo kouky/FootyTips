@@ -15,4 +15,14 @@
   return _footyFixture;
 }
 
+- (TipsPageViewController *)pageViewController
+{
+  return _pageViewController;
+}
+
+- (void)setPageViewController:(TipsPageViewController *)pageViewController
+{
+  _pageViewController = pageViewController;
+}
+
 @end

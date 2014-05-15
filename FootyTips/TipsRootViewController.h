@@ -16,9 +16,9 @@
 
 @protected
   FootyFixture *_footyFixture;
+  TipsPageViewController *_pageViewController;
 }
 
 @property (nonatomic, strong) TipsManager *manager;
-@property (strong) TipsPageViewController *pageViewController;
 
 @end

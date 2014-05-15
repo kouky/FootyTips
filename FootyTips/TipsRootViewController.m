@@ -52,8 +52,8 @@
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture
 {
   _footyFixture = fixture;
-  if (!self.pageViewController) {
-    self.pageViewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:_footyFixture];
+  if (!_pageViewController) {
+    _pageViewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:_footyFixture];
   }
 }
 

@@ -16,8 +16,7 @@
 #import "TipsObjectConfiguration.h"
 #import "TipsPageViewController.h"
 
-static TipsRootViewController *viewController;
-static InspectableTipsRootViewController *inspectableViewController;
+static InspectableTipsRootViewController *viewController;
 static id mockTipsManager;
 static id mockTipsObjectConfiguration;
 static id mockTipsPageViewController;
@@ -27,8 +26,7 @@ SpecBegin(TipsRootViewController)
 describe(@"TipsRootViewController", ^{
   
   before(^{
-    viewController = [[TipsRootViewController alloc] init];
-    inspectableViewController = [[InspectableTipsRootViewController alloc] init];
+    viewController = [[InspectableTipsRootViewController alloc] init];
     mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
     mockTipsObjectConfiguration = [OCMockObject mockForClass:TipsObjectConfiguration.class];
     mockTipsPageViewController = [OCMockObject mockForClass:TipsPageViewController.class];
@@ -69,8 +67,8 @@ describe(@"TipsRootViewController", ^{
   describe(@"delegate method didReceiveFixtureModel", ^{
     
     it(@"sets the fixture ivar", ^{
-      [inspectableViewController didReceiveFixtureModel:mockFootyFixture];
-      expect([inspectableViewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
+      [viewController didReceiveFixtureModel:mockFootyFixture];
+      expect([viewController footyFixture]).to.beIdenticalTo(mockFootyFixture);
     });
     
     it(@"configures a tips page view controller", ^{
@@ -82,7 +80,7 @@ describe(@"TipsRootViewController", ^{
     
     it(@"only configure a tips page view controller if it's nil", ^{
       id mock = [OCMockObject mockForClass:TipsPageViewController.class];
-      viewController.pageViewController = mock;
+      [viewController setPageViewController:mock];
       [[[mockTipsObjectConfiguration stub] andReturn:mockTipsPageViewController] tipsPageViewControllerForFootyFixture:mockFootyFixture];
       [viewController didReceiveFixtureModel:mockFootyFixture];
       expect(viewController.pageViewController).to.beIdenticalTo(mock);
@@ -95,7 +93,6 @@ describe(@"TipsRootViewController", ^{
     mockTipsPageViewController = nil;
     mockTipsObjectConfiguration = nil;
     mockTipsManager = nil;
-    inspectableViewController = nil;
     viewController = nil;
   });
   

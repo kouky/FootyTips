@@ -12,5 +12,7 @@
 @interface InspectableTipsRootViewController : TipsRootViewController
 
 - (FootyFixture *)footyFixture;
+- (TipsPageViewController *)pageViewController;
+- (void)setPageViewController:(TipsPageViewController *)pageViewController;
 
 @end
