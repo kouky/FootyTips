@@ -22,10 +22,6 @@ describe(@"TipsPageViewController", ^{
     viewController = [[TipsPageViewController alloc] init];
   });
   
-  it(@"conforms to the UIPageViewControllerDataSource protocol", ^{
-    expect(TipsPageViewController.class).to.conformTo(@protocol(UIPageViewControllerDataSource));
-  });
-  
   it(@"init configures a horizontal scrolling page controller", ^{
     expect(viewController.navigationOrientation).to.equal(UIPageViewControllerNavigationOrientationHorizontal);
     expect(viewController.transitionStyle).to.equal(UIPageViewControllerTransitionStyleScroll);
@@ -38,6 +34,17 @@ describe(@"TipsPageViewController", ^{
     const char *propertyAttrs = property_getAttributes(footyFixtureProperty);
     // See Objective-C Runtime Programming Guide
     expect(propertyAttrs).to.equal("T@\"FootyFixture\",C,V_footyFixture");
+  });
+  
+  it(@"conforms to the UIPageViewControllerDataSource protocol", ^{
+    expect(TipsPageViewController.class).to.conformTo(@protocol(UIPageViewControllerDataSource));
+  });
+  
+  describe(@"implements UIPageViewControllerDataSource protocol methods", ^{
+
+    pending(@"pageViewController:viewControllerBeforeViewController:");
+    pending(@"pageViewController:viewControllerAfterViewController:");
+    
   });
   
   after(^{
