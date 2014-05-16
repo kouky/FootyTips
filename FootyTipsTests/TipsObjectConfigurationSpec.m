@@ -17,6 +17,7 @@
 #import "TipsFootyRoundViewController.h"
 
 static TipsObjectConfiguration *configuration;
+static TipsPageViewController *pageViewController;
 
 SpecBegin(TipsObjectConfiguration)
 
@@ -45,9 +46,26 @@ describe(@"TipsObjectConfiguration", ^{
       expect([TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture]).to.beKindOf(TipsPageViewController.class);
     });
     
-    it(@"returns a correctly configured TipsPageViewController", ^{
-      TipsPageViewController *viewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture];
-      expect(viewController.footyFixture).to.equal(mockFootyFixture);
+    describe(@"returns a TipsPageViewController with a configured", ^{
+      
+      before(^{
+        pageViewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:mockFootyFixture];
+      });
+      
+      it(@"footy fixture property", ^{
+        expect(pageViewController.footyFixture).to.equal(mockFootyFixture);
+      });
+      
+      it(@"viewcontrollers property", ^{
+        expect([pageViewController.viewControllers count]).to.equal(1);
+        expect([pageViewController.viewControllers firstObject]).to.beKindOf(TipsFootyRoundViewController.class);
+      });
+      
+      it(@"footy round view controller", ^{
+        TipsFootyRoundViewController *footyRoundViewController = (TipsFootyRoundViewController *)[pageViewController.viewControllers firstObject];
+        expect(footyRoundViewController.footyRound).to.equal(mockFootyRound);
+      });
+      
     });
     
     it(@"throws an error if configured with a nil footy fixture", ^{
@@ -73,6 +91,7 @@ describe(@"TipsObjectConfiguration", ^{
   });
   
   after(^{
+    pageViewController = nil;
     [MockModels clear];
   });
   

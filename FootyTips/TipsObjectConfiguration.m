@@ -11,6 +11,7 @@
 #import "FootyCommunicator.h"
 #import "TipsPageViewController.h"
 #import "TipsFootyRoundViewController.h"
+#import "FootyFixture.h"
 
 @implementation TipsObjectConfiguration
 
@@ -25,8 +26,14 @@
 + (TipsPageViewController *)tipsPageViewControllerForFootyFixture:(FootyFixture *)footyFixture
 {
   NSParameterAssert(footyFixture != nil);
+  
   TipsPageViewController *pageViewController = [[TipsPageViewController alloc] init];
   pageViewController.footyFixture = footyFixture;
+  
+  FootyRound *firstFootyRound = [footyFixture.rounds firstObject];
+  TipsFootyRoundViewController *footyRoundViewController = [self tipsFootyRoundViewControllerForFootyRound:firstFootyRound];
+  [pageViewController setViewControllers:@[footyRoundViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+  
   return pageViewController;
 }
 
