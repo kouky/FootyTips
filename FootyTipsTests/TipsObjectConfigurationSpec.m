@@ -57,7 +57,7 @@ describe(@"TipsObjectConfiguration", ^{
       });
       
       it(@"viewcontrollers property", ^{
-        expect([pageViewController.viewControllers count]).to.equal(1);
+        expect(pageViewController.viewControllers).to.haveCountOf(1);
         expect([pageViewController.viewControllers firstObject]).to.beKindOf(TipsFootyRoundViewController.class);
       });
       
