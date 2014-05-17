@@ -14,5 +14,6 @@
 - (FootyFixture *)footyFixture;
 - (TipsPageViewController *)pageViewController;
 - (void)setPageViewController:(TipsPageViewController *)pageViewController;
+- (BOOL)wasAskedtoAddChildPageViewController;
 
 @end

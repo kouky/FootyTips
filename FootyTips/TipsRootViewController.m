@@ -9,6 +9,7 @@
 #import "TipsRootViewController.h"
 #import "TipsManager.h"
 #import "TipsObjectConfiguration.h"
+#import "TipsPageViewController.h"
 
 @interface TipsRootViewController ()
 
@@ -47,6 +48,11 @@
   // Dispose of any resources that can be recreated.
 }
 
+- (void)loadView
+{
+  self.view = [[UIScrollView alloc] init];
+}
+
 # pragma mark TipsManagerDelegate protocol methods
 
 - (void)didReceiveFixtureModel:(FootyFixture *)fixture
@@ -54,7 +60,18 @@
   _footyFixture = fixture;
   if (!_pageViewController) {
     _pageViewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:_footyFixture];
+    [self addChildPageViewControler];
   }
+}
+
+# pragma mark Private
+
+- (void)addChildPageViewControler
+{
+  // Perform View Controller Containment
+  [self addChildViewController:_pageViewController];
+  [self.view addSubview:_pageViewController.view];
+  [_pageViewController didMoveToParentViewController:self];
 }
 
 @end

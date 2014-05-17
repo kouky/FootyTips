@@ -86,6 +86,12 @@ describe(@"TipsRootViewController", ^{
       expect(viewController.pageViewController).to.beIdenticalTo(mock);
     });
     
+    it(@"adds the page view controller as a child view controller", ^{
+      [[[mockTipsObjectConfiguration stub] andReturn:mockTipsPageViewController] tipsPageViewControllerForFootyFixture:mockFootyFixture];
+      [viewController didReceiveFixtureModel:mockFootyFixture];
+      expect(viewController.wasAskedtoAddChildPageViewController).to.beTruthy();
+    });
+    
   });
   
   after(^{

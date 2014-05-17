@@ -8,7 +8,9 @@
 
 #import "InspectableTipsRootViewController.h"
 
-@implementation InspectableTipsRootViewController
+@implementation InspectableTipsRootViewController {
+  BOOL wasAskedtoAddChildPageViewController;
+}
 
 - (FootyFixture *)footyFixture
 {
@@ -23,6 +25,16 @@
 - (void)setPageViewController:(TipsPageViewController *)pageViewController
 {
   _pageViewController = pageViewController;
+}
+
+- (void)addChildPageViewControler
+{
+  wasAskedtoAddChildPageViewController = YES;
+}
+
+- (BOOL)wasAskedtoAddChildPageViewController
+{
+  return wasAskedtoAddChildPageViewController;
 }
 
 @end
