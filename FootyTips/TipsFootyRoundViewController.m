@@ -43,12 +43,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  return 1;
+  return (self.footyRound) ? 1 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return [self.footyRound.games count];
+  return (self.footyRound) ? [[self.footyRound games] count] : 0;
 }
 
 @end
