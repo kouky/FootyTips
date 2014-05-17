@@ -47,6 +47,11 @@ describe(@"TipsFootyRoundViewController", ^{
       expect(numberSections).to.equal(1);
     });
     
+    it(@"number of rows in first section equals the number of games for the round", ^{
+      NSInteger numberRows = [viewController tableView:nil numberOfRowsInSection:0];
+      expect(numberRows).to.equal([[mockFootyRound games] count]);
+    });
+
   });
   
   after(^{
