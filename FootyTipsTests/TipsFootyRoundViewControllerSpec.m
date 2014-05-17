@@ -9,6 +9,7 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import "MockModels.h"
 #import "InspectableTipsFootyRoundViewController.h"
 #import <objc/runtime.h>
 
@@ -19,6 +20,7 @@ SpecBegin(TipsFootyRoundViewController)
 describe(@"TipsFootyRoundViewController", ^{
   
   before(^{
+    [MockModels enumerate];
     viewController = [[InspectableTipsFootyRoundViewController alloc] init];
   });
   
@@ -34,6 +36,23 @@ describe(@"TipsFootyRoundViewController", ^{
     expect(propertyAttrs).to.equal("T@\"FootyRound\",C,V_footyRound");
   });
 
+  describe(@"table view data source", ^{
+    
+    before(^{
+      [viewController setFootyRound:mockFootyRound];
+    });
+    
+    it(@"number of sections is equal to one", ^{
+      NSInteger numberSections = [viewController numberOfSectionsInTableView:nil];
+      expect(numberSections).to.equal(1);
+    });
+    
+  });
+  
+  after(^{
+    [MockModels clear];
+    viewController = nil;
+  });
 
 });
 
