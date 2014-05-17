@@ -12,18 +12,18 @@
 #import "InspectableTipsFootyRoundViewController.h"
 #import <objc/runtime.h>
 
-static InspectableTipsFootyRoundViewController *inspectableViewController;
+static InspectableTipsFootyRoundViewController *viewController;
 
 SpecBegin(TipsFootyRoundViewController)
 
 describe(@"TipsFootyRoundViewController", ^{
   
   before(^{
-    inspectableViewController = [[InspectableTipsFootyRoundViewController alloc] init];
+    viewController = [[InspectableTipsFootyRoundViewController alloc] init];
   });
   
   it(@"init configures a plain table view style", ^{
-    expect(inspectableViewController.tableView.style).to.equal(UITableViewStylePlain);
+    expect(viewController.tableView.style).to.equal(UITableViewStylePlain);
   });
   
   it(@"has a footyRound property with a copy attribute", ^{
