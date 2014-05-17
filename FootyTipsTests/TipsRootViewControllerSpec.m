@@ -94,6 +94,11 @@ describe(@"TipsRootViewController", ^{
     
   });
   
+  it(@"loadView sets a scroll view to fix iOS7 nav bar overlap problem", ^{
+    [viewController loadView];
+    expect(viewController.view).to.beKindOf(UIScrollView.class);
+  });
+  
   after(^{
     [MockModels clear];
     mockTipsPageViewController = nil;
