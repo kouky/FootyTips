@@ -78,7 +78,7 @@ describe(@"TipsRootViewController", ^{
       expect(viewController.pageViewController).to.beIdenticalTo(mockTipsPageViewController);
     });
     
-    it(@"only configure a tips page view controller if it's nil", ^{
+    it(@"only configures a tips page view controller if it's nil", ^{
       id mock = [OCMockObject mockForClass:TipsPageViewController.class];
       [viewController setPageViewController:mock];
       [[[mockTipsObjectConfiguration stub] andReturn:mockTipsPageViewController] tipsPageViewControllerForFootyFixture:mockFootyFixture];
