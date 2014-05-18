@@ -8,6 +8,7 @@
 
 #import "TipsFootyRoundViewController.h"
 #import "FootyRound.h"
+#import "GameSummaryCell.h"
 
 @interface TipsFootyRoundViewController ()
 
@@ -49,6 +50,26 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return (self.footyRound) ? [[self.footyRound games] count] : 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  static NSString *cellIdentifier = @"gameSummaryCell";
+  
+  GameSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  if (!cell) {
+    [tableView registerNib:[UINib nibWithNibName:@"GameSummaryCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  }
+  
+  return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(GameSummaryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  Game *game = [[self.footyRound games] objectAtIndex:indexPath.row];                  
+  cell.homeTeamLabel.text = game.homeTeam.shortName;
+  cell.awayTeamLabel.text = game.awayTeam.shortName;
 }
 
 @end

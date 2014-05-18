@@ -11,9 +11,11 @@
 #import <Expecta/Expecta.h>
 #import "MockModels.h"
 #import "InspectableTipsFootyRoundViewController.h"
+#import "GameSummaryCell.h"
 #import <objc/runtime.h>
 
 static InspectableTipsFootyRoundViewController *viewController;
+static NSIndexPath *firstCellIndexPath;
 
 SpecBegin(TipsFootyRoundViewController)
 
@@ -21,6 +23,7 @@ describe(@"TipsFootyRoundViewController", ^{
   
   before(^{
     [MockModels enumerate];
+    firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     viewController = [[InspectableTipsFootyRoundViewController alloc] init];
   });
   
@@ -52,9 +55,18 @@ describe(@"TipsFootyRoundViewController", ^{
       expect(numberRows).to.equal([[mockFootyRound games] count]);
     });
 
+    it(@"cell properties represent game  details", ^{
+      UITableView *tableView = viewController.tableView;
+      GameSummaryCell *cell = (GameSummaryCell *)[viewController tableView:tableView cellForRowAtIndexPath:firstCellIndexPath];
+      [viewController tableView:tableView willDisplayCell:cell forRowAtIndexPath:firstCellIndexPath];
+      expect(cell.homeTeamLabel.text).to.equal([mockHomeTeam shortName]);
+      expect(cell.awayTeamLabel.text).to.equal([mockAwayTeam shortName]);
+    });
+    
   });
   
   after(^{
+    firstCellIndexPath = nil;
     [MockModels clear];
     viewController = nil;
   });
