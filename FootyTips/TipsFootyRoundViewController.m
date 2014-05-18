@@ -69,16 +69,23 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GameSummaryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  Game *game = [[self.footyRound games] objectAtIndex:indexPath.row];                  
+  Game *game = [self gameForRowAtIndexPath:indexPath];
   cell.homeTeamLabel.text = game.homeTeam.shortName;
   cell.awayTeamLabel.text = game.awayTeam.shortName;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  Game *game = [[self.footyRound games] objectAtIndex:indexPath.row];
+  Game *game = [self gameForRowAtIndexPath:indexPath];
   GameDetailsViewController *gameDetailsViewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:game];
   [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
+} 
+
+# pragma mark Private
+
+- (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return [[self.footyRound games] objectAtIndex:indexPath.row];
 }
 
 @end
