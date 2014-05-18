@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "TipsFootyRoundViewController.h"
 
-@interface InspectableTipsFootyRoundViewController : TipsFootyRoundViewController
+@interface InspectableTipsFootyRoundViewController : TipsFootyRoundViewController {
+  id _navigationController;
+}
+
+- (id)navigationController;
+- (void)setNavigationController:(id)navigationController;
 
 @end

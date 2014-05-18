@@ -9,6 +9,8 @@
 #import "TipsFootyRoundViewController.h"
 #import "FootyRound.h"
 #import "GameSummaryCell.h"
+#import "GameDetailsObjectConfiguration.h"
+#import "GameDetailsViewController.h"
 
 @interface TipsFootyRoundViewController ()
 
@@ -70,6 +72,13 @@
   Game *game = [[self.footyRound games] objectAtIndex:indexPath.row];                  
   cell.homeTeamLabel.text = game.homeTeam.shortName;
   cell.awayTeamLabel.text = game.awayTeam.shortName;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  Game *game = [[self.footyRound games] objectAtIndex:indexPath.row];
+  GameDetailsViewController *gameDetailsViewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:game];
+  [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
 }
 
 @end

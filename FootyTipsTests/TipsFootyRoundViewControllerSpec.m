@@ -12,10 +12,15 @@
 #import "MockModels.h"
 #import "InspectableTipsFootyRoundViewController.h"
 #import "GameSummaryCell.h"
+#import "GameDetailsObjectConfiguration.h"
+#import "GameDetailsViewController.h"
 #import <objc/runtime.h>
 
 static InspectableTipsFootyRoundViewController *viewController;
 static NSIndexPath *firstCellIndexPath;
+static id mockGameDetailsObjectConfiguration;
+static id mockGameDetailsViewController;
+static id mockNavController;
 
 SpecBegin(TipsFootyRoundViewController)
 
@@ -24,7 +29,11 @@ describe(@"TipsFootyRoundViewController", ^{
   before(^{
     [MockModels enumerate];
     firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
+    mockGameDetailsViewController = [OCMockObject mockForClass:GameDetailsViewController.class];
+    mockNavController = [OCMockObject niceMockForClass:UINavigationController.class];
     viewController = [[InspectableTipsFootyRoundViewController alloc] init];
+    viewController.navigationController = mockNavController;
   });
   
   it(@"init configures a plain table view style", ^{
@@ -63,9 +72,21 @@ describe(@"TipsFootyRoundViewController", ^{
       expect(cell.awayTeamLabel.text).to.equal([mockAwayTeam shortName]);
     });
     
+    it(@"cell selection pushes a game details view controller for the selected game", ^{
+      [[[mockGameDetailsObjectConfiguration expect] andReturn:mockGameDetailsViewController] gameDetailsViewControllerForGame:mockGame];
+      [[mockNavController expect] pushViewController:mockGameDetailsViewController animated:YES];
+      
+      [viewController tableView:nil didSelectRowAtIndexPath:firstCellIndexPath];
+      [mockGameDetailsObjectConfiguration verify];
+      [mockNavController verify];
+    });
+    
   });
   
   after(^{
+    mockNavController = nil;
+    mockGameDetailsViewController = nil;
+    mockGameDetailsObjectConfiguration = nil;
     firstCellIndexPath = nil;
     [MockModels clear];
     viewController = nil;
