@@ -40,4 +40,16 @@
   // Dispose of any resources that can be recreated.
 }
 
+# pragma mark pageViewContollerDataSource protocol methods
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+  return nil;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+  return nil;
+}
+
 @end
