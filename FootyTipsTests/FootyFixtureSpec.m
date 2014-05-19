@@ -13,7 +13,7 @@
 
 static FootyFixture *footyFixture;
 static FootyRound *firstFootyRound;
-static FootyRound *lastFootyRound;
+static FootyRound *secondFootyRound;
 static NSDictionary *JSONDictionary;
 
 SpecBegin(FootyFixture)
@@ -60,11 +60,11 @@ describe(@"FootyFixture", ^{
     before(^{
       footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:nil];
       firstFootyRound = [footyFixture.rounds firstObject];
-      lastFootyRound = [footyFixture.rounds lastObject];
+      secondFootyRound = [footyFixture.rounds lastObject];
     });
     
     it(@"returns the previous footyRound if it exists", ^{
-      expect([footyFixture footyRoundBefore:lastFootyRound]).to.beIdenticalTo(firstFootyRound);
+      expect([footyFixture footyRoundBefore:secondFootyRound]).to.beIdenticalTo(firstFootyRound);
     });
     
     it(@"returns nil if a previous footyRound doesn't exist", ^{
@@ -78,22 +78,22 @@ describe(@"FootyFixture", ^{
     before(^{
       footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:nil];
       firstFootyRound = [footyFixture.rounds firstObject];
-      lastFootyRound = [footyFixture.rounds lastObject];
+      secondFootyRound = [footyFixture.rounds lastObject];
     });
     
     it(@"returns the next footyRound if it exists", ^{
-      expect([footyFixture footyRoundAfter:firstFootyRound]).to.beIdenticalTo(lastFootyRound);
+      expect([footyFixture footyRoundAfter:firstFootyRound]).to.beIdenticalTo(secondFootyRound);
     });
     
     it(@"returns nil if a next footyRound doesn't exist", ^{
-      expect([footyFixture footyRoundAfter:lastFootyRound]).to.beNil();
+      expect([footyFixture footyRoundAfter:secondFootyRound]).to.beNil();
     });
     
   });
   
   after(^{
     firstFootyRound = nil;
-    lastFootyRound = nil;
+    secondFootyRound = nil;
     footyFixture = nil;
     JSONDictionary = nil;
   });
