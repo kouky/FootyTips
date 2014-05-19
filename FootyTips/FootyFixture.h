@@ -15,4 +15,5 @@
 @property (nonatomic, copy,   readonly) NSNumber *season;
 @property (nonatomic, strong, readonly) NSArray  *rounds;
 
+- (FootyRound *)footyRoundBefore:(FootyRound *)footyRound;
 @end

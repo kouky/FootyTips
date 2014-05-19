@@ -20,4 +20,16 @@
   return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FootyRound.class];
 }
 
+# pragma mark Finders
+
+- (FootyRound *)footyRoundBefore:(FootyRound *)footyRound
+{
+  NSInteger previousFootyRoundIndex = [footyRound.id integerValue] - 2;
+  if (previousFootyRoundIndex < 0) {
+    return nil;
+  } else {
+    return [[self rounds] objectAtIndex:previousFootyRoundIndex];
+  }
+}
+
 @end

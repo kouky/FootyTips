@@ -12,6 +12,8 @@
 #import "FootyFixture.h"
 
 static FootyFixture *footyFixture;
+static FootyRound *firstFootyRound;
+static FootyRound *lastFootyRound;
 static NSDictionary *JSONDictionary;
 
 SpecBegin(FootyFixture)
@@ -53,7 +55,27 @@ describe(@"FootyFixture", ^{
     expect(secondRound.id).to.equal(2);
   });
   
+  describe(@"instance method footyRoundBefore:", ^{
+    
+    before(^{
+      footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:nil];
+      firstFootyRound = [footyFixture.rounds firstObject];
+      lastFootyRound = [footyFixture.rounds lastObject];
+    });
+    
+    it(@"returns the previous footyRound if it exists", ^{
+      expect([footyFixture footyRoundBefore:lastFootyRound]).to.beIdenticalTo(firstFootyRound);
+    });
+    
+    it(@"returns nil if a previous footyRound doesn't exist", ^{
+      expect([footyFixture footyRoundBefore:firstFootyRound]).to.beNil();
+    });
+    
+  });
+  
   after(^{
+    firstFootyRound = nil;
+    lastFootyRound = nil;
     footyFixture = nil;
     JSONDictionary = nil;
   });
