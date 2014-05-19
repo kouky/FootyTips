@@ -55,40 +55,37 @@ describe(@"FootyFixture", ^{
     expect(secondRound.id).to.equal(2);
   });
   
-  describe(@"instance method footyRoundBefore:", ^{
+  describe(@"finder method", ^{
     
     before(^{
       footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:nil];
       firstFootyRound = [footyFixture.rounds firstObject];
       secondFootyRound = [footyFixture.rounds lastObject];
     });
-    
-    it(@"returns the previous footyRound if it exists", ^{
-      expect([footyFixture footyRoundBefore:secondFootyRound]).to.beIdenticalTo(firstFootyRound);
+
+    describe(@"footyRoundBefore:", ^{
+      
+      it(@"returns the previous footyRound if it exists", ^{
+        expect([footyFixture footyRoundBefore:secondFootyRound]).to.beIdenticalTo(firstFootyRound);
+      });
+      
+      it(@"returns nil if a previous footyRound doesn't exist", ^{
+        expect([footyFixture footyRoundBefore:firstFootyRound]).to.beNil();
+      });
+
     });
     
-    it(@"returns nil if a previous footyRound doesn't exist", ^{
-      expect([footyFixture footyRoundBefore:firstFootyRound]).to.beNil();
+    describe(@"footyRoundAfter:", ^{
+      
+      it(@"returns the next footyRound if it exists", ^{
+        expect([footyFixture footyRoundAfter:firstFootyRound]).to.beIdenticalTo(secondFootyRound);
+      });
+      
+      it(@"returns nil if a next footyRound doesn't exist", ^{
+        expect([footyFixture footyRoundAfter:secondFootyRound]).to.beNil();
+      });
+      
     });
-    
-  });
-  
-  describe(@"instance method footyRoundAfter:", ^{
-    
-    before(^{
-      footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:nil];
-      firstFootyRound = [footyFixture.rounds firstObject];
-      secondFootyRound = [footyFixture.rounds lastObject];
-    });
-    
-    it(@"returns the next footyRound if it exists", ^{
-      expect([footyFixture footyRoundAfter:firstFootyRound]).to.beIdenticalTo(secondFootyRound);
-    });
-    
-    it(@"returns nil if a next footyRound doesn't exist", ^{
-      expect([footyFixture footyRoundAfter:secondFootyRound]).to.beNil();
-    });
-    
   });
   
   after(^{
