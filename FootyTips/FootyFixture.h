@@ -16,4 +16,6 @@
 @property (nonatomic, strong, readonly) NSArray  *rounds;
 
 - (FootyRound *)footyRoundBefore:(FootyRound *)footyRound;
+- (FootyRound *)footyRoundAfter:(FootyRound *)footyRound;
+
 @end

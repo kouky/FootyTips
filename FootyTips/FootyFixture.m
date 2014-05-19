@@ -32,4 +32,14 @@
   }
 }
 
+- (FootyRound *)footyRoundAfter:(FootyRound *)footyRound
+{
+  NSInteger nextFootyRoundIndex = [footyRound.id integerValue];
+  if (nextFootyRoundIndex >= [self.rounds count]) {
+    return nil;
+  } else {
+    return [[self rounds] objectAtIndex:nextFootyRoundIndex];
+  }
+}
+
 @end

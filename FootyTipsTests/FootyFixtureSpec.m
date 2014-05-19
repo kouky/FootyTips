@@ -73,6 +73,24 @@ describe(@"FootyFixture", ^{
     
   });
   
+  describe(@"instance method footyRoundAfter:", ^{
+    
+    before(^{
+      footyFixture = [MTLJSONAdapter modelOfClass:FootyFixture.class fromJSONDictionary:JSONDictionary error:nil];
+      firstFootyRound = [footyFixture.rounds firstObject];
+      lastFootyRound = [footyFixture.rounds lastObject];
+    });
+    
+    it(@"returns the next footyRound if it exists", ^{
+      expect([footyFixture footyRoundAfter:firstFootyRound]).to.beIdenticalTo(lastFootyRound);
+    });
+    
+    it(@"returns nil if a next footyRound doesn't exist", ^{
+      expect([footyFixture footyRoundAfter:lastFootyRound]).to.beNil();
+    });
+    
+  });
+  
   after(^{
     firstFootyRound = nil;
     lastFootyRound = nil;
