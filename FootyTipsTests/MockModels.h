@@ -17,6 +17,8 @@ id mockHomeTeam;
 id mockAwayTeam;
 id mockGame;
 id mockFootyRound;
+id mockPreviousFootyRound;
+id mockNextFootyRound;
 id mockFootyFixture;
 
 @interface MockModels : NSObject
