@@ -18,6 +18,7 @@
 static TipsPageViewController *viewController;
 static id mockTipsFootyRoundViewController;
 static id mockPreviousTipsFootyRoundViewController;
+static id mockNextTipsFootyRoundViewController;
 static id mockTipsObjectConfiguration;
 
 SpecBegin(TipsPageViewController)
@@ -32,6 +33,8 @@ describe(@"TipsPageViewController", ^{
     
     mockPreviousTipsFootyRoundViewController = [OCMockObject mockForClass:TipsFootyRoundViewController.class];
     
+    mockNextTipsFootyRoundViewController = [OCMockObject mockForClass:TipsFootyRoundViewController.class];
+
     mockTipsObjectConfiguration = [OCMockObject mockForClass:TipsObjectConfiguration.class];
     
     viewController = [[TipsPageViewController alloc] init];
@@ -70,7 +73,17 @@ describe(@"TipsPageViewController", ^{
       expect(previousViewController).to.beIdenticalTo(mockPreviousTipsFootyRoundViewController);
     });
 
-    pending(@"pageViewController:viewControllerAfterViewController:");
+    it(@"after view controller", ^{
+      [[[mockFootyFixture expect] andReturn:mockNextFootyRound] footyRoundAfter:mockFootyRound];
+      
+      [[[mockTipsObjectConfiguration expect] andReturn:mockNextTipsFootyRoundViewController] tipsFootyRoundViewControllerForFootyRound:mockNextFootyRound];
+      
+      id nextViewController = [viewController pageViewController:nil viewControllerAfterViewController:mockTipsFootyRoundViewController];
+      
+      [mockFootyFixture verify];
+      [mockTipsObjectConfiguration verify];
+      expect(nextViewController).to.beIdenticalTo(mockNextTipsFootyRoundViewController);
+    });
     
   });
   
@@ -78,6 +91,7 @@ describe(@"TipsPageViewController", ^{
     mockTipsObjectConfiguration = nil;
     mockTipsFootyRoundViewController = nil;
     mockPreviousTipsFootyRoundViewController = nil;
+    mockNextTipsFootyRoundViewController = nil;
     viewController = nil;
     [MockModels clear];
   });

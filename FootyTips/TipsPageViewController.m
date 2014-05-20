@@ -59,7 +59,14 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-  return nil;
+  TipsFootyRoundViewController *footyRoundViewController = (TipsFootyRoundViewController *)viewController;
+  FootyRound *nextFootyRound = [self.footyFixture footyRoundAfter:footyRoundViewController.footyRound];
+  
+  if (nextFootyRound) {
+    return [TipsObjectConfiguration tipsFootyRoundViewControllerForFootyRound:nextFootyRound];
+  } else {
+    return nil;
+  }
 }
 
 @end
