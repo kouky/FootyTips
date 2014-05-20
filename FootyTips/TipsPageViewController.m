@@ -23,6 +23,7 @@
   self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                   navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                 options:nil];
+  self.dataSource = self;
   return self;
 }
 

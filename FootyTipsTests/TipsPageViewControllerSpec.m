@@ -59,6 +59,10 @@ describe(@"TipsPageViewController", ^{
     expect(TipsPageViewController.class).to.conformTo(@protocol(UIPageViewControllerDataSource));
   });
   
+  it(@"is its own the datasource", ^{
+    expect(viewController.dataSource).to.beIdenticalTo(viewController);
+  });
+  
   describe(@"implements UIPageViewControllerDataSource protocol methods", ^{
     
     it(@"before view controller", ^{
