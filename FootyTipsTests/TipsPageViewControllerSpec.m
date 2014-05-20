@@ -9,17 +9,33 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import "MockModels.h"
 #import "TipsPageViewController.h"
+#import "TipsFootyRoundViewController.h"
+#import "TipsObjectConfiguration.h"
 #import <objc/runtime.h>
 
 static TipsPageViewController *viewController;
+static id mockTipsFootyRoundViewController;
+static id mockPreviousTipsFootyRoundViewController;
+static id mockTipsObjectConfiguration;
 
 SpecBegin(TipsPageViewController)
 
 describe(@"TipsPageViewController", ^{
   
   before(^{
+    [MockModels enumerate];
+    
+    mockTipsFootyRoundViewController = [OCMockObject mockForClass:TipsFootyRoundViewController.class];
+    [[[mockTipsFootyRoundViewController stub] andReturn:mockFootyRound] footyRound];
+    
+    mockPreviousTipsFootyRoundViewController = [OCMockObject mockForClass:TipsFootyRoundViewController.class];
+    
+    mockTipsObjectConfiguration = [OCMockObject mockForClass:TipsObjectConfiguration.class];
+    
     viewController = [[TipsPageViewController alloc] init];
+    viewController.footyFixture = mockFootyFixture;
   });
   
   it(@"init configures a horizontal scrolling page controller", ^{
@@ -41,14 +57,29 @@ describe(@"TipsPageViewController", ^{
   });
   
   describe(@"implements UIPageViewControllerDataSource protocol methods", ^{
+    
+    it(@"before view controller", ^{
+      [[[mockFootyFixture expect] andReturn:mockPreviousFootyRound] footyRoundBefore:mockFootyRound];
+      
+      [[[mockTipsObjectConfiguration expect] andReturn:mockPreviousTipsFootyRoundViewController] tipsFootyRoundViewControllerForFootyRound:mockPreviousFootyRound];
+      
+      id previousViewController = [viewController pageViewController:nil viewControllerBeforeViewController:mockTipsFootyRoundViewController];
+      
+      [mockFootyFixture verify];
+      [mockTipsObjectConfiguration verify];
+      expect(previousViewController).to.beIdenticalTo(mockPreviousTipsFootyRoundViewController);
+    });
 
-    pending(@"pageViewController:viewControllerBeforeViewController:");
     pending(@"pageViewController:viewControllerAfterViewController:");
     
   });
   
   after(^{
+    mockTipsObjectConfiguration = nil;
+    mockTipsFootyRoundViewController = nil;
+    mockPreviousTipsFootyRoundViewController = nil;
     viewController = nil;
+    [MockModels clear];
   });
 
 });

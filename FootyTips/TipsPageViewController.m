@@ -7,6 +7,9 @@
 //
 
 #import "TipsPageViewController.h"
+#import "TipsFootyRoundViewController.h"
+#import "FootyFixture.h"
+#import "TipsObjectConfiguration.h"
 
 @interface TipsPageViewController ()
 
@@ -44,7 +47,14 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-  return nil;
+  TipsFootyRoundViewController *footyRoundViewController = (TipsFootyRoundViewController *)viewController;
+  FootyRound *previousFootyRound = [self.footyFixture footyRoundBefore:footyRoundViewController.footyRound];
+  
+  if (previousFootyRound) {
+    return [TipsObjectConfiguration tipsFootyRoundViewControllerForFootyRound:previousFootyRound];
+  } else {
+    return nil;
+  }
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
