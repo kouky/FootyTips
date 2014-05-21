@@ -18,4 +18,7 @@
 @property (nonatomic, copy,   readonly) NSString *timeZone;
 @property (nonatomic, strong, readonly) NSArray  *games;
 
+- (NSString *)title;
+- (NSString *)shortTitle;
+
 @end

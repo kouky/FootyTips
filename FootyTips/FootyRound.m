@@ -42,4 +42,17 @@
   return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Game.class];
 }
 
+# pragma mark Decorators
+
+- (NSString *)title
+{
+  return [NSString stringWithFormat:@"Round %@", self.id];
+}
+
+- (NSString *)shortTitle
+{
+  return [NSString stringWithFormat:@"Rnd %@", self.id];
+}
+
+
 @end

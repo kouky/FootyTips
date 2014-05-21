@@ -85,6 +85,22 @@ describe(@"FootyRound", ^{
     
   });
   
+  describe(@"decorators", ^{
+    
+    before(^{
+      footyRound = [MTLJSONAdapter modelOfClass:FootyRound.class fromJSONDictionary:JSONDictionary error:nil];
+    });
+    
+    it(@"title describes the footy round", ^{
+      expect(footyRound.title).to.equal(@"Round 4");
+    });
+
+    it(@"shortTitle describes the footy round", ^{
+      expect(footyRound.shortTitle).to.equal(@"Rnd 4");
+    });
+    
+  });
+  
   after(^{
     JSONDictionary = nil;
     footyRound = nil;
