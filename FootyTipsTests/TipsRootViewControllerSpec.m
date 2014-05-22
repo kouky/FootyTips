@@ -99,6 +99,16 @@ describe(@"TipsRootViewController", ^{
     expect(viewController.view).to.beKindOf(UIScrollView.class);
   });
   
+  describe(@"footy round notifications", ^{
+    
+    pending(@"are not received by default");
+    
+    pending(@"are received after view did appear");
+    
+    pending(@"are not received after view will disappear");
+    
+  });
+  
   after(^{
     [MockModels clear];
     mockTipsPageViewController = nil;
