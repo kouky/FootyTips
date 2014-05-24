@@ -15,3 +15,5 @@
 @property (copy) FootyRound *footyRound;
 
 @end
+
+extern NSString * const TipsFootyRoundDidAppearNotification;

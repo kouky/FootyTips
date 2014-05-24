@@ -21,12 +21,14 @@ static NSIndexPath *firstCellIndexPath;
 static id mockGameDetailsObjectConfiguration;
 static id mockGameDetailsViewController;
 static id mockNavController;
+static id mockObserver;
 
 SpecBegin(TipsFootyRoundViewController)
 
 describe(@"TipsFootyRoundViewController", ^{
   
   before(^{
+    mockObserver = [OCMockObject observerMock];
     [MockModels enumerate];
     firstCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     mockGameDetailsObjectConfiguration = [OCMockObject mockForClass:GameDetailsObjectConfiguration.class];
@@ -83,7 +85,26 @@ describe(@"TipsFootyRoundViewController", ^{
     
   });
   
+  describe(@"viewDidAppear", ^{
+    
+    before(^{
+      [[NSNotificationCenter defaultCenter] addMockObserver:mockObserver name:TipsFootyRoundDidAppearNotification object:nil];
+    });
+    
+    it(@"posts a notification about the displayed footy round", ^{
+      [[mockObserver expect] notificationWithName:TipsFootyRoundDidAppearNotification object:viewController];
+      [viewController viewDidAppear:NO];
+      [mockObserver verify];
+    });
+    
+    after(^{
+      [[NSNotificationCenter defaultCenter] removeObserver:mockObserver];
+    });
+    
+  });
+  
   after(^{
+    mockObserver = nil;
     mockNavController = nil;
     mockGameDetailsViewController = nil;
     mockGameDetailsObjectConfiguration = nil;

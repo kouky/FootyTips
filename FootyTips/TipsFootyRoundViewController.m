@@ -79,7 +79,15 @@
   Game *game = [self gameForRowAtIndexPath:indexPath];
   GameDetailsViewController *gameDetailsViewController = [GameDetailsObjectConfiguration gameDetailsViewControllerForGame:game];
   [[self navigationController] pushViewController:gameDetailsViewController animated:YES];
-} 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  NSNotification *note = [NSNotification notificationWithName:TipsFootyRoundDidAppearNotification
+                                                       object:self];
+  [[NSNotificationCenter defaultCenter] postNotification:note];
+}
 
 # pragma mark Private
 
@@ -89,3 +97,5 @@
 }
 
 @end
+
+NSString * const TipsFootyRoundDidAppearNotification = @"org.kouky.footytips.TipsFootyRoundDidAppearNotification";
