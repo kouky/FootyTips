@@ -14,7 +14,8 @@
 #import "GameSummaryCell.h"
 #import "GameDetailsObjectConfiguration.h"
 #import "GameDetailsViewController.h"
-#import <objc/runtime.h>
+#import "Swizzle.h"
+#import "UIViewController+TestSuperClassCalled.h"
 
 static InspectableTipsFootyRoundViewController *viewController;
 static NSIndexPath *firstCellIndexPath;
@@ -85,13 +86,13 @@ describe(@"TipsFootyRoundViewController", ^{
     
   });
   
-  describe(@"viewDidAppear", ^{
+  describe(@"viewDidAppear posts a notification", ^{
     
     before(^{
       [[NSNotificationCenter defaultCenter] addMockObserver:mockObserver name:TipsFootyRoundDidAppearNotification object:nil];
     });
     
-    it(@"posts a notification about the displayed footy round", ^{
+    it(@"about the displayed footy round", ^{
       [[mockObserver expect] notificationWithName:TipsFootyRoundDidAppearNotification object:viewController];
       [viewController viewDidAppear:NO];
       [mockObserver verify];
@@ -103,6 +104,27 @@ describe(@"TipsFootyRoundViewController", ^{
     
   });
   
+  describe(@"viewDidAppear calls super class implementation of", ^{
+    
+    before(^{
+      [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                  selector:[UIViewController realViewDidAppearSelector]
+                               andSelector:[UIViewController testViewDidAppearSelector]];
+    });
+    
+    it(@"viewDidAppear", ^{
+      [viewController viewDidAppear:NO];
+      expect(objc_getAssociatedObject(viewController, viewDidAppearKey)).notTo.beNil();
+    });
+    
+    after(^{
+      [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                  selector:[UIViewController realViewDidAppearSelector]
+                               andSelector:[UIViewController testViewDidAppearSelector]];
+    });
+    
+  });
+
   after(^{
     mockObserver = nil;
     mockNavController = nil;
