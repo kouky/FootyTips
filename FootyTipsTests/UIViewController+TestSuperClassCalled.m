@@ -7,15 +7,46 @@
 //
 
 #import "UIViewController+TestSuperClassCalled.h"
-#import <objc/runtime.h>
 
 @implementation UIViewController (TestSuperClassCalled)
 
+# pragma mark viewWillAppear test methods
+
+- (void)UIViewControllerTests_viewWillAppear:(BOOL)animated
+{
+  NSNumber *parameter = [NSNumber numberWithBool:animated];
+  objc_setAssociatedObject(self, viewWillAppearKey, parameter, OBJC_ASSOCIATION_RETAIN);
+}
+
++ (SEL)realViewWillAppearSelector
+{
+  return @selector(viewWillAppear:);
+}
+
++ (SEL)testViewWillAppearSelector
+{
+  return @selector(UIViewControllerTests_viewWillAppear:);
+}
+
+#pragma mark viewDidAppear test methods
+
 - (void)UIViewControllerTests_viewDidAppear:(BOOL)animated
 {
-  NSNumber *paramter = [NSNumber numberWithBool:animated];
-  objc_setAssociatedObject(self, viewDidAppearKey, paramter, OBJC_ASSOCIATION_RETAIN);
+  NSNumber *parameter = [NSNumber numberWithBool:animated];
+  objc_setAssociatedObject(self, viewDidAppearKey, parameter, OBJC_ASSOCIATION_RETAIN);
 }
+
++ (SEL)realViewDidAppearSelector
+{
+  return @selector(viewDidAppear:);
+}
+
++ (SEL)testViewDidAppearSelector
+{
+  return @selector(UIViewControllerTests_viewDidAppear:);
+}
+
+#pragma mark viewWillDisappear test methods
 
 - (void)UIViewControllerTests_viewWillDisappear:(BOOL)animated
 {
@@ -23,14 +54,19 @@
   objc_setAssociatedObject(self, viewWillDisappearKey, paramter, OBJC_ASSOCIATION_RETAIN);
 }
 
-- (void)UIViewControllerTests_viewWillAppear: (BOOL)animated
++ (SEL)realViewWillDisappearSelector
 {
-  NSNumber *parameter = [NSNumber numberWithBool:animated];
-  objc_setAssociatedObject(self, viewWillAppearKey, parameter, OBJC_ASSOCIATION_RETAIN);
+  return @selector(viewWillDisappear:);
+}
+
++ (SEL)testViewWillDisappearSelector
+{
+  return @selector(UIViewControllerTests_viewWillDisappear:);
 }
 
 @end
 
+char * const viewDidLoadKey = "UIViewControllerTestsViewDidLoadKey";
+char * const viewWillAppearKey = "UIViewControllerTestsViewWillAppearKey";
 char * const viewDidAppearKey = "UIViewControllerTestsViewDidAppearKey";
 char * const viewWillDisappearKey = "UIViewControllerTestsViewWillDisappearKey";
-char * const viewWillAppearKey = "UIViewControllerTestsViewWillAppearKey";

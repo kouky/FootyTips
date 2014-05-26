@@ -7,15 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 @interface UIViewController (TestSuperClassCalled)
 
-- (void)UIViewControllerTests_viewDidAppear:(BOOL)animated;
-- (void)UIViewControllerTests_viewWillDisappear:(BOOL)animated;
-- (void)UIViewControllerTests_viewWillAppear: (BOOL)animated;
+
+- (void) UIViewControllerTests_viewWillAppear:(BOOL)animated;
++ (SEL)  realViewWillAppearSelector;
++ (SEL)  testViewWillAppearSelector;
+
+- (void) UIViewControllerTests_viewDidAppear:(BOOL)animated;
++ (SEL)  realViewDidAppearSelector;
++ (SEL)  testViewDidAppearSelector;
+
+- (void) UIViewControllerTests_viewWillDisappear:(BOOL)animated;
++ (SEL)  realViewWillDisappearSelector;
++ (SEL)  testViewWillDisappearSelector;
 
 @end
 
+extern char * const viewWillAppearKey;
 extern char * const viewDidAppearKey;
 extern char * const viewWillDisappearKey;
-extern char * const viewWillAppearKey;

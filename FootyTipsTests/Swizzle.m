@@ -7,7 +7,6 @@
 //
 
 #import "Swizzle.h"
-#import <objc/runtime.h>
 
 @implementation Swizzle
 
