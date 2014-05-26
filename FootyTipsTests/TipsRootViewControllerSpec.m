@@ -145,6 +145,26 @@ describe(@"TipsRootViewController", ^{
     });
   });
   
+  describe(@"viewWillDisappear", ^{
+    
+    before(^{
+      [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                  selector:[UIViewController realViewWillDisappearSelector]
+                               andSelector:[UIViewController testViewWillDisappearSelector]];
+    });
+    
+    it(@"calls super class implementation of viewWillDisappear", ^{
+      [viewController viewWillDisappear:NO];
+      expect(objc_getAssociatedObject(viewController, viewWillDisappearKey)).notTo.beNil();
+    });
+    
+    after(^{
+      [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                  selector:[UIViewController realViewWillDisappearSelector]
+                               andSelector:[UIViewController testViewWillDisappearSelector]];
+    });
+  });
+  
   describe(@"footy round notifications", ^{
     
     pending(@"are not received by default");
