@@ -15,6 +15,8 @@
 #import "TipsManager.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsPageViewController.h"
+#import "Swizzle.h"
+#import "UIViewController+TestSuperClassCalled.h"
 
 static InspectableTipsRootViewController *viewController;
 static id mockTipsManager;
@@ -57,11 +59,35 @@ describe(@"TipsRootViewController", ^{
     
   });
   
-  it(@"viewDidLoad requests the building of the footy fixture", ^{
-    [[mockTipsManager expect] buildFixture];
-    viewController.manager = mockTipsManager;
-    [viewController viewDidLoad];
-    [mockTipsManager verify];
+  describe(@"viewDidLoad", ^{
+
+    it(@"requests the building of the footy fixture", ^{
+      [[mockTipsManager expect] buildFixture];
+      viewController.manager = mockTipsManager;
+      [viewController viewDidLoad];
+      [mockTipsManager verify];
+    });
+    
+    describe(@"calls super class implementation of", ^{
+      
+      before(^{
+        [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                    selector:[UIViewController realViewDidLoadSelector]
+                                 andSelector:[UIViewController testViewDidLoadSelector]];
+      });
+      
+      it(@"viewDidLoad", ^{
+        [viewController viewDidLoad];
+        expect(objc_getAssociatedObject(viewController, viewDidLoadKey)).notTo.beNil();
+      });
+      
+      after(^{
+        [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                    selector:[UIViewController realViewDidLoadSelector]
+                                 andSelector:[UIViewController testViewDidLoadSelector]];
+      });
+      
+    });
   });
   
   describe(@"delegate method didReceiveFixtureModel", ^{
