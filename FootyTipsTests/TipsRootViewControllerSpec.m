@@ -125,6 +125,26 @@ describe(@"TipsRootViewController", ^{
     expect(viewController.view).to.beKindOf(UIScrollView.class);
   });
   
+  describe(@"viewDidAppear", ^{
+
+    before(^{
+      [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                  selector:[UIViewController realViewDidAppearSelector]
+                               andSelector:[UIViewController testViewDidAppearSelector]];
+    });
+    
+    it(@"calls super class implementation of viewDidAppear", ^{
+      [viewController viewDidAppear:NO];
+      expect(objc_getAssociatedObject(viewController, viewDidAppearKey)).notTo.beNil();
+    });
+    
+    after(^{
+      [Swizzle swapInstanceMethodsForClass:UIViewController.class
+                                  selector:[UIViewController realViewDidAppearSelector]
+                               andSelector:[UIViewController testViewDidAppearSelector]];
+    });
+  });
+  
   describe(@"footy round notifications", ^{
     
     pending(@"are not received by default");
