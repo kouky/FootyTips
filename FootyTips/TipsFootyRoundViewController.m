@@ -31,11 +31,6 @@
   return [self init];
 }
 
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-}
-
 - (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
