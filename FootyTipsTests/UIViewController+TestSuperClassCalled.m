@@ -10,6 +10,23 @@
 
 @implementation UIViewController (TestSuperClassCalled)
 
+# pragma mark viewDidLoad test methods
+
+- (void)UIViewControllerTests_viewDidLoad
+{
+  objc_setAssociatedObject(self, viewDidLoadKey, [NSNumber numberWithBool:YES], OBJC_ASSOCIATION_RETAIN);
+}
+
++ (SEL)realViewDidLoadSelector
+{
+  return @selector(viewDidLoad);
+}
+
++ (SEL)testViewDidLoadSelector
+{
+  return @selector(UIViewControllerTests_viewDidLoad);
+}
+
 # pragma mark viewWillAppear test methods
 
 - (void)UIViewControllerTests_viewWillAppear:(BOOL)animated

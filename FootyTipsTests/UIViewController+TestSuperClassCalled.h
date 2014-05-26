@@ -11,6 +11,9 @@
 
 @interface UIViewController (TestSuperClassCalled)
 
+- (void) UIViewControllerTests_viewDidLoad;
++ (SEL)  realViewDidLoadSelector;
++ (SEL)  testViewDidLoadSelector;
 
 - (void) UIViewControllerTests_viewWillAppear:(BOOL)animated;
 + (SEL)  realViewWillAppearSelector;
@@ -26,6 +29,7 @@
 
 @end
 
+extern char * const viewDidLoadKey;
 extern char * const viewWillAppearKey;
 extern char * const viewDidAppearKey;
 extern char * const viewWillDisappearKey;
