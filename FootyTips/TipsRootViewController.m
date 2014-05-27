@@ -10,6 +10,7 @@
 #import "TipsManager.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsPageViewController.h"
+#import "TipsFootyRoundViewController.h"
 
 @interface TipsRootViewController ()
 
@@ -45,11 +46,18 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(footyRoundDidAppearNotification:)
+                                               name:TipsFootyRoundDidAppearNotification
+                                             object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
   [super viewWillDisappear:animated];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:TipsFootyRoundDidAppearNotification
+                                                object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,6 +80,13 @@
     _pageViewController = [TipsObjectConfiguration tipsPageViewControllerForFootyFixture:_footyFixture];
     [self addChildPageViewControler];
   }
+}
+
+# pragma mark NSNotification handlers
+
+- (void)footyRoundDidAppearNotification:(NSNotification *)note
+{
+#warning incomplete implementation
 }
 
 # pragma mark Private

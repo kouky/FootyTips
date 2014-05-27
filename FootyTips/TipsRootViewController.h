@@ -21,4 +21,6 @@
 
 @property (nonatomic, strong) TipsManager *manager;
 
+- (void)footyRoundDidAppearNotification:(NSNotification *)note;
+
 @end

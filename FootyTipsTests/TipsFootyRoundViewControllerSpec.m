@@ -92,7 +92,7 @@ describe(@"TipsFootyRoundViewController", ^{
       [[NSNotificationCenter defaultCenter] addMockObserver:mockObserver name:TipsFootyRoundDidAppearNotification object:nil];
     });
     
-    it(@"about the displayed footy round", ^{
+    it(@"about the displayed footy round view controller", ^{
       [[mockObserver expect] notificationWithName:TipsFootyRoundDidAppearNotification object:viewController];
       [viewController viewDidAppear:NO];
       [mockObserver verify];

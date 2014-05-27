@@ -15,8 +15,10 @@
 #import "TipsManager.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsPageViewController.h"
+#import "TipsFootyRoundViewController.h"
 #import "Swizzle.h"
 #import "UIViewController+TestSuperClassCalled.h"
+#import "TipsRootViewController+TestNotificationDelivery.h"
 
 static InspectableTipsRootViewController *viewController;
 static id mockTipsManager;
@@ -165,13 +167,44 @@ describe(@"TipsRootViewController", ^{
     });
   });
   
-  describe(@"footy round notifications", ^{
+  describe(@"footy round did appear notifications", ^{
     
-    pending(@"are not received by default");
+    before(^{
+      [Swizzle swapInstanceMethodsForClass:TipsRootViewController.class
+                                  selector:[TipsRootViewController realFootyRoundDidAppearNotificationSelector]
+                               andSelector:[TipsRootViewController testFootyRoundDidAppearNotificationSelector]];
+      
+    });
     
-    pending(@"are received after view did appear");
+    it(@"are not received by default", ^{
+      [[NSNotificationCenter defaultCenter] postNotificationName:TipsFootyRoundDidAppearNotification
+                                                          object:nil
+                                                        userInfo:nil];
+      expect(objc_getAssociatedObject(viewController, footyRoundDidAppearNotificationKey)).to.beNil();
+    });
     
-    pending(@"are not received after view will disappear");
+    it(@"are received after view did appear", ^{
+      [viewController viewDidAppear:NO];
+      [[NSNotificationCenter defaultCenter] postNotificationName:TipsFootyRoundDidAppearNotification
+                                                          object:nil
+                                                        userInfo:nil];
+      expect(objc_getAssociatedObject(viewController, footyRoundDidAppearNotificationKey)).notTo.beNil();
+    });
+    
+    it(@"are not received after view will disappear", ^{
+      [viewController viewDidAppear:NO];
+      [viewController viewWillDisappear:NO];
+      [[NSNotificationCenter defaultCenter] postNotificationName:TipsFootyRoundDidAppearNotification
+                                                          object:nil
+                                                        userInfo:nil];
+      expect(objc_getAssociatedObject(viewController, footyRoundDidAppearNotificationKey)).to.beNil();
+    });
+
+    after(^{
+      [Swizzle swapInstanceMethodsForClass:TipsRootViewController.class
+                                  selector:[TipsRootViewController realFootyRoundDidAppearNotificationSelector]
+                               andSelector:[TipsRootViewController testFootyRoundDidAppearNotificationSelector]];
+    });
     
   });
   
