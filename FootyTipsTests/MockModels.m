@@ -26,6 +26,7 @@
   [[[mockFootyRound stub] andReturn:@3] id];
   [[[mockFootyRound stub] andReturn:@[mockGame]] games];
   [[[mockFootyRound stub] andReturn:mockFootyRound] copyWithZone:[OCMArg anyPointer]];
+  [[[mockFootyRound stub] andReturn:@"Round 3"] title];
   
   mockPreviousFootyRound = [OCMockObject mockForClass:FootyRound.class];
   [[[mockPreviousFootyRound stub] andReturn:@2] id];

@@ -11,6 +11,7 @@
 #import "TipsObjectConfiguration.h"
 #import "TipsPageViewController.h"
 #import "TipsFootyRoundViewController.h"
+#import "FootyRound.h"
 
 @interface TipsRootViewController ()
 
@@ -86,7 +87,8 @@
 
 - (void)footyRoundDidAppearNotification:(NSNotification *)note
 {
-#warning incomplete implementation
+  TipsFootyRoundViewController *viewController = (TipsFootyRoundViewController *)note.object;
+  [self setTitle:[viewController.footyRound title]];
 }
 
 # pragma mark Private

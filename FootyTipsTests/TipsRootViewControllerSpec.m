@@ -24,6 +24,7 @@ static InspectableTipsRootViewController *viewController;
 static id mockTipsManager;
 static id mockTipsObjectConfiguration;
 static id mockTipsPageViewController;
+static id mockTipsFootyRoundViewController;
 
 SpecBegin(TipsRootViewController)
 
@@ -34,6 +35,7 @@ describe(@"TipsRootViewController", ^{
     mockTipsManager = [OCMockObject niceMockForClass:TipsManager.class];
     mockTipsObjectConfiguration = [OCMockObject mockForClass:TipsObjectConfiguration.class];
     mockTipsPageViewController = [OCMockObject mockForClass:TipsPageViewController.class];
+    mockTipsFootyRoundViewController = [OCMockObject mockForClass:TipsFootyRoundViewController.class];
     [MockModels enumerate];
   });
   
@@ -208,8 +210,25 @@ describe(@"TipsRootViewController", ^{
     
   });
   
+  describe(@"footyRoundDidAppearNotification", ^{
+    
+    before(^{
+      [[[mockTipsFootyRoundViewController stub] andReturn:mockFootyRound] footyRound];
+      [viewController viewDidAppear:NO];
+    });
+    
+    it(@"sets the title to the footy round title", ^{
+      NSNotification *note = [NSNotification notificationWithName:TipsFootyRoundDidAppearNotification
+                                                           object:mockTipsFootyRoundViewController];
+      [viewController footyRoundDidAppearNotification:note];
+      expect(viewController.title).to.equal([mockFootyRound title]);
+    });
+    
+  });
+  
   after(^{
     [MockModels clear];
+    mockTipsFootyRoundViewController = nil;
     mockTipsPageViewController = nil;
     mockTipsObjectConfiguration = nil;
     mockTipsManager = nil;
