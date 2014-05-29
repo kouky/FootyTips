@@ -13,6 +13,7 @@
 		2717411A18FEA752001CF8AC /* TipsManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411918FEA752001CF8AC /* TipsManagerSpec.m */; };
 		2717411D18FEA780001CF8AC /* TipsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsManager.m */; };
 		2717411E18FEA780001CF8AC /* TipsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsManager.m */; };
+		27502C8A193738090030DB62 /* SharedSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27502C89193738090030DB62 /* SharedSpec.m */; };
 		275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */; };
 		2785C5BC19318B190002B18E /* Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BB19318B190002B18E /* Swizzle.m */; };
 		2785C5BF19318D950002B18E /* UIViewController+TestSuperClassCalled.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BE19318D950002B18E /* UIViewController+TestSuperClassCalled.m */; };
@@ -90,6 +91,7 @@
 		2717411B18FEA780001CF8AC /* TipsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsManager.h; sourceTree = "<group>"; };
 		2717411C18FEA780001CF8AC /* TipsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsManager.m; sourceTree = "<group>"; };
 		2717411F18FEAEE9001CF8AC /* TipsManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsManagerDelegate.h; sourceTree = "<group>"; };
+		27502C89193738090030DB62 /* SharedSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedSpec.m; sourceTree = "<group>"; };
 		275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailsViewControllerSpec.m; sourceTree = "<group>"; };
 		2785C5BA19318B190002B18E /* Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzle.h; sourceTree = "<group>"; };
 		2785C5BB19318B190002B18E /* Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzle.m; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				27F11CB21914AE4D0045B4FE /* MockModels.m */,
 				27AD597718EAE86900D54C65 /* NonNetworkedFootyCommunicator.h */,
 				27AD597818EAE86900D54C65 /* NonNetworkedFootyCommunicator.m */,
+				27502C89193738090030DB62 /* SharedSpec.m */,
 				2785C5BA19318B190002B18E /* Swizzle.h */,
 				2785C5BB19318B190002B18E /* Swizzle.m */,
 				2785C5BD19318D950002B18E /* UIViewController+TestSuperClassCalled.h */,
@@ -573,6 +576,7 @@
 				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
 				2717411E18FEA780001CF8AC /* TipsManager.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
+				27502C8A193738090030DB62 /* SharedSpec.m in Sources */,
 				275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */,
 				27CA38B418FCCBB300F4A0BE /* FootyRoundSpec.m in Sources */,
 				27B4A47E191A4749005CF7AD /* TipsFootyRoundViewControllerSpec.m in Sources */,
