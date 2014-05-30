@@ -9,29 +9,47 @@
 #import <Specta/Specta.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import <OCMock/OCMock.h>
 #import "LadderRootViewController.h"
+#import "LadderManager.h"
+#import "LadderManagerDelegate.h"
 
 static LadderRootViewController *viewController;
+static id mockLadderManager;
 
 SpecBegin(LadderRootViewController)
 
 before(^{
   viewController = [[LadderRootViewController alloc] init];
+  mockLadderManager = [OCMockObject niceMockForClass:LadderManager.class];
 });
 
-pending(@"conforms to the LadderManagerDelegate protocol");
+it(@"conforms to the LadderManagerDelegate protocol", ^{
+  expect(LadderRootViewController.class).to.conformTo(@protocol(LadderManagerDelegate));
+});
 
 describe(@"setManager", ^{
   
-  pending(@"can accept nil as an argument");
+  it(@"can accept nil as an argument", ^{
+    viewController.manager = nil;
+    expect(viewController.manager).to.beNil();
+  });
   
-  pending(@"sets the manager property");
+  it(@"sets the manager property", ^{
+    viewController.manager = mockLadderManager;
+    expect(viewController.manager).to.beIdenticalTo(mockLadderManager);
+  });
   
-  pending(@"sets the manager delegate to self");
+  it(@"sets the manager delegate to self", ^{
+    [[mockLadderManager expect] setDelegate:viewController];
+    viewController.manager = mockLadderManager;
+    [mockLadderManager verify];
+  });
   
 });
 
 after(^{
+  mockLadderManager = nil;
   viewController = nil;
 });
 

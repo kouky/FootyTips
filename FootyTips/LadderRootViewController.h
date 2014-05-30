@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LadderManagerDelegate.h"
 
-@interface LadderRootViewController : UIViewController
+@class LadderManager;
+
+@interface LadderRootViewController : UIViewController <LadderManagerDelegate>
+
+@property (nonatomic, strong) LadderManager *manager;
 
 @end

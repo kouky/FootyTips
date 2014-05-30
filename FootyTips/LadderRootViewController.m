@@ -7,6 +7,7 @@
 //
 
 #import "LadderRootViewController.h"
+#import "LadderManager.h"
 
 @interface LadderRootViewController ()
 
@@ -29,6 +30,12 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)setManager:(LadderManager *)manager
+{
+  _manager = manager;
+  manager.delegate = self;
 }
 
 - (void)viewDidLoad
