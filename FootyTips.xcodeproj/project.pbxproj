@@ -18,6 +18,9 @@
 		27792F3F1938846E0083E4D6 /* LadderRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F3E1938846E0083E4D6 /* LadderRootViewController.m */; };
 		27792F401938846E0083E4D6 /* LadderRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F3E1938846E0083E4D6 /* LadderRootViewController.m */; };
 		27792F4319388B340083E4D6 /* LadderRootViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F4219388B340083E4D6 /* LadderRootViewControllerSpec.m */; };
+		27792F46193894120083E4D6 /* LadderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F45193894120083E4D6 /* LadderManager.m */; };
+		27792F47193894120083E4D6 /* LadderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F45193894120083E4D6 /* LadderManager.m */; };
+		27792F49193895F20083E4D6 /* LadderManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F48193895F20083E4D6 /* LadderManagerSpec.m */; };
 		2785C5BC19318B190002B18E /* Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BB19318B190002B18E /* Swizzle.m */; };
 		2785C5BF19318D950002B18E /* UIViewController+TestSuperClassCalled.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BE19318D950002B18E /* UIViewController+TestSuperClassCalled.m */; };
 		2785FB21190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
@@ -99,6 +102,10 @@
 		27792F3D1938846E0083E4D6 /* LadderRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LadderRootViewController.h; sourceTree = "<group>"; };
 		27792F3E1938846E0083E4D6 /* LadderRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderRootViewController.m; sourceTree = "<group>"; };
 		27792F4219388B340083E4D6 /* LadderRootViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderRootViewControllerSpec.m; sourceTree = "<group>"; };
+		27792F44193894120083E4D6 /* LadderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LadderManager.h; sourceTree = "<group>"; };
+		27792F45193894120083E4D6 /* LadderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderManager.m; sourceTree = "<group>"; };
+		27792F48193895F20083E4D6 /* LadderManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderManagerSpec.m; sourceTree = "<group>"; };
+		27792F4A193897520083E4D6 /* LadderManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LadderManagerDelegate.h; sourceTree = "<group>"; };
 		2785C5BA19318B190002B18E /* Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzle.h; sourceTree = "<group>"; };
 		2785C5BB19318B190002B18E /* Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzle.m; sourceTree = "<group>"; };
 		2785C5BD19318D950002B18E /* UIViewController+TestSuperClassCalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TestSuperClassCalled.h"; sourceTree = "<group>"; };
@@ -210,6 +217,9 @@
 		27792F3C193884390083E4D6 /* Ladder */ = {
 			isa = PBXGroup;
 			children = (
+				27792F44193894120083E4D6 /* LadderManager.h */,
+				27792F45193894120083E4D6 /* LadderManager.m */,
+				27792F4A193897520083E4D6 /* LadderManagerDelegate.h */,
 				27792F3D1938846E0083E4D6 /* LadderRootViewController.h */,
 				27792F3E1938846E0083E4D6 /* LadderRootViewController.m */,
 			);
@@ -220,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				27792F4219388B340083E4D6 /* LadderRootViewControllerSpec.m */,
+				27792F48193895F20083E4D6 /* LadderManagerSpec.m */,
 			);
 			name = Ladder;
 			sourceTree = "<group>";
@@ -576,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AD597118EA642600D54C65 /* FootyCommunicator.m in Sources */,
+				27792F46193894120083E4D6 /* LadderManager.m in Sources */,
 				279E5A4E191791FF005DF058 /* TipsPageViewController.m in Sources */,
 				27CA38B718FCCBDA00F4A0BE /* FootyRound.m in Sources */,
 				27F17ABA19126B9500D1268A /* GameDetailsObjectConfiguration.m in Sources */,
@@ -619,8 +631,10 @@
 				27B4A485191A4A0B005CF7AD /* InspectableTipsFootyRoundViewController.m in Sources */,
 				279E5A4F191791FF005DF058 /* TipsPageViewController.m in Sources */,
 				2717411A18FEA752001CF8AC /* TipsManagerSpec.m in Sources */,
+				27792F47193894120083E4D6 /* LadderManager.m in Sources */,
 				27AD596018E97B6600D54C65 /* AppDelegate.m in Sources */,
 				278A2E9C191BA3BC00D3778B /* TipsRootViewController.m in Sources */,
+				27792F49193895F20083E4D6 /* LadderManagerSpec.m in Sources */,
 				278A2EA1191BBE3C00D3778B /* InspectableTipsRootViewController.m in Sources */,
 				27AD596E18EA640500D54C65 /* FootyCommunicatorSpec.m in Sources */,
 				2785C5BF19318D950002B18E /* UIViewController+TestSuperClassCalled.m in Sources */,
