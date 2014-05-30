@@ -15,6 +15,8 @@
 		2717411E18FEA780001CF8AC /* TipsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717411C18FEA780001CF8AC /* TipsManager.m */; };
 		27502C8A193738090030DB62 /* SharedSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27502C89193738090030DB62 /* SharedSpec.m */; };
 		275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */; };
+		27792F3F1938846E0083E4D6 /* LadderRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F3E1938846E0083E4D6 /* LadderRootViewController.m */; };
+		27792F401938846E0083E4D6 /* LadderRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F3E1938846E0083E4D6 /* LadderRootViewController.m */; };
 		2785C5BC19318B190002B18E /* Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BB19318B190002B18E /* Swizzle.m */; };
 		2785C5BF19318D950002B18E /* UIViewController+TestSuperClassCalled.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BE19318D950002B18E /* UIViewController+TestSuperClassCalled.m */; };
 		2785FB21190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
@@ -93,6 +95,8 @@
 		2717411F18FEAEE9001CF8AC /* TipsManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsManagerDelegate.h; sourceTree = "<group>"; };
 		27502C89193738090030DB62 /* SharedSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedSpec.m; sourceTree = "<group>"; };
 		275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailsViewControllerSpec.m; sourceTree = "<group>"; };
+		27792F3D1938846E0083E4D6 /* LadderRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LadderRootViewController.h; sourceTree = "<group>"; };
+		27792F3E1938846E0083E4D6 /* LadderRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderRootViewController.m; sourceTree = "<group>"; };
 		2785C5BA19318B190002B18E /* Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzle.h; sourceTree = "<group>"; };
 		2785C5BB19318B190002B18E /* Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzle.m; sourceTree = "<group>"; };
 		2785C5BD19318D950002B18E /* UIViewController+TestSuperClassCalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TestSuperClassCalled.h"; sourceTree = "<group>"; };
@@ -201,6 +205,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		27792F3C193884390083E4D6 /* Ladder */ = {
+			isa = PBXGroup;
+			children = (
+				27792F3D1938846E0083E4D6 /* LadderRootViewController.h */,
+				27792F3E1938846E0083E4D6 /* LadderRootViewController.m */,
+			);
+			name = Ladder;
+			sourceTree = "<group>";
+		};
 		2785FB27190FC7EE00A45404 /* GameSummaryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +266,7 @@
 				27F11CB41914C99A0045B4FE /* FootyCommunicator */,
 				27FED3871910FF7500DA7618 /* GameDetails */,
 				2785FB27190FC7EE00A45404 /* GameSummaryCell */,
+				27792F3C193884390083E4D6 /* Ladder */,
 				27B62C0A19022705002089B6 /* Tips */,
 				27C9821F18F8C4F900E4D493 /* Models */,
 				27A0E57F18E9245500347BA8 /* Images.xcassets */,
@@ -554,6 +568,7 @@
 				279E5A4E191791FF005DF058 /* TipsPageViewController.m in Sources */,
 				27CA38B718FCCBDA00F4A0BE /* FootyRound.m in Sources */,
 				27F17ABA19126B9500D1268A /* GameDetailsObjectConfiguration.m in Sources */,
+				27792F3F1938846E0083E4D6 /* LadderRootViewController.m in Sources */,
 				2717411D18FEA780001CF8AC /* TipsManager.m in Sources */,
 				278A2E9B191BA3BC00D3778B /* TipsRootViewController.m in Sources */,
 				27A0E57E18E9245500347BA8 /* AppDelegate.m in Sources */,
@@ -604,6 +619,7 @@
 				27F17ABB19126B9500D1268A /* GameDetailsObjectConfiguration.m in Sources */,
 				2703C4B918FA9F6700EB6D8E /* TeamSpec.m in Sources */,
 				27F11CB31914AE4D0045B4FE /* MockModels.m in Sources */,
+				27792F401938846E0083E4D6 /* LadderRootViewController.m in Sources */,
 				278A2E9E191BA3FD00D3778B /* TipsRootViewControllerSpec.m in Sources */,
 				27CA38AC18FCAC8400F4A0BE /* FootyFixture.m in Sources */,
 				27B62C11190227B5002089B6 /* TipsObjectConfiguration.m in Sources */,
