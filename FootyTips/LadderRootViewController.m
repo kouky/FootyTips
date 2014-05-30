@@ -14,6 +14,14 @@
 
 @implementation LadderRootViewController
 
+// Designated initializer
+- (id)init
+{
+  self = [super initWithNibName:nil bundle:nil];
+  return self;
+}
+
+// Previous designated initializer defers to init
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
