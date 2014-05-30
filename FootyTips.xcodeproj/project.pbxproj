@@ -17,6 +17,7 @@
 		275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */; };
 		27792F3F1938846E0083E4D6 /* LadderRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F3E1938846E0083E4D6 /* LadderRootViewController.m */; };
 		27792F401938846E0083E4D6 /* LadderRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F3E1938846E0083E4D6 /* LadderRootViewController.m */; };
+		27792F4319388B340083E4D6 /* LadderRootViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27792F4219388B340083E4D6 /* LadderRootViewControllerSpec.m */; };
 		2785C5BC19318B190002B18E /* Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BB19318B190002B18E /* Swizzle.m */; };
 		2785C5BF19318D950002B18E /* UIViewController+TestSuperClassCalled.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785C5BE19318D950002B18E /* UIViewController+TestSuperClassCalled.m */; };
 		2785FB21190FBDE500A45404 /* GameSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2785FB20190FBDE500A45404 /* GameSummaryCell.xib */; };
@@ -97,6 +98,7 @@
 		275866F01914AA3400D765F6 /* GameDetailsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailsViewControllerSpec.m; sourceTree = "<group>"; };
 		27792F3D1938846E0083E4D6 /* LadderRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LadderRootViewController.h; sourceTree = "<group>"; };
 		27792F3E1938846E0083E4D6 /* LadderRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderRootViewController.m; sourceTree = "<group>"; };
+		27792F4219388B340083E4D6 /* LadderRootViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadderRootViewControllerSpec.m; sourceTree = "<group>"; };
 		2785C5BA19318B190002B18E /* Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzle.h; sourceTree = "<group>"; };
 		2785C5BB19318B190002B18E /* Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzle.m; sourceTree = "<group>"; };
 		2785C5BD19318D950002B18E /* UIViewController+TestSuperClassCalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TestSuperClassCalled.h"; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 			name = Ladder;
 			sourceTree = "<group>";
 		};
+		27792F4119388AAD0083E4D6 /* Ladder */ = {
+			isa = PBXGroup;
+			children = (
+				27792F4219388B340083E4D6 /* LadderRootViewControllerSpec.m */,
+			);
+			name = Ladder;
+			sourceTree = "<group>";
+		};
 		2785FB27190FC7EE00A45404 /* GameSummaryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +302,7 @@
 				27A0E59218E9245500347BA8 /* AppDelegateSpec.m */,
 				27AD596D18EA640500D54C65 /* FootyCommunicatorSpec.m */,
 				27AFE73D191381D400E1EA38 /* GameDetails */,
+				27792F4119388AAD0083E4D6 /* Ladder */,
 				27B62C0B19022735002089B6 /* Tips */,
 				2703C4B718FA9EDA00EB6D8E /* Models */,
 				27A0E58D18E9245500347BA8 /* Supporting Files */,
@@ -590,6 +601,7 @@
 				27AFE73F191381FC00E1EA38 /* GameDetailsObjectConfigurationSpec.m in Sources */,
 				27AD597918EAE86900D54C65 /* NonNetworkedFootyCommunicator.m in Sources */,
 				2717411E18FEA780001CF8AC /* TipsManager.m in Sources */,
+				27792F4319388B340083E4D6 /* LadderRootViewControllerSpec.m in Sources */,
 				27C9822318F8C51400E4D493 /* Game.m in Sources */,
 				27502C8A193738090030DB62 /* SharedSpec.m in Sources */,
 				275866F11914AA3400D765F6 /* GameDetailsViewControllerSpec.m in Sources */,
