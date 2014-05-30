@@ -4,6 +4,7 @@
 #import <OCMock/OCMock.h>
 #import "AppDelegate.h"
 #import "TipsRootViewController.h"
+#import "LadderRootViewController.h"
 #import "TipsObjectConfiguration.h"
 #import "TipsManager.h"
 
@@ -78,6 +79,11 @@ describe(@"AppDelegate", ^{
       
       it(@"has it's title set to 'Ladder'", ^{
         expect([viewController title]).to.equal(@"Ladder");
+      });
+      
+      it(@"is a navigation controller containing a ladder root view controller", ^{
+        UINavigationController *navController = viewController;
+        expect([navController topViewController]).to.beKindOf(LadderRootViewController.class);
       });
 
       after(^{

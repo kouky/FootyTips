@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TipsRootViewController.h"
 #import "TipsObjectConfiguration.h"
+#import "LadderRootViewController.h"
 
 @implementation AppDelegate
 
@@ -24,8 +25,10 @@
   [tipsNavigationController setViewControllers:@[tipsRootViewController] animated:NO];
   
   // Configure Ladder
+  LadderRootViewController *ladderRootViewController = [[LadderRootViewController alloc] init];
   UINavigationController *ladderNavigationConroller = [[UINavigationController alloc] init];
   [ladderNavigationConroller setTitle:@"Ladder"];
+  [ladderNavigationConroller setViewControllers:@[ladderRootViewController]];
   
   //  ViewControllers for tab bar
   NSArray *tabBarViewControllers = @[tipsNavigationController, ladderNavigationConroller];
